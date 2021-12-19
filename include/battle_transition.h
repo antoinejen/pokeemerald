@@ -1,5 +1,6 @@
 #ifndef GUARD_BATTLE_TRANSITION_H
 #define GUARD_BATTLE_TRANSITION_H
+#include "constants/battle_transition.h"
 
 void BattleTransition_StartOnField(u8 transitionId);
 void BattleTransition_Start(u8 transitionId);
@@ -9,15 +10,6 @@ void Task_BattleTransition_Intro(u8 taskId);
 void GetBg0TilesDst(u16 **tilemap, u16 **tileset);
 
 extern const struct SpritePalette gSpritePalette_Pokeball;
-
-enum {
-    MUGSHOT_SIDNEY,
-    MUGSHOT_PHOEBE,
-    MUGSHOT_GLACIA,
-    MUGSHOT_DRAKE,
-    MUGSHOT_CHAMPION,
-    MUGSHOTS_COUNT
-};
 
 enum {
     B_TRANSITION_BLUR,
@@ -37,6 +29,12 @@ enum {
     B_TRANSITION_GLACIA,
     B_TRANSITION_DRAKE,
     B_TRANSITION_CHAMPION,
+    B_TRANSITION_MAY,
+    B_TRANSITION_BRENDAN,
+    B_TRANSITION_WALLY,
+    B_TRANSITION_STEVEN,
+    B_TRANSITION_RED,
+    B_TRANSITION_LEAF,
     B_TRANSITION_AQUA, // Here below added in Emerald
     B_TRANSITION_MAGMA,
     B_TRANSITION_REGICE,

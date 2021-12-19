@@ -834,6 +834,36 @@ u8 GetTrainerBattleTransition(void)
     if (gTrainerBattleOpponent_A == TRAINER_SECRET_BASE)
         return B_TRANSITION_CHAMPION;
 
+    if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_RIVAL)
+    {
+        if (gTrainerBattleOpponent_A == TRAINER_MAY_ROUTE_103_MUDKIP || gTrainerBattleOpponent_A == TRAINER_MAY_ROUTE_110_MUDKIP
+            || gTrainerBattleOpponent_A == TRAINER_MAY_ROUTE_119_MUDKIP || gTrainerBattleOpponent_A == TRAINER_MAY_ROUTE_103_TREECKO
+            || gTrainerBattleOpponent_A == TRAINER_MAY_ROUTE_110_TREECKO || gTrainerBattleOpponent_A == TRAINER_MAY_ROUTE_119_TREECKO
+            || gTrainerBattleOpponent_A == TRAINER_MAY_ROUTE_103_TORCHIC || gTrainerBattleOpponent_A == TRAINER_MAY_ROUTE_110_TORCHIC
+            || gTrainerBattleOpponent_A == TRAINER_MAY_ROUTE_119_TORCHIC || gTrainerBattleOpponent_A == TRAINER_MAY_RUSTBORO_MUDKIP
+            || gTrainerBattleOpponent_A == TRAINER_MAY_LILYCOVE_MUDKIP || gTrainerBattleOpponent_A == TRAINER_MAY_LILYCOVE_TREECKO
+            || gTrainerBattleOpponent_A == TRAINER_MAY_LILYCOVE_TORCHIC || gTrainerBattleOpponent_A == TRAINER_MAY_RUSTBORO_TREECKO
+            || gTrainerBattleOpponent_A == TRAINER_MAY_RUSTBORO_TORCHIC)
+            return B_TRANSITION_MAY;
+        if (gTrainerBattleOpponent_A == TRAINER_BRENDAN_ROUTE_103_MUDKIP || gTrainerBattleOpponent_A == TRAINER_BRENDAN_ROUTE_110_MUDKIP
+            || gTrainerBattleOpponent_A == TRAINER_BRENDAN_ROUTE_119_MUDKIP || gTrainerBattleOpponent_A == TRAINER_BRENDAN_ROUTE_103_TREECKO
+            || gTrainerBattleOpponent_A == TRAINER_BRENDAN_ROUTE_110_TREECKO || gTrainerBattleOpponent_A == TRAINER_BRENDAN_ROUTE_119_TREECKO
+            || gTrainerBattleOpponent_A == TRAINER_BRENDAN_ROUTE_103_TORCHIC || gTrainerBattleOpponent_A == TRAINER_BRENDAN_ROUTE_110_TORCHIC
+            || gTrainerBattleOpponent_A == TRAINER_BRENDAN_ROUTE_119_TORCHIC || gTrainerBattleOpponent_A == TRAINER_BRENDAN_RUSTBORO_MUDKIP
+            || gTrainerBattleOpponent_A == TRAINER_BRENDAN_LILYCOVE_MUDKIP || gTrainerBattleOpponent_A == TRAINER_BRENDAN_LILYCOVE_TREECKO
+            || gTrainerBattleOpponent_A == TRAINER_BRENDAN_LILYCOVE_TORCHIC || gTrainerBattleOpponent_A == TRAINER_BRENDAN_RUSTBORO_TREECKO
+            || gTrainerBattleOpponent_A == TRAINER_BRENDAN_RUSTBORO_TORCHIC)
+            return B_TRANSITION_BRENDAN;
+        return B_TRANSITION_WALLY;
+    }
+
+    if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_PKMN_TRAINER_1)
+    {
+        if (gTrainerBattleOpponent_A == TRAINER_RED)
+            return B_TRANSITION_RED;
+        return B_TRANSITION_LEAF;
+    }
+
     if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_ELITE_FOUR)
     {
         if (gTrainerBattleOpponent_A == TRAINER_SIDNEY)

@@ -1,3 +1,4 @@
+#include "constants/battle_transition.h"
 #include "constants/global.h"
 #include "constants/apprentice.h"
 #include "constants/battle.h"
