@@ -36,12 +36,12 @@ const u8 gItemEffect_MaxPotion[7] = {
 
 const u8 gItemEffect_HyperPotion[7] = {
     [4] = ITEM4_HEAL_HP,
-    [6] = 200, // Amount of HP to recover
+    [6] = 120, // Amount of HP to recover
 };
 
 const u8 gItemEffect_SuperPotion[7] = {
     [4] = ITEM4_HEAL_HP,
-    [6] = 50, // Amount of HP to recover
+    [6] = 60, // Amount of HP to recover
 };
 
 const u8 gItemEffect_FullHeal[6] = {
@@ -60,17 +60,17 @@ const u8 gItemEffect_MaxRevive[7] = {
 
 const u8 gItemEffect_FreshWater[7] = {
     [4] = ITEM4_HEAL_HP,
-    [6] = 50, // Amount of HP to recover
+    [6] = 30, // Amount of HP to recover
 };
 
 const u8 gItemEffect_SodaPop[7] = {
     [4] = ITEM4_HEAL_HP,
-    [6] = 60, // Amount of HP to recover
+    [6] = 50, // Amount of HP to recover
 };
 
 const u8 gItemEffect_Lemonade[7] = {
     [4] = ITEM4_HEAL_HP,
-    [6] = 80, // Amount of HP to recover
+    [6] = 70, // Amount of HP to recover
 };
 
 const u8 gItemEffect_MoomooMilk[7] = {
@@ -81,7 +81,7 @@ const u8 gItemEffect_MoomooMilk[7] = {
 const u8 gItemEffect_EnergyPowder[10] = {
     [4] = ITEM4_HEAL_HP,
     [5] = ITEM5_FRIENDSHIP_ALL,
-    [6] = 50,  // Amount of HP to recover
+    [6] = 60,  // Amount of HP to recover
     [7] = -5,  // Friendship change, low
     [8] = -5,  // Friendship change, mid
     [9] = -10, // Friendship change, high
@@ -90,7 +90,7 @@ const u8 gItemEffect_EnergyPowder[10] = {
 const u8 gItemEffect_EnergyRoot[10] = {
     [4] = ITEM4_HEAL_HP,
     [5] = ITEM5_FRIENDSHIP_ALL,
-    [6] = 200, // Amount of HP to recover
+    [6] = 120, // Amount of HP to recover
     [7] = -10, // Friendship change, low
     [8] = -10, // Friendship change, mid
     [9] = -15, // Friendship change, high
@@ -201,7 +201,7 @@ const u8 gItemEffect_RareCandy[10] = {
     [3] = ITEM3_LEVEL_UP,
     [4] = ITEM4_REVIVE | ITEM4_HEAL_HP,
     [5] = ITEM5_FRIENDSHIP_ALL,
-    [6] = ITEM6_HEAL_HP_LVL_UP,
+    [6] = ITEM6_HEAL_LVL_UP,
     VITAMIN_FRIENDSHIP_CHANGE(7),
 };
 
@@ -336,7 +336,7 @@ const u8 gItemEffect_LumBerry[6] = {
 
 const u8 gItemEffect_SitrusBerry[7] = {
     [4] = ITEM4_HEAL_HP,
-    [6] = 30, // Amount of HP to recover
+    [6] = ITEM6_HEAL_QUARTER,
 };
 
 #define EV_BERRY_FRIENDSHIP_CHANGE          \
