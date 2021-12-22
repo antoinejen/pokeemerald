@@ -265,7 +265,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_STEVEN",
+      "graphics_id": "OBJ_EVENT_GFX_WALLY",
       "x": 44,
       "y": 7,
       "elevation": 3,
@@ -275,7 +275,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "FLAG_HIDE_ROUTE_118_STEVEN"
+      "flag": "FLAG_HIDE_ROUTE_118_WALLY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -328,7 +328,7 @@
       "elevation": 3,
       "var": "VAR_ROUTE118_STATE",
       "var_value": "0",
-      "script": "Route118_EventScript_StevenTrigger0"
+      "script": "Route118_EventScript_WallyTrigger0"
     },
     {
       "type": "trigger",
@@ -337,7 +337,7 @@
       "elevation": 3,
       "var": "VAR_ROUTE118_STATE",
       "var_value": "0",
-      "script": "Route118_EventScript_StevenTrigger1"
+      "script": "Route118_EventScript_WallyTrigger1"
     },
     {
       "type": "trigger",
@@ -346,7 +346,7 @@
       "elevation": 3,
       "var": "VAR_ROUTE118_STATE",
       "var_value": "0",
-      "script": "Route118_EventScript_StevenTrigger2"
+      "script": "Route118_EventScript_WallyTrigger2"
     }
   ],
   "bg_events": [

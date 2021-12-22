@@ -10962,18 +10962,30 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Lucas2[] = {
     }
 };
 
-static const struct TrainerMonNoItemCustomMoves sParty_Mike1[] = {
+static const struct TrainerMonNoItemCustomMoves sParty_WallyRoute118[] = {
     {
-    .iv = 0,
-    .lvl = 10,
-    .species = SPECIES_PELIPPER,
-    .moves = {MOVE_GUST, MOVE_GROWL, MOVE_NONE, MOVE_NONE}
+    .iv = 150,
+    .lvl = 40,
+    .species = SPECIES_ALTARIA,
+    .moves = {MOVE_TAKE_DOWN, MOVE_SAFEGUARD, MOVE_DRAGON_BREATH, MOVE_DRAGON_DANCE}
     },
     {
-    .iv = 0,
-    .lvl = 10,
-    .species = SPECIES_POOCHYENA,
-    .moves = {MOVE_BITE, MOVE_SCARY_FACE, MOVE_NONE, MOVE_NONE}
+    .iv = 150,
+    .lvl = 39,
+    .species = SPECIES_DELCATTY,
+    .moves = {MOVE_SING, MOVE_ASSIST, MOVE_CHARM, MOVE_FEINT_ATTACK}
+    },
+    {
+    .iv = 150,
+    .lvl = 41,
+    .species = SPECIES_ROSELIA,
+    .moves = {MOVE_MAGICAL_LEAF, MOVE_LEECH_SEED, MOVE_GIGA_DRAIN, MOVE_TOXIC}
+    },
+    {
+    .iv = 200,
+    .lvl = 42,
+    .species = SPECIES_GARDEVOIR,
+    .moves = {MOVE_DOUBLE_TEAM, MOVE_CALM_MIND, MOVE_PSYCHIC, MOVE_MAGICAL_LEAF}
     }
 };
 
