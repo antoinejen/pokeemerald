@@ -2030,13 +2030,12 @@ static const struct TrainerMonNoItemDefaultMoves sParty_GruntSpaceCenter2[] = {
     }
 };
 
-static const struct TrainerMonItemCustomMoves sParty_Cindy2[] = {
+static const struct TrainerMonItemDefaultMoves sParty_Cindy2[] = {
     {
     .iv = 0,
     .lvl = 11,
     .species = SPECIES_ZIGZAGOON,
     .heldItem = ITEM_NUGGET,
-    .moves = {MOVE_TACKLE, MOVE_TAIL_WHIP, MOVE_NONE, MOVE_NONE}
     }
 };
 
@@ -5304,39 +5303,35 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Timothy1[] = {
     }
 };
 
-static const struct TrainerMonNoItemCustomMoves sParty_Timothy2[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_Timothy2[] = {
     {
     .iv = 210,
     .lvl = 44,
     .species = SPECIES_HARIYAMA,
-    .moves = {MOVE_VITAL_THROW, MOVE_KNOCK_OFF, MOVE_SMELLING_SALTS, MOVE_DIG}
     }
 };
 
-static const struct TrainerMonNoItemCustomMoves sParty_Timothy3[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_Timothy3[] = {
     {
     .iv = 220,
     .lvl = 48,
     .species = SPECIES_HARIYAMA,
-    .moves = {MOVE_VITAL_THROW, MOVE_KNOCK_OFF, MOVE_SMELLING_SALTS, MOVE_DIG}
     }
 };
 
-static const struct TrainerMonNoItemCustomMoves sParty_Timothy4[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_Timothy4[] = {
     {
     .iv = 230,
     .lvl = 52,
     .species = SPECIES_HARIYAMA,
-    .moves = {MOVE_VITAL_THROW, MOVE_KNOCK_OFF, MOVE_SMELLING_SALTS, MOVE_DIG}
     }
 };
 
-static const struct TrainerMonNoItemCustomMoves sParty_Timothy5[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_Timothy5[] = {
     {
     .iv = 240,
     .lvl = 56,
     .species = SPECIES_HARIYAMA,
-    .moves = {MOVE_VITAL_THROW, MOVE_KNOCK_OFF, MOVE_SMELLING_SALTS, MOVE_DIG}
     }
 };
 
@@ -7864,12 +7859,11 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Diana1[] = {
     }
 };
 
-static const struct TrainerMonNoItemCustomMoves sParty_Cedric[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_Cedric[] = {
     {
     .iv = 0,
     .lvl = 46,
     .species = SPECIES_WOBBUFFET,
-    .moves = {MOVE_DESTINY_BOND, MOVE_SAFEGUARD, MOVE_COUNTER, MOVE_MIRROR_COAT}
     }
 };
 
