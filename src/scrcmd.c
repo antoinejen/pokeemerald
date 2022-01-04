@@ -1000,7 +1000,7 @@ bool8 ScrCmd_applymovement(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_applymovement_at(struct ScriptContext *ctx)
+bool8 ScrCmd_applymovementat(struct ScriptContext *ctx)
 {
     u16 localId = VarGet(ScriptReadHalfword(ctx));
     const void *movementScript = (const void *)ScriptReadWord(ctx);
@@ -1029,7 +1029,7 @@ bool8 ScrCmd_waitmovement(struct ScriptContext *ctx)
     return TRUE;
 }
 
-bool8 ScrCmd_waitmovement_at(struct ScriptContext *ctx)
+bool8 ScrCmd_waitmovementat(struct ScriptContext *ctx)
 {
     u16 localId = VarGet(ScriptReadHalfword(ctx));
     u8 mapGroup;
@@ -1053,7 +1053,7 @@ bool8 ScrCmd_removeobject(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_removeobject_at(struct ScriptContext *ctx)
+bool8 ScrCmd_removeobjectat(struct ScriptContext *ctx)
 {
     u16 objectId = VarGet(ScriptReadHalfword(ctx));
     u8 mapGroup = ScriptReadByte(ctx);
@@ -1071,7 +1071,7 @@ bool8 ScrCmd_addobject(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_addobject_at(struct ScriptContext *ctx)
+bool8 ScrCmd_addobjectat(struct ScriptContext *ctx)
 {
     u16 objectId = VarGet(ScriptReadHalfword(ctx));
     u8 mapGroup = ScriptReadByte(ctx);
@@ -1109,7 +1109,7 @@ bool8 ScrCmd_copyobjectxytoperm(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_showobject_at(struct ScriptContext *ctx)
+bool8 ScrCmd_showobjectat(struct ScriptContext *ctx)
 {
     u16 localId = VarGet(ScriptReadHalfword(ctx));
     u8 mapGroup = ScriptReadByte(ctx);
@@ -1119,7 +1119,7 @@ bool8 ScrCmd_showobject_at(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_hideobject_at(struct ScriptContext *ctx)
+bool8 ScrCmd_hideobjectat(struct ScriptContext *ctx)
 {
     u16 localId = VarGet(ScriptReadHalfword(ctx));
     u8 mapGroup = ScriptReadByte(ctx);
