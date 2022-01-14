@@ -1,7 +1,6 @@
 #ifndef GUARD_POKEMON_H
 #define GUARD_POKEMON_H
 
-#include "constants/pokemon.h"
 #include "sprite.h"
 
 #define GET_BASE_SPECIES_ID(speciesId) (GetFormSpeciesId(speciesId, 0))
