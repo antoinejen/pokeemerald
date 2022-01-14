@@ -264,19 +264,19 @@ Route118_Text_WallyQuestions:
 	.string "I met many, many kinds of Pokémon\n"
 	.string "during my journey.\p"
 	.string "I also trained really, really hard\n"
-	.string "with Ralts and the friends I made"
+	.string "with Ralts and the friends I made\n"
 	.string "along the way.\p"
 	.string "I have matured as a person, and as\n"
 	.string "a Trainer.\p"
-	.string "And now, I wish to prove myself\p"
-	.string "to you once again.\n"
+	.string "And now, I wish to prove myself\n"
+	.string "to you once again.\p"
 	.string "{PLAYER}{KUN}! I demand a rematch!$"
 
 Route118_Text_WallyDefeated:
 	.string "Wow {PLAYER}{KUN}, you're so strong!$"
 
 Route118_Text_WallyGo:
-	.string "{PLAYER}{KUN}, you became so much stronger!\p$"
+	.string "{PLAYER}{KUN}, you became so much stronger!\p"
 	.string "I feel like the gap between us\n"
 	.string "has never shrunk...\p"
 	.string "But you'll see! I'll come back stronger\n"
