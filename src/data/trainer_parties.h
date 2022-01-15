@@ -4505,7 +4505,7 @@ static const struct TrainerMonItemCustomMoves sParty_Roxanne1[] = {
     .lvl = 14,
     .species = SPECIES_GEODUDE,
     .heldItem = ITEM_NONE,
-    .moves = {MOVE_TACKLE, MOVE_DEFENSE_CURL, MOVE_ROCK_THROW, MOVE_ROCK_TOMB}
+    .moves = {MOVE_TACKLE, MOVE_DEFENSE_CURL, MOVE_ROCK_POLISH, MOVE_ROCK_TOMB}
     },
     {
     .iv = 100,
@@ -4574,7 +4574,7 @@ static const struct TrainerMonItemCustomMoves sParty_Wattson1[] = {
     .lvl = 26,
     .species = SPECIES_PIKACHU,
     .heldItem = ITEM_NONE,
-    .moves = {MOVE_SHOCK_WAVE, MOVE_SLAM, MOVE_QUICK_ATTACK, MOVE_DOUBLE_KICK}
+    .moves = {MOVE_SHOCK_WAVE, MOVE_SLAM, MOVE_QUICK_ATTACK, MOVE_THUNDER_WAVE}
     },
     {
     .iv = 220,
