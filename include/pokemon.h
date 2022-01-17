@@ -240,10 +240,13 @@ struct BattleMove
     u8 argument;
 };
 
+#define SPINDA_SPOT_WIDTH 16
+#define SPINDA_SPOT_HEIGHT 16
+
 struct SpindaSpot
 {
     u8 x, y;
-    u16 image[16];
+    u16 image[SPINDA_SPOT_HEIGHT];
 };
 
 struct LevelUpMove
