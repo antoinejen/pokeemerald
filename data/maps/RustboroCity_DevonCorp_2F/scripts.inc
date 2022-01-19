@@ -88,20 +88,6 @@ RustboroCity_DevonCorp_2F_EventScript_NoticeFossil::
 	goto RustboroCity_DevonCorp_2F_EventScript_ChooseFossil
 	end
 
-RustboroCity_DevonCorp_2F_EventScript_NoticeClawFossil::
-	closemessage
-	playse SE_PIN
-	applymovement LOCALID_FOSSIL_SCIENTIST, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_FOSSIL_SCIENTIST, Common_Movement_Delay48
-	waitmovement 0
-	msgbox RustboroCity_DevonCorp_2F_Text_WantToBringFossilBackToLife, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, RustboroCity_DevonCorp_2F_EventScript_DeclineGiveFossil
-	checkitem ITEM_ROOT_FOSSIL
-	goto_if_eq VAR_RESULT, TRUE, RustboroCity_DevonCorp_2F_EventScript_ChooseFossil
-	goto RustboroCity_DevonCorp_2F_EventScript_GiveClawFossil
-	end
-
 RustboroCity_DevonCorp_2F_EventScript_GiveClawFossil::
 	bufferitemname STR_VAR_1, ITEM_CLAW_FOSSIL
 	msgbox RustboroCity_DevonCorp_2F_Text_HandedFossilToResearcher, MSGBOX_DEFAULT
@@ -236,68 +222,11 @@ RustboroCity_DevonCorp_2F_EventScript_TransferFossilToPC::
 	goto RustboroCity_DevonCorp_2F_EventScript_FinishReceivingFossil
 	end
 
-RustboroCity_DevonCorp_2F_EventScript_ReceivedLileepFanfare::
-	bufferspeciesname STR_VAR_2, SPECIES_LILEEP
-	playfanfare MUS_OBTAIN_ITEM
-	message RustboroCity_DevonCorp_2F_Text_ReceivedMonFromResearcher
-	waitmessage
-	waitfanfare
-	bufferspeciesname STR_VAR_1, SPECIES_LILEEP
-	return
-
 RustboroCity_DevonCorp_2F_EventScript_FinishReceivingFossil::
 	setvar VAR_FOSSIL_RESURRECTION_STATE, 0
 	setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
 	release
 	end
-
-RustboroCity_DevonCorp_2F_EventScript_ReceiveAnorith::
-	setvar VAR_TEMP_1, SPECIES_ANORITH
-	givemon SPECIES_ANORITH, 20, ITEM_NONE
-	goto_if_eq VAR_RESULT, 0, RustboroCity_DevonCorp_2F_EventScript_ReceiveAnorithParty
-	goto_if_eq VAR_RESULT, 1, RustboroCity_DevonCorp_2F_EventScript_ReceiveAnorithPC
-	goto Common_EventScript_NoMoreRoomForPokemon
-	end
-
-RustboroCity_DevonCorp_2F_EventScript_ReceiveAnorithParty::
-	call RustboroCity_DevonCorp_2F_EventScript_ReceivedAnorithFanfare
-	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, RustboroCity_DevonCorp_2F_EventScript_FinishReceivingAnorith
-	call Common_EventScript_GetGiftMonPartySlot
-	call Common_EventScript_NameReceivedPartyMon
-	goto RustboroCity_DevonCorp_2F_EventScript_FinishReceivingAnorith
-	end
-
-RustboroCity_DevonCorp_2F_EventScript_ReceiveAnorithPC::
-	call RustboroCity_DevonCorp_2F_EventScript_ReceivedAnorithFanfare
-	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, RustboroCity_DevonCorp_2F_EventScript_TransferAnorithToPC
-	call Common_EventScript_NameReceivedBoxMon
-	goto RustboroCity_DevonCorp_2F_EventScript_TransferAnorithToPC
-	end
-
-RustboroCity_DevonCorp_2F_EventScript_TransferAnorithToPC::
-	call Common_EventScript_TransferredToPC
-	goto RustboroCity_DevonCorp_2F_EventScript_FinishReceivingAnorith
-	end
-
-RustboroCity_DevonCorp_2F_EventScript_ReceivedAnorithFanfare::
-	bufferspeciesname STR_VAR_2, SPECIES_ANORITH
-	playfanfare MUS_OBTAIN_ITEM
-	message RustboroCity_DevonCorp_2F_Text_ReceivedMonFromResearcher
-	waitmessage
-	waitfanfare
-	bufferspeciesname STR_VAR_1, SPECIES_ANORITH
-	return
-
-RustboroCity_DevonCorp_2F_EventScript_FinishReceivingAnorith::
-	setvar VAR_FOSSIL_RESURRECTION_STATE, 0
-	setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
-	release
-	end
-
-RustboroCity_DevonCorp_2F_EventScript_ReceiveOmanyte::
-
 
 RustboroCity_DevonCorp_2F_EventScript_ChooseFossil::
 	message RustboroCity_DevonCorp_2F_Text_PickFossil
@@ -313,26 +242,6 @@ RustboroCity_DevonCorp_2F_EventScript_ChooseFossil::
 	case 4, RustboroCity_DevonCorp_2F_EventScript_GiveOldAmber
 	case 5, RustboroCity_DevonCorp_2F_EventScript_CancelFossilSelect
 	case MULTI_B_PRESSED, RustboroCity_DevonCorp_2F_EventScript_CancelFossilSelect
-	end
-
-RustboroCity_DevonCorp_2F_EventScript_ChooseClawFossil::
-	goto RustboroCity_DevonCorp_2F_EventScript_GiveClawFossil
-	end
-
-RustboroCity_DevonCorp_2F_EventScript_ChooseRootFossil::
-	goto RustboroCity_DevonCorp_2F_EventScript_GiveRootFossil
-	end
-
-RustboroCity_DevonCorp_2F_EventScript_ChooseHelixFossil::
-	goto RustboroCity_DevonCorp_2F_EventScript_GiveHelixFossil
-	end
-
-RustboroCity_DevonCorp_2F_EventScript_ChooseDomeFossil::
-	goto RustboroCity_DevonCorp_2F_EventScript_GiveDomeFossil
-	end
-
-RustboroCity_DevonCorp_2F_EventScript_ChooseOldAmber::
-	goto RustboroCity_DevonCorp_2F_EventScript_GiveOldAmber
 	end
 
 RustboroCity_DevonCorp_2F_EventScript_CancelFossilSelect::
@@ -417,15 +326,6 @@ RustboroCity_DevonCorp_2F_Text_OhIsThatSo:
 RustboroCity_DevonCorp_2F_Text_PickFossil:
 	.string "Which fossil would you like to\n"
 	.string "regenerate?$"
-
-RustboroCity_DevonCorp_2F_Text_MultipleFossilsPickOne:
-	.string "Oh, now that's a surprise!\n"
-	.string "You have not one, but multiple, \l"
-	.string "fossils?\p"
-	.string "Unfortunately, my machine can only\n"
-	.string "regenerate one Pokémon at a time.\p"
-	.string "Would you like to pick one of your\n"
-	.string "fossils for regeneration?$"
 
 RustboroCity_DevonCorp_2F_Text_HandedFossilToResearcher:
 	.string "Excellent!\n"
