@@ -71,6 +71,8 @@ Route113_GlassWorkshop_EventScript_ChooseGlassItem::
 	end
 
 Route113_GlassWorkshop_EventScript_BlueFlute::
+	checkitem ITEM_BLUE_FLUTE, 1
+	goto_if_eq VAR_RESULT, TRUE, Route113_GlassWorkshop_EventScript_YouAlreadyHaveThis
 	setvar VAR_0x8008, ITEM_BLUE_FLUTE
 	bufferitemname STR_VAR_1, VAR_0x8008
 	setvar VAR_0x800A, BLUE_FLUTE_PRICE
@@ -83,6 +85,8 @@ Route113_GlassWorkshop_EventScript_BlueFlute::
 	end
 
 Route113_GlassWorkshop_EventScript_YellowFlute::
+	checkitem ITEM_YELLOW_FLUTE, 1
+	goto_if_eq VAR_RESULT, TRUE, Route113_GlassWorkshop_EventScript_YouAlreadyHaveThis
 	setvar VAR_0x8008, ITEM_YELLOW_FLUTE
 	bufferitemname STR_VAR_1, VAR_0x8008
 	setvar VAR_0x800A, YELLOW_FLUTE_PRICE
@@ -95,6 +99,8 @@ Route113_GlassWorkshop_EventScript_YellowFlute::
 	end
 
 Route113_GlassWorkshop_EventScript_RedFlute::
+	checkitem ITEM_RED_FLUTE, 1
+	goto_if_eq VAR_RESULT, TRUE, Route113_GlassWorkshop_EventScript_YouAlreadyHaveThis
 	setvar VAR_0x8008, ITEM_RED_FLUTE
 	bufferitemname STR_VAR_1, VAR_0x8008
 	setvar VAR_0x800A, RED_FLUTE_PRICE
@@ -107,6 +113,8 @@ Route113_GlassWorkshop_EventScript_RedFlute::
 	end
 
 Route113_GlassWorkshop_EventScript_WhiteFlute::
+	checkitem ITEM_WHITE_FLUTE, 1
+	goto_if_eq VAR_RESULT, TRUE, Route113_GlassWorkshop_EventScript_YouAlreadyHaveThis
 	setvar VAR_0x8008, ITEM_WHITE_FLUTE
 	bufferitemname STR_VAR_1, VAR_0x8008
 	setvar VAR_0x800A, WHITE_FLUTE_PRICE
@@ -119,6 +127,8 @@ Route113_GlassWorkshop_EventScript_WhiteFlute::
 	end
 
 Route113_GlassWorkshop_EventScript_BlackFlute::
+	checkitem ITEM_BLACK_FLUTE, 1
+	goto_if_eq VAR_RESULT, TRUE, Route113_GlassWorkshop_EventScript_YouAlreadyHaveThis
 	setvar VAR_0x8008, ITEM_BLACK_FLUTE
 	bufferitemname STR_VAR_1, VAR_0x8008
 	setvar VAR_0x800A, BLACK_FLUTE_PRICE
@@ -200,6 +210,7 @@ Route113_GlassWorkshop_EventScript_MakeGlassItem::
 Route113_GlassWorkshop_EventScript_GiveGlassFlute::
 	giveitem VAR_0x8008
 	goto_if_eq VAR_RESULT, FALSE, Route113_GlassWorkshop_EventScript_NoRoomForFlute
+	call_if_eq VAR_0x8008, ITEM_BLUE_FLUTE, Route113_GlassWorkshop_EventScript_BlueFluteFlag
 	return
 
 Route113_GlassWorkshop_EventScript_GiveGlassDecor::
@@ -218,6 +229,10 @@ Route113_GlassWorkshop_EventScript_NoRoomForDecor::
 	msgbox Route113_GlassWorkshop_Text_NoRoomInPC, MSGBOX_DEFAULT
 	release
 	end
+
+Route113_GlassWorkshop_EventScript_BlueFluteFlag::
+	setflag FLAG_RECEIVED_BLUE_FLUTE
+	return
 
 Route113_GlassWorkshop_EventScript_GiveItemAfterNoRoom::
 	switch VAR_GLASS_WORKSHOP_STATE
@@ -285,6 +300,11 @@ Route113_GlassWorkshop_EventScript_TryGiveItemAgain::
 	call_if_eq VAR_0x8009, 1, Route113_GlassWorkshop_EventScript_GiveGlassDecor
 	setvar VAR_GLASS_WORKSHOP_STATE, 2
 	release
+	end
+
+Route113_GlassWorkshop_EventScript_YouAlreadyHaveThis::
+	msgbox gText_YouAlreadyHaveThis, MSGBOX_DEFAULT
+	goto Route113_GlassWorkshop_EventScript_ChooseDifferentItem
 	end
 
 Route113_GlassWorkshop_EventScript_NinjaBoy::

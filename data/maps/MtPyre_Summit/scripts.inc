@@ -22,22 +22,22 @@ MtPyre_Summit_EventScript_SetArchieMaxiePositions::
 MtPyre_Summit_EventScript_TeamAquaTrigger0::
 	lockall
 	setvar VAR_0x8008, 0
-	goto MtPyre_Summit_EventScript_TeamAquaExits
+	goto MtPyre_Summit_EventScript_ArchieFight
 	end
 
 MtPyre_Summit_EventScript_TeamAquaTrigger1::
 	lockall
 	setvar VAR_0x8008, 1
-	goto MtPyre_Summit_EventScript_TeamAquaExits
+	goto MtPyre_Summit_EventScript_ArchieFight
 	end
 
 MtPyre_Summit_EventScript_TeamAquaTrigger2::
 	lockall
 	setvar VAR_0x8008, 2
-	goto MtPyre_Summit_EventScript_TeamAquaExits
+	goto MtPyre_Summit_EventScript_ArchieFight
 	end
 
-MtPyre_Summit_EventScript_TeamAquaExits::
+MtPyre_Summit_EventScript_ArchieFight::
 	playbgm MUS_ENCOUNTER_AQUA, FALSE
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
@@ -47,7 +47,14 @@ MtPyre_Summit_EventScript_TeamAquaExits::
 	call_if_eq VAR_0x8008, 0, MtPyre_Summit_EventScript_ArchieFacePlayer0
 	call_if_eq VAR_0x8008, 1, MtPyre_Summit_EventScript_ArchieFacePlayer1
 	call_if_eq VAR_0x8008, 2, MtPyre_Summit_EventScript_ArchieFacePlayer2
-	msgbox MtPyre_Summit_Text_ArchieWeGotTheOrbLetsGo, MSGBOX_DEFAULT
+	msgbox MtPyre_Summit_Text_ArchieWeGotTheOrb, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_ARCHIE_MT_PYRE, MtPyre_Summit_Text_ArchieDefeat
+	goto MtPyre_Summit_EventScript_TeamAquaExits
+	end
+
+MtPyre_Summit_EventScript_TeamAquaExits::
+	playbgm MUS_ENCOUNTER_AQUA, FALSE
+	msgbox MtPyre_Summit_Text_ArchieLetsGo, MSGBOX_DEFAULT
 	closemessage
 	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_ARCHIE
@@ -489,15 +496,27 @@ MtPyre_Summit_Text_Grunt4PostBattle:
 	.string "We have a great combination going\n"
 	.string "with us members and our leader.$"
 
-MtPyre_Summit_Text_ArchieWeGotTheOrbLetsGo:
+MtPyre_Summit_Text_ArchieWeGotTheOrb:
 	.string "Archie: Team Magma's Maxie got ahead\n"
 	.string "of us, but we also got what we wanted.\p"
 	.string "The Red Orb preserved at Mt. Pyre…\n"
 	.string "I, Archie, now have it in my possession!\p"
 	.string "Fufufu… Now we can bring our ultimate\n"
 	.string "objective to fruition!\p"
-	.string "Okay, Team!\n"
-	.string "We're pulling out!$"
+	.string "But, you have been a real thorn to\n"
+	.string "our side, following us at every turn!\p"
+	.string "It is about time that I get rid of you\n"
+	.string "for good!$"
+
+MtPyre_Summit_Text_ArchieDefeat:
+	.string "What?! I have been defeated?!\n"
+	.string "Preposterous!$"
+
+MtPyre_Summit_Text_ArchieLetsGo:
+	.string "Archie: Well, no matter. I was able to\n"
+	.string "stall you while my Team was retreating.\p"
+	.string "You'd better stay out of our business.\n"
+	.string "Next time I'll crush you!$"
 
 MtPyre_Summit_Text_BothOrbsTakenMagmaLeftThis:
 	.string "Oh, no…\n"

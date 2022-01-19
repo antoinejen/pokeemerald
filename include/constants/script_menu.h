@@ -97,7 +97,7 @@
 #define MULTI_FORCED_START_MENU            86
 #define MULTI_FRONTIER_GAMBLER_BET         87
 #define MULTI_TENT                         88
-#define MULTI_UNUSED_SSTIDAL_1             89 // These 4 were replaced by CreateLilycoveSSTidalMultichoice
+#define MULTI_FOSSIL_2             		   89 // These 4 were replaced by CreateLilycoveSSTidalMultichoice
 #define MULTI_UNUSED_SSTIDAL_2             90 //
 #define MULTI_UNUSED_SSTIDAL_3             91 //
 #define MULTI_UNUSED_SSTIDAL_4             92 //
@@ -132,6 +132,15 @@
 #define SSTIDAL_SELECTION_FARAWAY_ISLAND   5
 #define SSTIDAL_SELECTION_EXIT             6
 #define SSTIDAL_SELECTION_COUNT            7
+
+// Rustboro Devon Corp Fossil Multichoice Selections
+#define FOSSIL_SELECTION_CLAW_FOSSIL       	0
+#define FOSSIL_SELECTION_ROOT_FOSSIL  		1
+#define FOSSIL_SELECTION_HELIX_FOSSIL  		2
+#define FOSSIL_SELECTION_DOME_FOSSIL       	3
+#define FOSSIL_SELECTION_OLD_AMBER     		4
+#define FOSSIL_SELECTION_EXIT             	5
+#define FOSSIL_SELECTION_COUNT            	6
 
 // Std String Ids
 #define STDSTRING_COOL             0

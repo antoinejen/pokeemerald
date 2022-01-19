@@ -46,7 +46,55 @@ RustboroCity_House1_EventScript_TradeCompleted::
 	end
 
 RustboroCity_House1_EventScript_Hiker::
-	msgbox RustboroCity_House1_Text_AllSortsOfPlaces, MSGBOX_NPC
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_RUSTBORO_EGG, RustboroCity_House1_EventScript_ReceivedEgg
+	msgbox RustboroCity_House1_Text_GiveEgg, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, RustboroCity_House1_EventScript_DeclineEgg
+	getpartysize
+	goto_if_eq VAR_RESULT, PARTY_SIZE, RustboroCity_House1_EventScript_NoRoomForEgg
+	setflag FLAG_RECEIVED_RUSTBORO_EGG
+	playfanfare MUS_OBTAIN_ITEM
+	message RustboroCity_House1_Text_ReceivedTheEgg
+	waitfanfare
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_House1_EventScript_GetEggPsyduck
+	case 1, RustboroCity_House1_EventScript_GetEggVoltorb
+	case 2, RustboroCity_House1_EventScript_GetEggPonyta
+	release
+	end
+
+RustboroCity_House1_EventScript_GetEggPsyduck::
+	giveegg SPECIES_PSYDUCK
+	msgbox RustboroCity_House1_Text_YoullNeedPatienceToHatchIt, MSGBOX_DEFAULT
+	release
+	end
+
+RustboroCity_House1_EventScript_GetEggVoltorb::
+	giveegg SPECIES_VOLTORB
+	msgbox RustboroCity_House1_Text_YoullNeedPatienceToHatchIt, MSGBOX_DEFAULT
+	release
+	end
+
+RustboroCity_House1_EventScript_GetEggPonyta::
+	giveegg SPECIES_PONYTA
+	msgbox RustboroCity_House1_Text_YoullNeedPatienceToHatchIt, MSGBOX_DEFAULT
+	release
+	end
+
+RustboroCity_House1_EventScript_ReceivedEgg::
+	msgbox RustboroCity_House1_Text_AllSortsOfPlaces, MSGBOX_DEFAULT
+	release
+	end
+
+RustboroCity_House1_EventScript_DeclineEgg::
+	msgbox RustboroCity_House1_Text_AsYouWish, MSGBOX_DEFAULT
+	release
+	end
+
+RustboroCity_House1_EventScript_NoRoomForEgg::
+	msgbox RustboroCity_House1_Text_NoRoomForThisEgg, MSGBOX_DEFAULT
+	release
 	end
 
 RustboroCity_House1_Text_IllTradeIfYouWant:
@@ -72,6 +120,30 @@ RustboroCity_House1_Text_YouDontWantToThatsOkay:
 RustboroCity_House1_Text_AnyPokemonCanBeCute:
 	.string "Any Pokémon can be cute if you raise\n"
 	.string "it with care and kindness.$"
+
+RustboroCity_House1_Text_GiveEgg:
+	.string "I am from the Kanto region.\n"
+	.string "I came here to Hoenn to go sightseeing.\p"
+	.string "You look like a new Trainer to me.\n"
+	.string "I would be happy to help you in your\l"
+	.string "journey.\p"
+	.string "How about this Egg that I brought from\n"
+	.string "home?$"
+
+RustboroCity_House1_Text_AsYouWish:
+	.string "Oh, if you don't want to, that's okay.\n"
+	.string "Best of luck in your travels!$"
+
+RustboroCity_House1_Text_NoRoomForThisEgg:
+	.string "Oh? It looks like your party is full.\n"
+	.string "There's no room for this Egg…$"
+
+RustboroCity_House1_Text_YoullNeedPatienceToHatchIt:
+	.string "You'll need patience to hatch it,\n"
+	.string "but I'm sure it will be reliable.$"
+
+RustboroCity_House1_Text_ReceivedTheEgg:
+	.string "{PLAYER} received an Egg.$"
 
 RustboroCity_House1_Text_AllSortsOfPlaces:
 	.string "In all sorts of places, there are all\n"

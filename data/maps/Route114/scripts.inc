@@ -1,13 +1,25 @@
 Route114_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, Route114_OnResume
 	map_script MAP_SCRIPT_ON_TRANSITION, Route114_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, Route114_OnLoad
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route114_OnFrame
 	.byte 0
 
+Route114_OnResume:
+	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, Route114_EventScript_TryRemoveSnorlax
+	end
+
+Route114_EventScript_TryRemoveSnorlax::
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
+	removeobject VAR_LAST_TALKED
+	return
+
 Route114_OnTransition:
 	call_if_eq VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_HideMapNamePopup
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_114_NORTH, AbnormalWeather_StartGroudonWeather
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_114_SOUTH, AbnormalWeather_StartGroudonWeather
+	call_if_unset FLAG_DEFEATED_SNORLAX, Route114_EventScript_ShowSnorlax
 	end
 
 Route114_OnLoad:
@@ -18,6 +30,56 @@ Route114_OnLoad:
 Route114_OnFrame:
 	map_script_2 VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_EndEventAndCleanup_1
 	.2byte 0
+
+Route114_EventScript_ShowSnorlax::
+	clearflag FLAG_HIDE_SNORLAX
+	return
+
+Route114_EncounterSnorlax::
+	lock
+	faceplayer
+	goto_if_unset FLAG_RECEIVED_BLUE_FLUTE, Route114_EventScript_SnorlaxNoBlueFlute
+	msgbox Route114_Text_WantToUseBlueFlute, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Route114_EventScript_DontUseBlueFlute
+	call Route114_EventScript_AwakenSnorlax
+	setwildbattle SPECIES_SNORLAX, 28, ITEM_LEFTOVERS
+	waitse
+	playmoncry SPECIES_SNORLAX, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, Route114_DefeatedSnorlax
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, Route114_DefeatedSnorlax
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, Route114_DefeatedSnorlax
+	setflag FLAG_DEFEATED_SNORLAX
+	release
+	end
+
+Route114_EventScript_SnorlaxNoBlueFlute::
+	msgbox Route114_Text_MonSprawledOutInSlumber, MSGBOX_DEFAULT
+	release
+	end
+
+Route114_EventScript_DontUseBlueFlute::
+	release
+	end
+
+Route114_EventScript_AwakenSnorlax::
+	message Route114_Text_PlayedPokeFlute
+    waitmessage
+    playfanfare MUS_RG_POKE_FLUTE
+    waitfanfare
+    msgbox Route114_Text_SnorlaxWokeUp, MSGBOX_DEFAULT
+    return
+
+Route114_DefeatedSnorlax::
+	setflag FLAG_DEFEATED_SNORLAX
+	goto Common_EventScript_RemoveStaticPokemon
+	msgbox Route114_Text_SnorlaxReturnedToMountains
+	end
 
 Route114_EventScript_Man::
 	lock
@@ -200,3 +262,21 @@ Route114_Text_FossilManiacsHouseSign:
 Route114_Text_LanettesHouse:
 	.string "Lanette's House$"
 
+Route114_Text_MonSprawledOutInSlumber:
+    .string "A Pokémon is sprawled out in\n"
+    .string "a deep and comfortable slumber.$"
+
+Route114_Text_WantToUseBlueFlute:
+	.string "Do you want to use the Blue Flute?$"
+
+Route114_Text_PlayedPokeFlute:
+	.string "{PLAYER} played the Blue Flute.$"
+
+Route114_Text_SnorlaxWokeUp:
+	.string "Snorlax woke up!\p"
+    .string "It attacked in a grumpy rage!$"
+
+Route114_Text_SnorlaxReturnedToMountains:
+	.string "Snorlax calmed down.\n"
+    .string "It gave a huge yawn…\l"
+    .string "And returned to the mountains.$"

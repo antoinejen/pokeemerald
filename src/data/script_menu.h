@@ -602,6 +602,9 @@ static const struct MenuAction MultichoiceList_Fossil[] =
 {
     {gText_ClawFossil},
     {gText_RootFossil},
+    {gText_HelixFossil},
+    {gText_DomeFossil},
+    {gText_OldAmber},
     {gText_Exit},
 };
 
@@ -873,7 +876,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_FORCED_START_MENU]          = MULTICHOICE(MultichoiceList_ForcedStartMenu),
     [MULTI_FRONTIER_GAMBLER_BET]       = MULTICHOICE(MultichoiceList_FrontierGamblerBet),
     [MULTI_TENT]                       = MULTICHOICE(MultichoiceList_Tent),
-    [MULTI_UNUSED_SSTIDAL_1]           = MULTICHOICE(MultichoiceList_UnusedSSTidal1),
+    [MULTI_FOSSIL_2]                   = MULTICHOICE(MultichoiceList_UnusedSSTidal1),
     [MULTI_UNUSED_SSTIDAL_2]           = MULTICHOICE(MultichoiceList_UnusedSSTidal2),
     [MULTI_UNUSED_SSTIDAL_3]           = MULTICHOICE(MultichoiceList_UnusedSSTidal3),
     [MULTI_UNUSED_SSTIDAL_4]           = MULTICHOICE(MultichoiceList_UnusedSSTidal4),
@@ -965,6 +968,16 @@ static const u8 *const sLilycoveSSTidalDestinations[SSTIDAL_SELECTION_COUNT] =
     [SSTIDAL_SELECTION_BIRTH_ISLAND]    = gText_BirthIsland,
     [SSTIDAL_SELECTION_FARAWAY_ISLAND]  = gText_FarawayIsland,
     [SSTIDAL_SELECTION_EXIT]            = gText_Exit,
+};
+
+static const u8 *const sRustboroDevonCorpFossilList[FOSSIL_SELECTION_COUNT] =
+{
+    [FOSSIL_SELECTION_CLAW_FOSSIL]      = gText_ClawFossil,
+    [FOSSIL_SELECTION_ROOT_FOSSIL]      = gText_RootFossil,
+    [FOSSIL_SELECTION_HELIX_FOSSIL]     = gText_HelixFossil,
+    [FOSSIL_SELECTION_DOME_FOSSIL]      = gText_DomeFossil,
+    [FOSSIL_SELECTION_OLD_AMBER]        = gText_OldAmber,
+    [FOSSIL_SELECTION_EXIT]             = gText_Exit,
 };
 
 static const u8 *const sCableClubOptions_WithRecordMix[] =
