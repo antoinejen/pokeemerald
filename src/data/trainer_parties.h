@@ -9804,7 +9804,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_GruntJaggedPass[] = {
     {
     .iv = 50,
     .lvl = 29,
-    .species = SPECIES_KOFFING,
+    .species = SPECIES_BALTOY,
     },
     {
     .iv = 50,
@@ -9846,6 +9846,11 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Brenden[] = {
     .iv = 100,
     .lvl = 19,
     .species = SPECIES_MACHOP,
+    },
+    {
+    .iv = 100,
+    .lvl = 19,
+    .species = SPECIES_MANKEY,
     }
 };
 
@@ -9859,11 +9864,6 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Lilith[] = {
     .iv = 150,
     .lvl = 19,
     .species = SPECIES_TYROGUE,
-    },
-    {
-    .iv = 150,
-    .lvl = 19,
-    .species = SPECIES_MACHOP,
     }
 };
 
