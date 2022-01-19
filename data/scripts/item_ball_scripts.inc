@@ -562,6 +562,10 @@ ShoalCave_LowTideIceRoom_EventScript_ItemTM07::
 	finditem ITEM_TM07
 	end
 
+ShoalCave_LowTideIceRoom_EventScript_ItemNeverMeltIce::
+	finditem ITEM_NEVER_MELT_ICE
+	end
+
 SeafloorCavern_Room7_EventScript_ItemHelixFossil::
 	finditem ITEM_HELIX_FOSSIL
 	end
