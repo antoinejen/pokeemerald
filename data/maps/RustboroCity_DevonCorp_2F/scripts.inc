@@ -63,14 +63,20 @@ RustboroCity_DevonCorp_2F_EventScript_FossilScientist::
 	goto_if_eq VAR_FOSSIL_RESURRECTION_STATE, 1, RustboroCity_DevonCorp_2F_EventScript_StillRegenerating
 	msgbox RustboroCity_DevonCorp_2F_Text_DevelopDeviceToResurrectFossils, MSGBOX_DEFAULT
 	checkitem ITEM_ROOT_FOSSIL
-	goto_if_eq VAR_RESULT, TRUE, RustboroCity_DevonCorp_2F_EventScript_NoticeRootFossil
+	goto_if_eq VAR_RESULT, TRUE, RustboroCity_DevonCorp_2F_EventScript_NoticeFossil
 	checkitem ITEM_CLAW_FOSSIL
-	goto_if_eq VAR_RESULT, TRUE, RustboroCity_DevonCorp_2F_EventScript_NoticeClawFossil
+	goto_if_eq VAR_RESULT, TRUE, RustboroCity_DevonCorp_2F_EventScript_NoticeFossil
+	checkitem ITEM_HELIX_FOSSIL
+	goto_if_eq VAR_RESULT, TRUE, RustboroCity_DevonCorp_2F_EventScript_NoticeFossil
+	checkitem ITEM_DOME_FOSSIL
+	goto_if_eq VAR_RESULT, TRUE, RustboroCity_DevonCorp_2F_EventScript_NoticeFossil
+	checkitem ITEM_OLD_AMBER
+	goto_if_eq VAR_RESULT, TRUE, RustboroCity_DevonCorp_2F_EventScript_NoticeFossil
 	release
 	end
 
 @ This whole section has needless duplication and could be condensed considerably
-RustboroCity_DevonCorp_2F_EventScript_NoticeRootFossil::
+RustboroCity_DevonCorp_2F_EventScript_NoticeFossil::
 	closemessage
 	playse SE_PIN
 	applymovement LOCALID_FOSSIL_SCIENTIST, Common_Movement_ExclamationMark
@@ -79,18 +85,7 @@ RustboroCity_DevonCorp_2F_EventScript_NoticeRootFossil::
 	waitmovement 0
 	msgbox RustboroCity_DevonCorp_2F_Text_WantToBringFossilBackToLife, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, RustboroCity_DevonCorp_2F_EventScript_DeclineGiveFossil
-	checkitem ITEM_CLAW_FOSSIL
-	goto_if_eq VAR_RESULT, TRUE, RustboroCity_DevonCorp_2F_EventScript_ChooseFossil
-	goto RustboroCity_DevonCorp_2F_EventScript_GiveRootFossil
-	end
-
-RustboroCity_DevonCorp_2F_EventScript_GiveRootFossil::
-	bufferitemname STR_VAR_1, ITEM_ROOT_FOSSIL
-	msgbox RustboroCity_DevonCorp_2F_Text_HandedFossilToResearcher, MSGBOX_DEFAULT
-	removeitem ITEM_ROOT_FOSSIL
-	setvar VAR_FOSSIL_RESURRECTION_STATE, 1
-	setvar VAR_WHICH_FOSSIL_REVIVED, 1
-	release
+	goto RustboroCity_DevonCorp_2F_EventScript_ChooseFossil
 	end
 
 RustboroCity_DevonCorp_2F_EventScript_NoticeClawFossil::
@@ -116,6 +111,42 @@ RustboroCity_DevonCorp_2F_EventScript_GiveClawFossil::
 	release
 	end
 
+RustboroCity_DevonCorp_2F_EventScript_GiveRootFossil::
+	bufferitemname STR_VAR_1, ITEM_ROOT_FOSSIL
+	msgbox RustboroCity_DevonCorp_2F_Text_HandedFossilToResearcher, MSGBOX_DEFAULT
+	removeitem ITEM_ROOT_FOSSIL
+	setvar VAR_FOSSIL_RESURRECTION_STATE, 1
+	setvar VAR_WHICH_FOSSIL_REVIVED, 1
+	release
+	end
+
+RustboroCity_DevonCorp_2F_EventScript_GiveHelixFossil::
+	bufferitemname STR_VAR_1, ITEM_HELIX_FOSSIL
+	msgbox RustboroCity_DevonCorp_2F_Text_HandedFossilToResearcher, MSGBOX_DEFAULT
+	removeitem ITEM_HELIX_FOSSIL
+	setvar VAR_FOSSIL_RESURRECTION_STATE, 1
+	setvar VAR_WHICH_FOSSIL_REVIVED, 3
+	release
+	end
+
+RustboroCity_DevonCorp_2F_EventScript_GiveDomeFossil::
+	bufferitemname STR_VAR_1, ITEM_DOME_FOSSIL
+	msgbox RustboroCity_DevonCorp_2F_Text_HandedFossilToResearcher, MSGBOX_DEFAULT
+	removeitem ITEM_DOME_FOSSIL
+	setvar VAR_FOSSIL_RESURRECTION_STATE, 1
+	setvar VAR_WHICH_FOSSIL_REVIVED, 4
+	release
+	end
+
+RustboroCity_DevonCorp_2F_EventScript_GiveOldAmber::
+	bufferitemname STR_VAR_1, ITEM_OLD_AMBER
+	msgbox RustboroCity_DevonCorp_2F_Text_HandedFossilToResearcher, MSGBOX_DEFAULT
+	removeitem ITEM_OLD_AMBER
+	setvar VAR_FOSSIL_RESURRECTION_STATE, 1
+	setvar VAR_WHICH_FOSSIL_REVIVED, 5
+	release
+	end
+
 RustboroCity_DevonCorp_2F_EventScript_DeclineGiveFossil::
 	msgbox RustboroCity_DevonCorp_2F_Text_OhIsThatSo, MSGBOX_DEFAULT
 	release
@@ -129,48 +160,80 @@ RustboroCity_DevonCorp_2F_EventScript_StillRegenerating::
 RustboroCity_DevonCorp_2F_EventScript_FossilMonReady::
 	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 1, RustboroCity_DevonCorp_2F_EventScript_LileepReady
 	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 2, RustboroCity_DevonCorp_2F_EventScript_AnorithReady
+	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 3, RustboroCity_DevonCorp_2F_EventScript_OmanyteReady
+	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 4, RustboroCity_DevonCorp_2F_EventScript_KabutoReady
+	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 5, RustboroCity_DevonCorp_2F_EventScript_AerodactylReady
 	end
 
 RustboroCity_DevonCorp_2F_EventScript_LileepReady::
+	bufferspeciesname STR_VAR_1, SPECIES_LILEEP
 	bufferspeciesname STR_VAR_2, SPECIES_LILEEP
+	setvar VAR_TEMP_1, SPECIES_LILEEP
 	msgbox RustboroCity_DevonCorp_2F_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
-	goto RustboroCity_DevonCorp_2F_EventScript_ReceiveLileep
+	goto RustboroCity_DevonCorp_2F_EventScript_ReceiveFossil
 	end
 
 RustboroCity_DevonCorp_2F_EventScript_AnorithReady::
+	bufferspeciesname STR_VAR_1, SPECIES_ANORITH
 	bufferspeciesname STR_VAR_2, SPECIES_ANORITH
+	setvar VAR_TEMP_1, SPECIES_ANORITH
 	msgbox RustboroCity_DevonCorp_2F_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
-	goto RustboroCity_DevonCorp_2F_EventScript_ReceiveAnorith
+	goto RustboroCity_DevonCorp_2F_EventScript_ReceiveFossil
 	end
 
-RustboroCity_DevonCorp_2F_EventScript_ReceiveLileep::
-	setvar VAR_TEMP_1, SPECIES_LILEEP
-	givemon SPECIES_LILEEP, 20, ITEM_NONE
-	goto_if_eq VAR_RESULT, 0, RustboroCity_DevonCorp_2F_EventScript_ReceiveLileepParty
-	goto_if_eq VAR_RESULT, 1, RustboroCity_DevonCorp_2F_EventScript_ReceiveLileepPC
+RustboroCity_DevonCorp_2F_EventScript_OmanyteReady::
+	bufferspeciesname STR_VAR_1, SPECIES_OMANYTE
+	bufferspeciesname STR_VAR_2, SPECIES_OMANYTE
+	setvar VAR_TEMP_1, SPECIES_OMANYTE
+	msgbox RustboroCity_DevonCorp_2F_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
+	goto RustboroCity_DevonCorp_2F_EventScript_ReceiveFossil
+	end
+
+RustboroCity_DevonCorp_2F_EventScript_KabutoReady::
+	bufferspeciesname STR_VAR_1, SPECIES_KABUTO
+	bufferspeciesname STR_VAR_2, SPECIES_KABUTO
+	setvar VAR_TEMP_1, SPECIES_KABUTO
+	msgbox RustboroCity_DevonCorp_2F_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
+	goto RustboroCity_DevonCorp_2F_EventScript_ReceiveFossil
+	end
+
+RustboroCity_DevonCorp_2F_EventScript_AerodactylReady::
+	bufferspeciesname STR_VAR_1, SPECIES_AERODACTYL
+	bufferspeciesname STR_VAR_2, SPECIES_AERODACTYL
+	setvar VAR_TEMP_1, SPECIES_AERODACTYL
+	msgbox RustboroCity_DevonCorp_2F_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
+	goto RustboroCity_DevonCorp_2F_EventScript_ReceiveFossil
+	end
+
+RustboroCity_DevonCorp_2F_EventScript_ReceiveFossil::
+	playfanfare MUS_OBTAIN_ITEM
+	message RustboroCity_DevonCorp_2F_Text_ReceivedMonFromResearcher
+	waitmessage
+	waitfanfare
+	givemon VAR_TEMP_1, 20, ITEM_NONE
+	goto_if_eq VAR_RESULT, 0, RustboroCity_DevonCorp_2F_EventScript_ReceiveFossilParty
+	goto_if_eq VAR_RESULT, 1, RustboroCity_DevonCorp_2F_EventScript_ReceiveFossilPC
 	goto Common_EventScript_NoMoreRoomForPokemon
 	end
 
-RustboroCity_DevonCorp_2F_EventScript_ReceiveLileepParty::
-	call RustboroCity_DevonCorp_2F_EventScript_ReceivedLileepFanfare
+RustboroCity_DevonCorp_2F_EventScript_ReceiveFossilParty::
 	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, RustboroCity_DevonCorp_2F_EventScript_FinishReceivingLileep
+	goto_if_eq VAR_RESULT, NO, RustboroCity_DevonCorp_2F_EventScript_FinishReceivingFossil
 	call Common_EventScript_GetGiftMonPartySlot
 	call Common_EventScript_NameReceivedPartyMon
-	goto RustboroCity_DevonCorp_2F_EventScript_FinishReceivingLileep
+	goto RustboroCity_DevonCorp_2F_EventScript_FinishReceivingFossil
 	end
 
-RustboroCity_DevonCorp_2F_EventScript_ReceiveLileepPC::
-	call RustboroCity_DevonCorp_2F_EventScript_ReceivedLileepFanfare
+RustboroCity_DevonCorp_2F_EventScript_ReceiveFossilPC::
 	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, RustboroCity_DevonCorp_2F_EventScript_TransferLileepToPC
+	goto_if_eq VAR_RESULT, NO, RustboroCity_DevonCorp_2F_EventScript_TransferFossilToPC
 	call Common_EventScript_NameReceivedBoxMon
-	goto RustboroCity_DevonCorp_2F_EventScript_TransferLileepToPC
+	goto RustboroCity_DevonCorp_2F_EventScript_TransferFossilToPC
 	end
 
-RustboroCity_DevonCorp_2F_EventScript_TransferLileepToPC::
+RustboroCity_DevonCorp_2F_EventScript_TransferFossilToPC::
 	call Common_EventScript_TransferredToPC
-	goto RustboroCity_DevonCorp_2F_EventScript_FinishReceivingLileep
+	goto RustboroCity_DevonCorp_2F_EventScript_FinishReceivingFossil
 	end
 
 RustboroCity_DevonCorp_2F_EventScript_ReceivedLileepFanfare::
@@ -182,7 +245,7 @@ RustboroCity_DevonCorp_2F_EventScript_ReceivedLileepFanfare::
 	bufferspeciesname STR_VAR_1, SPECIES_LILEEP
 	return
 
-RustboroCity_DevonCorp_2F_EventScript_FinishReceivingLileep::
+RustboroCity_DevonCorp_2F_EventScript_FinishReceivingFossil::
 	setvar VAR_FOSSIL_RESURRECTION_STATE, 0
 	setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
 	release
@@ -233,14 +296,22 @@ RustboroCity_DevonCorp_2F_EventScript_FinishReceivingAnorith::
 	release
 	end
 
+RustboroCity_DevonCorp_2F_EventScript_ReceiveOmanyte::
+
+
 RustboroCity_DevonCorp_2F_EventScript_ChooseFossil::
-	message RustboroCity_DevonCorp_2F_Text_TwoFossilsPickOne
+	message RustboroCity_DevonCorp_2F_Text_PickFossil
 	waitmessage
-	multichoice 17, 6, MULTI_FOSSIL, FALSE
+	special ScriptMenu_CreateFossilMultichoice
+	waitstate
+	special GetFossilSelection
 	switch VAR_RESULT
-	case 0, RustboroCity_DevonCorp_2F_EventScript_ChooseClawFossil
-	case 1, RustboroCity_DevonCorp_2F_EventScript_ChooseRootFossil
-	case 2, RustboroCity_DevonCorp_2F_EventScript_CancelFossilSelect
+	case 0, RustboroCity_DevonCorp_2F_EventScript_GiveClawFossil
+	case 1, RustboroCity_DevonCorp_2F_EventScript_GiveRootFossil
+	case 2, RustboroCity_DevonCorp_2F_EventScript_GiveHelixFossil
+	case 3, RustboroCity_DevonCorp_2F_EventScript_GiveDomeFossil
+	case 4, RustboroCity_DevonCorp_2F_EventScript_GiveOldAmber
+	case 5, RustboroCity_DevonCorp_2F_EventScript_CancelFossilSelect
 	case MULTI_B_PRESSED, RustboroCity_DevonCorp_2F_EventScript_CancelFossilSelect
 	end
 
@@ -250,6 +321,18 @@ RustboroCity_DevonCorp_2F_EventScript_ChooseClawFossil::
 
 RustboroCity_DevonCorp_2F_EventScript_ChooseRootFossil::
 	goto RustboroCity_DevonCorp_2F_EventScript_GiveRootFossil
+	end
+
+RustboroCity_DevonCorp_2F_EventScript_ChooseHelixFossil::
+	goto RustboroCity_DevonCorp_2F_EventScript_GiveHelixFossil
+	end
+
+RustboroCity_DevonCorp_2F_EventScript_ChooseDomeFossil::
+	goto RustboroCity_DevonCorp_2F_EventScript_GiveDomeFossil
+	end
+
+RustboroCity_DevonCorp_2F_EventScript_ChooseOldAmber::
+	goto RustboroCity_DevonCorp_2F_EventScript_GiveOldAmber
 	end
 
 RustboroCity_DevonCorp_2F_EventScript_CancelFossilSelect::
@@ -331,9 +414,14 @@ RustboroCity_DevonCorp_2F_Text_OhIsThatSo:
 	.string "Devon's technological expertise\n"
 	.string "is outstanding, I tell you.$"
 
-RustboroCity_DevonCorp_2F_Text_TwoFossilsPickOne:
+RustboroCity_DevonCorp_2F_Text_PickFossil:
+	.string "Which fossil would you like to\n"
+	.string "regenerate?$"
+
+RustboroCity_DevonCorp_2F_Text_MultipleFossilsPickOne:
 	.string "Oh, now that's a surprise!\n"
-	.string "You have not one, but two, fossils?\p"
+	.string "You have not one, but multiple, \l"
+	.string "fossils?\p"
 	.string "Unfortunately, my machine can only\n"
 	.string "regenerate one Pokémon at a time.\p"
 	.string "Would you like to pick one of your\n"
