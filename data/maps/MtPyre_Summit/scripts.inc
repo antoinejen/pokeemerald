@@ -504,12 +504,12 @@ MtPyre_Summit_Text_ArchieWeGotTheOrb:
 	.string "Fufufu… Now we can bring our ultimate\n"
 	.string "objective to fruition!\p"
 	.string "But, you have been a real thorn to\n"
-	.string "our side, following us at every turn.\p"
-	.string "It is about time that I\n"
-	.string "get rid of you for good!$"
+	.string "our side, following us at every turn!\p"
+	.string "It is about time that I get rid of you\n"
+	.string "for good!$"
 
 MtPyre_Summit_Text_ArchieDefeat:
-	.string "What?! I have been defeated?!\p"
+	.string "What?! I have been defeated?!\n"
 	.string "Preposterous!$"
 
 MtPyre_Summit_Text_ArchieLetsGo:
