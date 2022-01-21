@@ -1035,7 +1035,7 @@ struct MapPosition
 {
     s16 x;
     s16 y;
-    s8 height;
+    s8 elevation;
 };
 
 #endif // GUARD_GLOBAL_H
