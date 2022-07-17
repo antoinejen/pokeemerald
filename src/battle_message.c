@@ -1556,8 +1556,8 @@ const u16 gFirstTurnOfTwoStringIds[] =
     [B_MSG_TURN1_FREEZE_SHOCK]  = STRINGID_CLOAKEDINAFREEZINGLIGHT,
 };
 
-// Index copied from move's index in sTrappingMoves
-const u16 gWrappedStringIds[] =
+// Index copied from move's index in gTrappingMoves
+const u16 gWrappedStringIds[NUM_TRAPPING_MOVES] =
 {
     STRINGID_PKMNSQUEEZEDBYBIND,     // MOVE_BIND
     STRINGID_PKMNWRAPPEDBY,          // MOVE_WRAP
@@ -1788,6 +1788,17 @@ const u16 gRoomsStringIds[] =
 const u16 gStatusConditionsStringIds[] =
 {
     STRINGID_PKMNWASPOISONED, STRINGID_PKMNBADLYPOISONED, STRINGID_PKMNWASBURNED, STRINGID_PKMNWASPARALYZED, STRINGID_PKMNFELLASLEEP
+}
+
+const u16 gTrappingMoves[NUM_TRAPPING_MOVES + 1] =
+{
+    MOVE_BIND,
+    MOVE_WRAP,
+    MOVE_FIRE_SPIN,
+    MOVE_CLAMP,
+    MOVE_WHIRLPOOL,
+    MOVE_SAND_TOMB,
+    0xFFFF // Never read
 };
 
 const u8 gText_PkmnIsEvolving[] = _("What?\n{STR_VAR_1} is evolving!");
@@ -2824,14 +2835,14 @@ void BufferStringBattle(u16 stringID)
         stringPtr = gBattleStruct->trainerSlideMsg;
         break;
     default: // load a string from the table
-        if (stringID >= BATTLESTRINGS_COUNT + BATTLESTRINGS_ID_ADDER)
+        if (stringID >= BATTLESTRINGS_COUNT)
         {
             gDisplayedStringBattle[0] = EOS;
             return;
         }
         else
         {
-            stringPtr = gBattleStringsTable[stringID - BATTLESTRINGS_ID_ADDER];
+            stringPtr = gBattleStringsTable[stringID - BATTLESTRINGS_TABLE_START];
         }
         break;
     }
@@ -3522,7 +3533,7 @@ static void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst)
         {
         case B_BUFF_STRING: // battle string
             hword = T1_READ_16(&src[srcID + 1]);
-            StringAppend(dst, gBattleStringsTable[hword - BATTLESTRINGS_ID_ADDER]);
+            StringAppend(dst, gBattleStringsTable[hword - BATTLESTRINGS_TABLE_START]);
             srcID += 3;
             break;
         case B_BUFF_NUMBER: // int to string
