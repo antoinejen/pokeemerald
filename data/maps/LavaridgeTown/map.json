@@ -191,6 +191,33 @@
       "var": "0",
       "var_value": "0",
       "script": "LavaridgeTown_EventScript_HotSpringsTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 16,
+      "elevation": 0,
+      "var": "VAR_LAVARIDGE_TOWN_STATE",
+      "var_value": "1",
+      "script": "LavaridgeTown_EventScript_RivalTrigger0"
+    },
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 16,
+      "elevation": 0,
+      "var": "VAR_LAVARIDGE_TOWN_STATE",
+      "var_value": "1",
+      "script": "LavaridgeTown_EventScript_RivalTrigger1"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 16,
+      "elevation": 0,
+      "var": "VAR_LAVARIDGE_TOWN_STATE",
+      "var_value": "1",
+      "script": "LavaridgeTown_EventScript_RivalTrigger2"
     }
   ],
   "bg_events": [
