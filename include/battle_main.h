@@ -31,6 +31,21 @@ struct TrainerBall
 #define TYPE_NAME_LENGTH 6
 #define ABILITY_NAME_LENGTH 12
 
+// defines for the u8 array gTypeEffectiveness
+#define TYPE_EFFECT_ATK_TYPE(i)((gTypeEffectiveness[i + 0]))
+#define TYPE_EFFECT_DEF_TYPE(i)((gTypeEffectiveness[i + 1]))
+#define TYPE_EFFECT_MULTIPLIER(i)((gTypeEffectiveness[i + 2]))
+
+// defines for the gTypeEffectiveness multipliers
+#define TYPE_MUL_NO_EFFECT          0
+#define TYPE_MUL_NOT_EFFECTIVE      5
+#define TYPE_MUL_NORMAL             10
+#define TYPE_MUL_SUPER_EFFECTIVE    20
+
+// special type table Ids
+#define TYPE_FORESIGHT  0xFE
+#define TYPE_ENDTABLE   0xFF
+
 // defines for the 'DoBounceEffect' function
 #define BOUNCE_MON          0x0
 #define BOUNCE_HEALTHBOX    0x1

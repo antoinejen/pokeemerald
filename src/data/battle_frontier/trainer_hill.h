@@ -50,7 +50,7 @@ static const struct TrHillFloor sDataTagJPDefault_Floors[] = {
                         .abilityNum = 0,
                         .personality = 0x80,
                         .nickname = __("ジグザグマ$$$$$$"),
-                        .friendship = 255
+                        .friendship = MAX_FRIENDSHIP
                     },
                     [1] = {
                         .species = SPECIES_SHROOMISH,
@@ -74,7 +74,7 @@ static const struct TrHillFloor sDataTagJPDefault_Floors[] = {
                         .abilityNum = 0,
                         .personality = 0x0,
                         .nickname = __("キノココ$$$$$$$"),
-                        .friendship = 255
+                        .friendship = MAX_FRIENDSHIP
                     },
                     [2] = {
                         .species = SPECIES_SANDSHREW,
@@ -98,7 +98,7 @@ static const struct TrHillFloor sDataTagJPDefault_Floors[] = {
                         .abilityNum = 0,
                         .personality = 0x80,
                         .nickname = __("サンド$$$$$$$$"),
-                        .friendship = 255
+                        .friendship = MAX_FRIENDSHIP
                     },
                     [3] = NULL_BATTLE_TOWER_POKEMON,
                     [4] = NULL_BATTLE_TOWER_POKEMON,
@@ -139,7 +139,7 @@ static const struct TrHillFloor sDataTagJPDefault_Floors[] = {
                         .abilityNum = 0,
                         .personality = 0x0,
                         .nickname = __("キャモメ$$$$$$$"),
-                        .friendship = 255
+                        .friendship = MAX_FRIENDSHIP
                     },
                     [4] = {
                         .species = SPECIES_NUMEL,
@@ -163,7 +163,7 @@ static const struct TrHillFloor sDataTagJPDefault_Floors[] = {
                         .abilityNum = 0,
                         .personality = 0x96,
                         .nickname = __("ドンメル$$$$$$$"),
-                        .friendship = 255
+                        .friendship = MAX_FRIENDSHIP
                     },
                     [5] = {
                         .species = SPECIES_SURSKIT,
@@ -187,7 +187,7 @@ static const struct TrHillFloor sDataTagJPDefault_Floors[] = {
                         .abilityNum = 0,
                         .personality = 0x0,
                         .nickname = __("アメタマ$$$$$$$"),
-                        .friendship = 255
+                        .friendship = MAX_FRIENDSHIP
                     },
                 }
             },
@@ -252,7 +252,7 @@ static const struct TrHillFloor sDataTagJPDefault_Floors[] = {
                         .abilityNum = 1,
                         .personality = 0x0,
                         .nickname = __("ラクライ$$$$$$$"),
-                        .friendship = 255
+                        .friendship = MAX_FRIENDSHIP
                     },
                     [1] = {
                         .species = SPECIES_CORPHISH,
@@ -276,7 +276,7 @@ static const struct TrHillFloor sDataTagJPDefault_Floors[] = {
                         .abilityNum = 1,
                         .personality = 0x96,
                         .nickname = __("ヘイガニ$$$$$$$"),
-                        .friendship = 255
+                        .friendship = MAX_FRIENDSHIP
                     },
                     [2] = {
                         .species = SPECIES_BALTOY,
@@ -300,7 +300,7 @@ static const struct TrHillFloor sDataTagJPDefault_Floors[] = {
                         .abilityNum = 0,
                         .personality = 0x96,
                         .nickname = __("ヤジロン$$$$$$$"),
-                        .friendship = 255
+                        .friendship = MAX_FRIENDSHIP
                     },
                     [3] = NULL_BATTLE_TOWER_POKEMON,
                     [4] = NULL_BATTLE_TOWER_POKEMON,
@@ -341,7 +341,7 @@ static const struct TrHillFloor sDataTagJPDefault_Floors[] = {
                         .abilityNum = 0,
                         .personality = 0x80,
                         .nickname = __("タマザラシ$$$$$$"),
-                        .friendship = 255
+                        .friendship = MAX_FRIENDSHIP
                     },
                     [4] = {
                         .species = SPECIES_SPOINK,
@@ -365,7 +365,7 @@ static const struct TrHillFloor sDataTagJPDefault_Floors[] = {
                         .abilityNum = 1,
                         .personality = 0xf,
                         .nickname = __("バネブー$$$$$$$"),
-                        .friendship = 255
+                        .friendship = MAX_FRIENDSHIP
                     },
                     [5] = {
                         .species = SPECIES_POOCHYENA,
@@ -389,7 +389,7 @@ static const struct TrHillFloor sDataTagJPDefault_Floors[] = {
                         .abilityNum = 0,
                         .personality = 0x96,
                         .nickname = __("ポチエナ$$$$$$$"),
-                        .friendship = 255
+                        .friendship = MAX_FRIENDSHIP
                     },
                 }
             },
@@ -468,7 +468,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x0,
                         .nickname = _("Misdreavus"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [1] =
                     {
@@ -491,7 +491,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0xF,
                         .nickname = _("Solrock"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [2] =
                     {
@@ -513,7 +513,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0xC,
                         .nickname = _("Claydol"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [3] =
                     {
@@ -558,7 +558,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0xF,
                         .nickname = _("Lunatone"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [5] =
                     {
@@ -580,7 +580,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x83,
                         .nickname = _("Flygon"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                 },
             },
@@ -614,7 +614,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0xF,
                         .nickname = _("Sealeo"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [1] =
                     {
@@ -635,7 +635,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0xF,
                         .nickname = _("Ampharos"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [2] =
                     {
@@ -656,7 +656,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x4E,
                         .nickname = _("Machoke"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [3] =
                     {
@@ -677,7 +677,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x28,
                         .nickname = _("Flareon"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [4] =
                     {
@@ -698,7 +698,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x0,
                         .nickname = _("Magneton"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [5] =
                     {
@@ -720,7 +720,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x85,
                         .nickname = _("Pinsir"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                 },
             },
@@ -787,7 +787,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x80,
                         .nickname = _("Meditite"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [1] =
                     {
@@ -809,7 +809,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 1,
                         .personality = 0x80,
                         .nickname = _("Heracross"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [2] =
                     {
@@ -831,7 +831,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x3,
                         .nickname = _("Hitmontop"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [3] =
                     {
@@ -853,7 +853,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x4E,
                         .nickname = _("Machop"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [4] =
                     {
@@ -875,7 +875,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x80,
                         .nickname = _("Pinsir"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [5] =
                     {
@@ -897,7 +897,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x3,
                         .nickname = _("Hitmonchan"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                 },
             },
@@ -932,7 +932,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0xF,
                         .nickname = _("Vulpix"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [1] =
                     {
@@ -954,7 +954,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x8C,
                         .nickname = _("Minun"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [2] =
                     {
@@ -976,7 +976,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 1,
                         .personality = 0xF,
                         .nickname = _("Roselia"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [3] =
                     {
@@ -998,7 +998,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x82,
                         .nickname = _("Mr. Mime"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [4] =
                     {
@@ -1020,7 +1020,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x5,
                         .nickname = _("Plusle"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [5] =
                     {
@@ -1042,7 +1042,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 1,
                         .personality = 0x37,
                         .nickname = _("Togepi"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                 },
             },
@@ -1153,7 +1153,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x14,
                         .nickname = _("Omastar"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [3] =
                     {
@@ -1175,7 +1175,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x8,
                         .nickname = _("Lickitung"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [4] =
                     {
@@ -1219,7 +1219,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x8,
                         .nickname = _("Linoone"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                 },
             },
@@ -1253,7 +1253,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0xCB,
                         .nickname = _("Skitty"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [1] =
                     {
@@ -1341,7 +1341,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0xD7,
                         .nickname = _("Ninetales"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [5] =
                     {
@@ -1363,7 +1363,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x28,
                         .nickname = _("Charizard"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                 },
             },
@@ -1429,7 +1429,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x41,
                         .nickname = _("Alakazam"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [1] =
                     {
@@ -1451,7 +1451,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 1,
                         .personality = 0xF,
                         .nickname = _("Blissey"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [2] =
                     {
@@ -1473,7 +1473,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x8C,
                         .nickname = _("Grumpig"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [3] =
                     {
@@ -1494,7 +1494,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 1,
                         .personality = 0xF,
                         .nickname = _("Gardevoir"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [4] =
                     {
@@ -1515,7 +1515,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x80,
                         .nickname = _("Venomoth"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [5] =
                     {
@@ -1536,7 +1536,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0xF,
                         .nickname = _("Espeon"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                 },
             },
@@ -1570,7 +1570,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x3,
                         .nickname = _("Weezing"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [1] =
                     {
@@ -1591,7 +1591,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x8C,
                         .nickname = _("Gloom"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [2] =
                     {
@@ -1612,7 +1612,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x3,
                         .nickname = _("Muk"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [3] =
                     {
@@ -1634,7 +1634,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x83,
                         .nickname = _("Tropius"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [4] =
                     {
@@ -1655,7 +1655,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x6,
                         .nickname = _("Bellossom"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                     [5] =
                     {
@@ -1677,7 +1677,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                         .abilityNum = 0,
                         .personality = 0x1F,
                         .nickname = _("Meganium"),
-                        .friendship = 255,
+                        .friendship = MAX_FRIENDSHIP,
                     },
                 },
             },
@@ -1754,7 +1754,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 1,
                                             .personality = 0x8A,
                                             .nickname = _("Delibird"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [1] =
                                         {
@@ -1775,7 +1775,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xD,
                                             .nickname = _("Clefairy"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [2] =
                                         {
@@ -1796,7 +1796,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xD,
                                             .nickname = _("Pikachu"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [3] =
                                         {
@@ -1817,7 +1817,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 1,
                                             .personality = 0x8A,
                                             .nickname = _("Marill"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [4] =
                                         {
@@ -1838,7 +1838,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xD,
                                             .nickname = _("Jigglypuff"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [5] =
                                         {
@@ -1859,7 +1859,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 1,
                                             .personality = 0x26,
                                             .nickname = _("Togetic"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                 },
                         },
@@ -1893,7 +1893,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xC1,
                                             .nickname = _("Wigglytuff"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [1] =
                                         {
@@ -1914,7 +1914,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x87,
                                             .nickname = _("Sableye"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [2] =
                                         {
@@ -1935,7 +1935,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xA,
                                             .nickname = _("Grumpig"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [3] =
                                         {
@@ -1956,7 +1956,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x12,
                                             .nickname = _("Corsola"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [4] =
                                         {
@@ -1977,7 +1977,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xA,
                                             .nickname = _("Clamperl"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [5] =
                                         {
@@ -1998,7 +1998,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xA,
                                             .nickname = _("Starmie"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                 },
                         },
@@ -2068,7 +2068,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x0,
                                             .nickname = _("Jigglypuff"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [1] =
                                         {
@@ -2093,7 +2093,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x0,
                                             .nickname = _("Jynx"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [2] =
                                         {
@@ -2118,7 +2118,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x96,
                                             .nickname = _("Exploud"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [3] =
                                         {
@@ -2143,7 +2143,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x96,
                                             .nickname = _("Absol"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [4] =
                                         {
@@ -2168,7 +2168,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x96,
                                             .nickname = _("Pidgeotto"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [5] =
                                         {
@@ -2193,7 +2193,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x0,
                                             .nickname = _("Altaria"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                 },
                         },
@@ -2228,7 +2228,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xD,
                                             .nickname = _("Chimecho"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [1] =
                                         {
@@ -2250,7 +2250,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xD,
                                             .nickname = _("Whismur"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [2] =
                                         {
@@ -2272,7 +2272,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x8A,
                                             .nickname = _("Yanma"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [3] =
                                         {
@@ -2294,7 +2294,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xA,
                                             .nickname = _("Illumise"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [4] =
                                         {
@@ -2316,7 +2316,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xA,
                                             .nickname = _("Spheal"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [5] =
                                         {
@@ -2338,7 +2338,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x87,
                                             .nickname = _("Vigoroth"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                 },
                         },
@@ -2405,7 +2405,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x8C,
                                             .nickname = _("Wooper"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [1] =
                                         {
@@ -2427,7 +2427,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 1,
                                             .personality = 0x3,
                                             .nickname = _("Poliwag"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [2] =
                                         {
@@ -2449,7 +2449,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x3,
                                             .nickname = _("Psyduck"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [3] =
                                         {
@@ -2550,7 +2550,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x8C,
                                             .nickname = _("Magnemite"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [1] =
                                         {
@@ -2572,7 +2572,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x41,
                                             .nickname = _("Electabuzz"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [2] =
                                         {
@@ -2593,7 +2593,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x0,
                                             .nickname = _("Flaaffy"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [3] =
                                         {
@@ -2725,7 +2725,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x202,
                                             .nickname = _("Unown"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [1] =
                                         {
@@ -2746,7 +2746,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x10001,
                                             .nickname = _("Unown"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [2] =
                                         {
@@ -2767,7 +2767,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x102,
                                             .nickname = _("Unown"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [3] =
                                         {
@@ -2789,7 +2789,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x88FE980F,
                                             .nickname = _("Spinda"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [4] =
                                         {
@@ -2810,7 +2810,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xF,
                                             .nickname = _("Plusle"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [5] =
                                         {
@@ -2831,7 +2831,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 1,
                                             .personality = 0xF,
                                             .nickname = _("Volbeat"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                 },
                         },
@@ -2866,7 +2866,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xE2880098,
                                             .nickname = _("Spinda"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [1] =
                                         {
@@ -2887,7 +2887,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x8C,
                                             .nickname = _("Minun"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [2] =
                                         {
@@ -2908,7 +2908,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xF,
                                             .nickname = _("Illumise"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [3] =
                                         {
@@ -2929,7 +2929,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x302,
                                             .nickname = _("Unown"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [4] =
                                         {
@@ -2950,7 +2950,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x203,
                                             .nickname = _("Unown"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [5] =
                                         {
@@ -2971,7 +2971,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x301,
                                             .nickname = _("Unown"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                 },
                         },
@@ -3049,7 +3049,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x0,
                                             .nickname = _("Sunflora"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [1] =
                                         {
@@ -3070,7 +3070,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x91,
                                             .nickname = _("Tangela"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [2] =
                                         {
@@ -3094,7 +3094,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x1F,
                                             .nickname = _("Venusaur"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [3] =
                                         {
@@ -3115,7 +3115,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xF,
                                             .nickname = _("Lanturn"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [4] =
                                         {
@@ -3136,7 +3136,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 1,
                                             .personality = 0xF,
                                             .nickname = _("Manectric"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [5] =
                                         {
@@ -3157,7 +3157,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xF,
                                             .nickname = _("Raikou"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                 },
                         },
@@ -3192,7 +3192,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x2F,
                                             .nickname = _("Relicanth"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [1] =
                                         {
@@ -3213,7 +3213,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xF,
                                             .nickname = _("Golduck"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [2] =
                                         {
@@ -3234,7 +3234,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x28,
                                             .nickname = _("Blastoise"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [3] =
                                         {
@@ -3255,7 +3255,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 1,
                                             .personality = 0x93,
                                             .nickname = _("Magcargo"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [4] =
                                         {
@@ -3276,7 +3276,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 1,
                                             .personality = 0xF,
                                             .nickname = _("Rapidash"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [5] =
                                         {
@@ -3297,7 +3297,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xF,
                                             .nickname = _("Moltres"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                 },
                         },
@@ -3364,7 +3364,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x8A,
                                             .nickname = _("Smeargle"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [1] =
                                         {
@@ -3386,7 +3386,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x87,
                                             .nickname = _("Smeargle"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [2] =
                                         {
@@ -3408,7 +3408,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xD,
                                             .nickname = _("Smeargle"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [3] =
                                         {
@@ -3430,7 +3430,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xA,
                                             .nickname = _("Smeargle"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [4] =
                                         {
@@ -3452,7 +3452,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xA,
                                             .nickname = _("Smeargle"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [5] =
                                         {
@@ -3474,7 +3474,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x8A,
                                             .nickname = _("Smeargle"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                 },
                         },
@@ -3509,7 +3509,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 1,
                                             .personality = 0xA,
                                             .nickname = _("Staryu"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [1] =
                                         {
@@ -3531,7 +3531,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xD,
                                             .nickname = _("Meowth"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [2] =
                                         {
@@ -3553,7 +3553,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x28,
                                             .nickname = _("Blaziken"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [3] =
                                         {
@@ -3575,7 +3575,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 1,
                                             .personality = 0x16,
                                             .nickname = _("Cubone"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [4] =
                                         {
@@ -3596,7 +3596,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x8A,
                                             .nickname = _("Beedrill"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [5] =
                                         {
@@ -3618,7 +3618,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 1,
                                             .personality = 0xD,
                                             .nickname = _("Raticate"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                 },
                         },
@@ -4006,7 +4006,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x80,
                                             .nickname = _("Sudowoodo"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [1] =
                                         {
@@ -4027,7 +4027,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 1,
                                             .personality = 0x8C,
                                             .nickname = _("Slowking"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [2] =
                                         {
@@ -4048,7 +4048,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xF,
                                             .nickname = _("Entei"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [3] =
                                         {
@@ -4069,7 +4069,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x3,
                                             .nickname = _("Hitmonchan"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [4] =
                                         {
@@ -4090,7 +4090,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 1,
                                             .personality = 0x6,
                                             .nickname = _("Mantine"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [5] =
                                         {
@@ -4111,7 +4111,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x18,
                                             .nickname = _("Zapdos"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                 },
                         },
@@ -4145,7 +4145,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x3,
                                             .nickname = _("Hitmonlee"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [1] =
                                         {
@@ -4166,7 +4166,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xF,
                                             .nickname = _("Porygon2"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [2] =
                                         {
@@ -4187,7 +4187,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xF,
                                             .nickname = _("Suicune"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [3] =
                                         {
@@ -4208,7 +4208,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 1,
                                             .personality = 0xF,
                                             .nickname = _("Houndoom"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [4] =
                                         {
@@ -4229,7 +4229,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x3,
                                             .nickname = _("Stantler"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [5] =
                                         {
@@ -4250,7 +4250,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xF,
                                             .nickname = _("Articuno"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                 },
                         },
@@ -4328,7 +4328,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x35,
                                             .nickname = _("Snorlax"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [1] =
                                         {
@@ -4350,7 +4350,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x3,
                                             .nickname = _("Miltank"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [2] =
                                         {
@@ -4372,7 +4372,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x7F,
                                             .nickname = _("Ursaring"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [3] =
                                         {
@@ -4394,7 +4394,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x80,
                                             .nickname = _("Slaking"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [4] =
                                         {
@@ -4416,7 +4416,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x3,
                                             .nickname = _("Kangaskhan"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [5] =
                                         {
@@ -4438,7 +4438,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x80,
                                             .nickname = _("Zangoose"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                 },
                         },
@@ -4473,7 +4473,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 1,
                                             .personality = 0xF,
                                             .nickname = _("Slowking"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [1] =
                                         {
@@ -4495,7 +4495,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x28,
                                             .nickname = _("Espeon"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [2] =
                                         {
@@ -4517,7 +4517,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 1,
                                             .personality = 0xF,
                                             .nickname = _("Starmie"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [3] =
                                         {
@@ -4539,7 +4539,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xF,
                                             .nickname = _("Gengar"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [4] =
                                         {
@@ -4561,7 +4561,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xF,
                                             .nickname = _("Gardevoir"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [5] =
                                         {
@@ -4583,7 +4583,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xF,
                                             .nickname = _("Alakazam"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                 },
                         },
@@ -4650,7 +4650,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x3,
                                             .nickname = _("Swellow"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [1] =
                                         {
@@ -4672,7 +4672,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x3,
                                             .nickname = _("Machamp"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [2] =
                                         {
@@ -4694,7 +4694,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x3,
                                             .nickname = _("Ursaring"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [3] =
                                         {
@@ -4716,7 +4716,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x80,
                                             .nickname = _("Kingler"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [4] =
                                         {
@@ -4738,7 +4738,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x80,
                                             .nickname = _("Tyranitar"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [5] =
                                         {
@@ -4760,7 +4760,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x80,
                                             .nickname = _("Dragonite"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                 },
                         },
@@ -4795,7 +4795,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xA,
                                             .nickname = _("Jolteon"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [1] =
                                         {
@@ -4817,7 +4817,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xA,
                                             .nickname = _("Alakazam"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [2] =
                                         {
@@ -4839,7 +4839,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 1,
                                             .personality = 0xA,
                                             .nickname = _("Starmie"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [3] =
                                         {
@@ -4861,7 +4861,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x82,
                                             .nickname = _("Dusclops"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [4] =
                                         {
@@ -4883,7 +4883,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xD2,
                                             .nickname = _("Ninetales"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [5] =
                                         {
@@ -4905,7 +4905,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x85,
                                             .nickname = _("Banette"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                 },
                         },
@@ -4972,7 +4972,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x94,
                                             .nickname = _("Wobbuffet"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [1] =
                                         {
@@ -5016,7 +5016,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x0,
                                             .nickname = _("Crobat"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [3] =
                                         {
@@ -5038,7 +5038,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 1,
                                             .personality = 0xD,
                                             .nickname = _("Dugtrio"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [4] =
                                         {
@@ -5082,7 +5082,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x14,
                                             .nickname = _("Gengar"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                 },
                         },
@@ -5294,7 +5294,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x3,
                                             .nickname = _("Forretress"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [1] =
                                         {
@@ -5315,7 +5315,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 1,
                                             .personality = 0xC,
                                             .nickname = _("Electrode"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [2] =
                                         {
@@ -5336,7 +5336,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x7F,
                                             .nickname = _("Exeggutor"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [3] =
                                         {
@@ -5358,7 +5358,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x93,
                                             .nickname = _("Dusclops"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [4] =
                                         {
@@ -5379,7 +5379,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0xF,
                                             .nickname = _("Ninetales"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [5] =
                                         {
@@ -5400,7 +5400,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x96,
                                             .nickname = _("Banette"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                 },
                         },
@@ -5434,7 +5434,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x95,
                                             .nickname = _("Salamence"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [1] =
                                         {
@@ -5455,7 +5455,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x8C,
                                             .nickname = _("Gengar"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [2] =
                                         {
@@ -5476,7 +5476,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x3,
                                             .nickname = _("Gyarados"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [3] =
                                         {
@@ -5497,7 +5497,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x3,
                                             .nickname = _("Gengar"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [4] =
                                         {
@@ -5519,7 +5519,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x14,
                                             .nickname = _("Dusclops"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                     [5] =
                                         {
@@ -5541,7 +5541,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .abilityNum = 0,
                                             .personality = 0x85,
                                             .nickname = _("Misdreavus"),
-                                            .friendship = 255,
+                                            .friendship = MAX_FRIENDSHIP,
                                         },
                                 },
                         },

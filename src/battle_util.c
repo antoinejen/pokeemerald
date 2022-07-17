@@ -933,6 +933,14 @@ static const u8 sMovesNotAffectedByStench[] =
     [MOVE_ZING_ZAP] = 1,
 };
 
+#define SOUND_MOVES_END 0xFFFF
+
+static const u16 sSoundMovesTable[] =
+{
+    MOVE_GROWL, MOVE_ROAR, MOVE_SING, MOVE_SUPERSONIC, MOVE_SCREECH, MOVE_SNORE,
+    MOVE_UPROAR, MOVE_METAL_SOUND, MOVE_GRASS_WHISTLE, MOVE_HYPER_VOICE, SOUND_MOVES_END
+};
+
 static const u8 sAbilitiesAffectedByMoldBreaker[] =
 {
     [ABILITY_BATTLE_ARMOR] = 1,
@@ -2013,7 +2021,7 @@ u8 DoFieldEndTurnEffects(void)
                 s32 j;
                 for (j = i + 1; j < gBattlersCount; j++)
                 {
-                    if (GetWhoStrikesFirst(gBattlerByTurnOrder[i], gBattlerByTurnOrder[j], 0))
+                    if (GetWhoStrikesFirst(gBattlerByTurnOrder[i], gBattlerByTurnOrder[j], FALSE))
                         SwapTurnOrder(i, j);
                 }
             }
