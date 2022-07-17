@@ -66,7 +66,7 @@ JaggedPass_EventScript_OpenMagmaHideout::
 
 JaggedPass_EventScript_MagmaHideoutGuard::
 	lockall
-	goto_if_set FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS, JaggedPass_EventScript_GuardDefeated
+	goto_if_set FLAG_BEAT_COURTNEY_JAGGED_PASS, JaggedPass_EventScript_GuardDefeated
 	waitse
 	playse SE_PIN
 	applymovement LOCALID_HIDEOUT_GUARD, Common_Movement_ExclamationMark
@@ -75,10 +75,10 @@ JaggedPass_EventScript_MagmaHideoutGuard::
 	waitmovement 0
 	applymovement LOCALID_HIDEOUT_GUARD, Common_Movement_FacePlayer
 	waitmovement 0
-	msgbox JaggedPass_Text_GruntIntro, MSGBOX_DEFAULT
+	msgbox JaggedPass_Text_CourtneyIntro, MSGBOX_DEFAULT
 	closemessage
-	trainerbattle_no_intro TRAINER_GRUNT_JAGGED_PASS, JaggedPass_Text_GruntDefeat
-	setflag FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS
+	trainerbattle_no_intro TRAINER_COURTNEY_JAGGED_PASS, JaggedPass_Text_CourtneyDefeat
+	setflag FLAG_BEAT_COURTNEY_JAGGED_PASS
 	applymovement LOCALID_HIDEOUT_GUARD, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	releaseall
@@ -222,21 +222,23 @@ JaggedPass_Text_EthanPostRematch:
 	.string "I should get an Acro Bike from Rydel\n"
 	.string "in Mauville City…$"
 
-JaggedPass_Text_GruntIntro:
-	.string "Wah!\n"
-	.string "What are you doing here?\p"
-	.string "What am I doing in a place like this?\p"
-	.string "What business is it of yours?$"
+JaggedPass_Text_CourtneyIntro:
+	.string "What is it?\n"
+	.string "… … … … … …\l"
+	.string "… … … … … …\p"
+	.string "Our Leader asked me to stand guard\n"
+	.string "for our members.\p"
+	.string "I will not tolerate any trespassing.\p"
+	.string "Scram now or prepare to get hurt!$"
 
-JaggedPass_Text_GruntDefeat:
-	.string "Urrrgh…\p"
-	.string "I should've ducked into our Hideout\n"
-	.string "right away…$"
+JaggedPass_Text_CourtneyDefeat:
+	.string "Hmph…\p"
+	.string "You are strong…$"
 
 JaggedPass_Text_GoWhereverYouWant:
-	.string "Okay, oh-kay!\n"
-	.string "I admit it--you're strong!\p"
-	.string "Don't worry about me.\n"
+	.string "Alright.\n"
+	.string "I admit it--you are strong.\p"
+	.string "But I will ask you to go away.\n"
 	.string "Go wherever you want!$"
 
 JaggedPass_Text_BoulderShakingInResponseToEmblem:
