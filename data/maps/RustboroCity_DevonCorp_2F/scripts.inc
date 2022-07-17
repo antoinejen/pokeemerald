@@ -153,7 +153,6 @@ RustboroCity_DevonCorp_2F_EventScript_FossilMonReady::
 
 RustboroCity_DevonCorp_2F_EventScript_LileepReady::
 	bufferspeciesname STR_VAR_1, SPECIES_LILEEP
-	bufferspeciesname STR_VAR_2, SPECIES_LILEEP
 	setvar VAR_TEMP_1, SPECIES_LILEEP
 	msgbox RustboroCity_DevonCorp_2F_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
 	goto RustboroCity_DevonCorp_2F_EventScript_ReceiveFossil
@@ -161,7 +160,6 @@ RustboroCity_DevonCorp_2F_EventScript_LileepReady::
 
 RustboroCity_DevonCorp_2F_EventScript_AnorithReady::
 	bufferspeciesname STR_VAR_1, SPECIES_ANORITH
-	bufferspeciesname STR_VAR_2, SPECIES_ANORITH
 	setvar VAR_TEMP_1, SPECIES_ANORITH
 	msgbox RustboroCity_DevonCorp_2F_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
 	goto RustboroCity_DevonCorp_2F_EventScript_ReceiveFossil
@@ -169,7 +167,6 @@ RustboroCity_DevonCorp_2F_EventScript_AnorithReady::
 
 RustboroCity_DevonCorp_2F_EventScript_OmanyteReady::
 	bufferspeciesname STR_VAR_1, SPECIES_OMANYTE
-	bufferspeciesname STR_VAR_2, SPECIES_OMANYTE
 	setvar VAR_TEMP_1, SPECIES_OMANYTE
 	msgbox RustboroCity_DevonCorp_2F_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
 	goto RustboroCity_DevonCorp_2F_EventScript_ReceiveFossil
@@ -177,7 +174,6 @@ RustboroCity_DevonCorp_2F_EventScript_OmanyteReady::
 
 RustboroCity_DevonCorp_2F_EventScript_KabutoReady::
 	bufferspeciesname STR_VAR_1, SPECIES_KABUTO
-	bufferspeciesname STR_VAR_2, SPECIES_KABUTO
 	setvar VAR_TEMP_1, SPECIES_KABUTO
 	msgbox RustboroCity_DevonCorp_2F_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
 	goto RustboroCity_DevonCorp_2F_EventScript_ReceiveFossil
@@ -185,7 +181,6 @@ RustboroCity_DevonCorp_2F_EventScript_KabutoReady::
 
 RustboroCity_DevonCorp_2F_EventScript_AerodactylReady::
 	bufferspeciesname STR_VAR_1, SPECIES_AERODACTYL
-	bufferspeciesname STR_VAR_2, SPECIES_AERODACTYL
 	setvar VAR_TEMP_1, SPECIES_AERODACTYL
 	msgbox RustboroCity_DevonCorp_2F_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
 	goto RustboroCity_DevonCorp_2F_EventScript_ReceiveFossil
@@ -346,10 +341,10 @@ RustboroCity_DevonCorp_2F_Text_FossilizedMonBroughtBackToLife:
 	.string "Your fossilized Pokémon has been\n"
 	.string "brought back to life!\p"
 	.string "The fossil was an ancient Pokémon.\n"
-	.string "{STR_VAR_2}, it was!$"
+	.string "{STR_VAR_1}, it was!$"
 
 RustboroCity_DevonCorp_2F_Text_ReceivedMonFromResearcher:
-	.string "{PLAYER} received {STR_VAR_2} from\n"
+	.string "{PLAYER} received {STR_VAR_1} from\n"
 	.string "the Devon Researcher.$"
 
 @ Unused
