@@ -38,6 +38,7 @@ Route114_EventScript_ShowSnorlax::
 Route114_EncounterSnorlax::
 	lock
 	faceplayer
+	msgbox Route114_Text_MonSprawledOutInSlumber, MSGBOX_DEFAULT
 	goto_if_unset FLAG_RECEIVED_BLUE_FLUTE, Route114_EventScript_SnorlaxNoBlueFlute
 	msgbox Route114_Text_WantToUseBlueFlute, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, Route114_EventScript_DontUseBlueFlute
@@ -59,7 +60,6 @@ Route114_EncounterSnorlax::
 	end
 
 Route114_EventScript_SnorlaxNoBlueFlute::
-	msgbox Route114_Text_MonSprawledOutInSlumber, MSGBOX_DEFAULT
 	release
 	end
 
