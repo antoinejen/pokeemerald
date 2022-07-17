@@ -95,6 +95,7 @@ static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, s
 static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y);
 
 static const u16 sShopInventory_ZeroBadges[] = {
+    ITEM_RARE_CANDY,
     ITEM_POKE_BALL,
     ITEM_POTION,
     ITEM_ANTIDOTE,
@@ -107,6 +108,7 @@ static const u16 sShopInventory_ZeroBadges[] = {
 };
 
 static const u16 sShopInventory_OneBadge[] = {
+    ITEM_RARE_CANDY,
     ITEM_POKE_BALL,
     ITEM_GREAT_BALL,
     ITEM_POTION,
@@ -121,6 +123,7 @@ static const u16 sShopInventory_OneBadge[] = {
 };
 
 static const u16 sShopInventory_TwoBadges[] = {
+    ITEM_RARE_CANDY,
     ITEM_POKE_BALL,
     ITEM_GREAT_BALL,
     ITEM_POTION,
@@ -136,6 +139,7 @@ static const u16 sShopInventory_TwoBadges[] = {
 };
 
 static const u16 sShopInventory_ThreeBadges[] = {
+    ITEM_RARE_CANDY,
     ITEM_POKE_BALL,
     ITEM_GREAT_BALL,
     ITEM_POTION,
@@ -152,6 +156,7 @@ static const u16 sShopInventory_ThreeBadges[] = {
 };
 
 static const u16 sShopInventory_FourBadges[] = {
+    ITEM_RARE_CANDY,
     ITEM_POKE_BALL,
     ITEM_GREAT_BALL,
     ITEM_POTION,
@@ -169,6 +174,7 @@ static const u16 sShopInventory_FourBadges[] = {
 };
 
 static const u16 sShopInventory_FiveBadges[] = {
+    ITEM_RARE_CANDY,
     ITEM_POKE_BALL,
     ITEM_GREAT_BALL,
     ITEM_ULTRA_BALL,
@@ -188,6 +194,7 @@ static const u16 sShopInventory_FiveBadges[] = {
 };
 
 static const u16 sShopInventory_SixBadges[] = {
+    ITEM_RARE_CANDY,
     ITEM_POKE_BALL,
     ITEM_GREAT_BALL,
     ITEM_ULTRA_BALL,
@@ -208,6 +215,7 @@ static const u16 sShopInventory_SixBadges[] = {
 };
 
 static const u16 sShopInventory_SevenBadges[] = {
+    ITEM_RARE_CANDY,
     ITEM_POKE_BALL,
     ITEM_GREAT_BALL,
     ITEM_ULTRA_BALL,
@@ -230,6 +238,7 @@ static const u16 sShopInventory_SevenBadges[] = {
 };
 
 static const u16 sShopInventory_EightBadges[] = {
+    ITEM_RARE_CANDY,
     ITEM_POKE_BALL,
     ITEM_GREAT_BALL,
     ITEM_ULTRA_BALL,
