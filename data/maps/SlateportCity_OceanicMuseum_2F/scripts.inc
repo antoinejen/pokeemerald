@@ -2,6 +2,7 @@
 .set LOCALID_ARCHIE, 2
 .set LOCALID_GRUNT_1, 3
 .set LOCALID_GRUNT_2, 4
+.set LOCALID_GRUNT_3, 8
 
 SlateportCity_OceanicMuseum_2F_MapScripts::
 	.byte 0
@@ -50,13 +51,27 @@ SlateportCity_OceanicMuseum_2F_EventScript_CaptStern::
 	closemessage
 	delay 35
 	addobject LOCALID_ARCHIE
+	addobject LOCALID_GRUNT_3
 	applymovement LOCALID_ARCHIE, SlateportCity_OceanicMuseum_2F_Movement_ArchieEnter
+	applymovement LOCALID_GRUNT_3, SlateportCity_OceanicMuseum_2F_Movement_GruntBlockExit
 	applymovement LOCALID_GRUNT_2, SlateportCity_OceanicMuseum_2F_Movement_GruntMoveForArchie
 	waitmovement 0
 	msgbox SlateportCity_OceanicMuseum_2F_Text_CameToSeeWhatsTakingSoLong, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_ARCHIE, SlateportCity_OceanicMuseum_2F_Movement_ArchieApproachPlayer
 	waitmovement 0
+	msgbox SlateportCity_OceanicMuseum_2F_Text_ArchieIntroduction, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_CAPT_STERN, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_CAPT_STERN, Common_Movement_Delay48
+	waitmovement 0
+	msgbox SlateportCity_OceanicMuseum_2F_Text_SternHealPokemon, MSGBOX_DEFAULT
+	closemessage
+	playfanfare MUS_HEAL
+	waitfanfare
+	special HealPlayerParty
+	trainerbattle_no_intro TRAINER_ARCHIE_SLATEPORT_MUSEUM, SlateportCity_OceanicMuseum_2F_Text_ArchieDefeat
 	msgbox SlateportCity_OceanicMuseum_2F_Text_ArchieWarning, MSGBOX_DEFAULT
 	closemessage
 	savebgm MUS_DUMMY
@@ -65,6 +80,7 @@ SlateportCity_OceanicMuseum_2F_EventScript_CaptStern::
 	removeobject LOCALID_ARCHIE
 	removeobject LOCALID_GRUNT_1
 	removeobject LOCALID_GRUNT_2
+	removeobject LOCALID_GRUNT_3
 	fadescreen FADE_FROM_BLACK
 	delay 30
 	setflag FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS
@@ -76,9 +92,6 @@ SlateportCity_OceanicMuseum_2F_EventScript_CaptStern::
 	msgbox SlateportCity_OceanicMuseum_2F_Text_SternIveGotToGo, MSGBOX_DEFAULT
 	closemessage
 	fadescreen FADE_TO_BLACK
-	playfanfare MUS_HEAL
-	waitfanfare
-	special HealPlayerParty
 	removeobject LOCALID_CAPT_STERN
 	setflag FLAG_HIDE_ROUTE_110_TEAM_AQUA
 	call_if_eq VAR_REGISTER_BIRCH_STATE, 0, SlateportCity_OceanicMuseum_2F_EventScript_ReadyRegisterBirch
@@ -158,6 +171,10 @@ SlateportCity_OceanicMuseum_2F_Movement_ArchieEnter:
 	walk_right
 	walk_right
 	walk_right
+	step_end
+
+SlateportCity_OceanicMuseum_2F_Movement_GruntBlockExit:
+	walk_down
 	step_end
 
 SlateportCity_OceanicMuseum_2F_Movement_GruntApproachToBattle:
@@ -272,6 +289,10 @@ SlateportCity_OceanicMuseum_2F_EventScript_MuseumPatron3::
 	release
 	end
 
+SlateportCity_OceanicMuseum_2F_EventScript_GruntBlockExit::
+	msgbox SlateportCity_OceanicMuseum_2F_Text_NobodyGetsOut, MSGBOX_NPC
+	end
+
 SlateportCity_OceanicMuseum_2F_Text_ThankYouForTheParts:
 	.string "Yes? If you're looking for Stern,\n"
 	.string "that would be me.\p"
@@ -320,7 +341,7 @@ SlateportCity_OceanicMuseum_2F_Text_CameToSeeWhatsTakingSoLong:
 	.string "long to snatch some parts, and you\l"
 	.string "simps are held up by a mere child?$"
 
-SlateportCity_OceanicMuseum_2F_Text_ArchieWarning:
+SlateportCity_OceanicMuseum_2F_Text_ArchieIntroduction:
 	.string "We are Team Aqua,\n"
 	.string "and we love the sea!\p"
 	.string "And I am Team Aqua's leader,\n"
@@ -341,6 +362,14 @@ SlateportCity_OceanicMuseum_2F_Text_ArchieWarning:
 	.string "Ah, fine…\n"
 	.string "You're still too young to understand\l"
 	.string "our noble objective.\p"
+	.string "I will show you what it costs to\n"
+	.string "meddle in our affairs!$"
+
+SlateportCity_OceanicMuseum_2F_Text_ArchieDefeat:
+	.string "What?! I've been defeated?!$"
+
+SlateportCity_OceanicMuseum_2F_Text_ArchieWarning:
+	.string "Fair enough, you know how to wriggle.\p"
 	.string "But, I warn you, don't even consider\n"
 	.string "interfering with our plans again.\p"
 	.string "The consequences will cost you\n"
@@ -438,3 +467,13 @@ SlateportCity_OceanicMuseum_2F_Text_SSAnneReplica:
 	.string "“A replica of the luxury liner that\n"
 	.string "circles the globe.”$"
 
+SlateportCity_OceanicMuseum_2F_Text_NobodyGetsOut:
+	.string "Nodoby gets out until the Boss\n"
+	.string "says otherwise!$"
+
+SlateportCity_OceanicMuseum_2F_Text_SternHealPokemon:
+	.string "Capt. Stern: Wait you're going to\n"
+	.string "fight him when he's weakened?\p"
+	.string "What a cowardly way to act!\p"
+	.string "{PLAYER}{KUN}! Let me heal your team\n"
+	.string "beforehand!$"
