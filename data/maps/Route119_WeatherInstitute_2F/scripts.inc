@@ -89,45 +89,58 @@ Route119_WeatherInstitute_2F_EventScript_ShellyDefeated::
 Route119_WeatherInstitute_2F_EventScript_ReceiveCastform::
 	msgbox Route119_WeatherInstitute_2F_Text_ThanksPleaseTakePokemon, MSGBOX_DEFAULT
 	setvar VAR_TEMP_1, SPECIES_CASTFORM
+	bufferspeciesname STR_VAR_1, SPECIES_CASTFORM
 	givemon SPECIES_CASTFORM, 25, ITEM_MYSTIC_WATER
-	goto_if_eq VAR_RESULT, 0, Route119_WeatherInstitute_2F_EventScript_ReceiveCastformParty
-	goto_if_eq VAR_RESULT, 1, Route119_WeatherInstitute_2F_EventScript_ReceiveCastformPC
+	goto_if_eq VAR_RESULT, 0, Route119_WeatherInstitute_2F_EventScript_ReceivePokemonParty
+	goto_if_eq VAR_RESULT, 1, Route119_WeatherInstitute_2F_EventScript_ReceivePokemonPC
 	goto Common_EventScript_NoMoreRoomForPokemon
 	end
 
-Route119_WeatherInstitute_2F_EventScript_ReceiveCastformParty::
-	call Route119_WeatherInstitute_2F_EventScript_ReceivedCastformFanfare
+Route119_WeatherInstitute_2F_EventScript_ReceivePokemonParty::
+	call Route119_WeatherInstitute_2F_EventScript_ReceivedPokemonFanfare
 	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, Route119_WeatherInstitute_2F_EventScript_ExplainCastform
+	goto_if_eq VAR_RESULT, NO, Route119_WeatherInstitute_2F_EventScript_ExplainPokemon
 	call Common_EventScript_GetGiftMonPartySlot
 	call Common_EventScript_NameReceivedPartyMon
-	goto Route119_WeatherInstitute_2F_EventScript_ExplainCastform
+	goto_if_eq VAR_TEMP_1, SPECIES_CASTFORM, Route119_WeatherInstitute_2F_EventScript_ExplainCastform
+	goto_if_eq VAR_TEMP_1, SPECIES_PORYGON, Route119_WeatherInstitute_2F_EventScript_ExplainPorygon
 	end
 
-Route119_WeatherInstitute_2F_EventScript_ReceiveCastformPC::
-	call Route119_WeatherInstitute_2F_EventScript_ReceivedCastformFanfare
+Route119_WeatherInstitute_2F_EventScript_ExplainPokemon::
+	goto_if_eq VAR_TEMP_1, SPECIES_CASTFORM, Route119_WeatherInstitute_2F_EventScript_ExplainCastform
+	goto_if_eq VAR_TEMP_1, SPECIES_PORYGON, Route119_WeatherInstitute_2F_EventScript_ExplainPorygon
+	end
+
+Route119_WeatherInstitute_2F_EventScript_ReceivePokemonPC::
+	call Route119_WeatherInstitute_2F_EventScript_ReceivedPokemonFanfare
 	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, Route119_WeatherInstitute_2F_EventScript_SendCastformToPC
+	goto_if_eq VAR_RESULT, NO, Route119_WeatherInstitute_2F_EventScript_SendPokemonToPC
 	call Common_EventScript_NameReceivedBoxMon
-	goto Route119_WeatherInstitute_2F_EventScript_SendCastformToPC
+	goto Route119_WeatherInstitute_2F_EventScript_SendPokemonToPC
 	end
 
-Route119_WeatherInstitute_2F_EventScript_SendCastformToPC::
+Route119_WeatherInstitute_2F_EventScript_SendPokemonToPC::
 	call Common_EventScript_TransferredToPC
-	goto Route119_WeatherInstitute_2F_EventScript_ExplainCastform
+	goto_if_eq VAR_TEMP_1, SPECIES_CASTFORM, Route119_WeatherInstitute_2F_EventScript_ExplainCastform
+	goto_if_eq VAR_TEMP_1, SPECIES_PORYGON, Route119_WeatherInstitute_2F_EventScript_ExplainPorygon
 	end
 
-Route119_WeatherInstitute_2F_EventScript_ReceivedCastformFanfare::
+Route119_WeatherInstitute_2F_EventScript_ReceivedPokemonFanfare::
 	playfanfare MUS_OBTAIN_ITEM
-	message Route119_WeatherInstitute_2F_Text_PlayerReceivedCastform
+	message Route119_WeatherInstitute_2F_Text_PlayerReceivedPokemon
 	waitmessage
 	waitfanfare
-	bufferspeciesname STR_VAR_1, SPECIES_CASTFORM
 	return
 
 Route119_WeatherInstitute_2F_EventScript_ExplainCastform::
 	msgbox Route119_WeatherInstitute_2F_Text_PokemonChangesWithWeather, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_CASTFORM
+	release
+	end
+
+Route119_WeatherInstitute_2F_EventScript_ExplainPorygon::
+	msgbox Route119_WeatherInstitute_2F_Text_PokemonCalculation, MSGBOX_DEFAULT
+	setflag FLAG_RECEIVED_PORYGON
 	release
 	end
 
@@ -141,7 +154,7 @@ Route119_WeatherInstitute_2F_EventScript_TryStartAbnormalWeather::
 	setvar VAR_0x8004, 0
 	call_if_set FLAG_DEFEATED_KYOGRE, Route119_WeatherInstitute_2F_EventScript_LegendaryDefeated
 	call_if_set FLAG_DEFEATED_GROUDON, Route119_WeatherInstitute_2F_EventScript_LegendaryDefeated
-	goto_if_eq VAR_0x8004, 2, Route119_WeatherInstitute_2F_EventScript_NoAbnormalWeather  @ Both defeated
+	goto_if_eq VAR_0x8004, 2, Route119_WeatherInstitute_2F_EventScript_ReceivePorygon  @ Both defeated
 	call_if_unset FLAG_TEMP_2, Route119_WeatherInstitute_2F_EventScript_CreateAbnormalWeather
 	specialvar VAR_RESULT, GetAbnormalWeatherMapNameAndType
 	goto_if_eq VAR_RESULT, 1, Route119_WeatherInstitute_2F_EventScript_KyogreWeather
@@ -162,6 +175,17 @@ Route119_WeatherInstitute_2F_EventScript_CreateAbnormalWeather::
 Route119_WeatherInstitute_2F_EventScript_LegendaryDefeated::
 	addvar VAR_0x8004, 1
 	return
+
+Route119_WeatherInstitute_2F_EventScript_ReceivePorygon::
+	msgbox Route119_WeatherInstitute_2F_Text_NoMoreAbnormalWeather, MSGBOX_DEFAULT
+	goto_if_set FLAG_RECEIVED_PORYGON, Route119_WeatherInstitute_2F_EventScript_NoAbnormalWeather
+	setvar VAR_TEMP_1, SPECIES_PORYGON
+	bufferspeciesname STR_VAR_1, SPECIES_PORYGON
+	givemon SPECIES_PORYGON, 25, ITEM_UP_GRADE
+	goto_if_eq VAR_RESULT, 0, Route119_WeatherInstitute_2F_EventScript_ReceivePokemonParty
+	goto_if_eq VAR_RESULT, 1, Route119_WeatherInstitute_2F_EventScript_ReceivePokemonPC
+	goto Common_EventScript_NoMoreRoomForPokemon
+	end
 
 Route119_WeatherInstitute_2F_EventScript_NoAbnormalWeather::
 	msgbox Route119_WeatherInstitute_2F_Text_NoAbnormalWeather, MSGBOX_DEFAULT
@@ -295,8 +319,8 @@ Route119_WeatherInstitute_2F_Text_NoRoomForPokemon:
 	.string "Hm? You don't seem to have any room\n"
 	.string "for this Pokémon.$"
 
-Route119_WeatherInstitute_2F_Text_PlayerReceivedCastform:
-	.string "{PLAYER} received Castform!$"
+Route119_WeatherInstitute_2F_Text_PlayerReceivedPokemon:
+	.string "{PLAYER} received {STR_VAR_1}!$"
 
 Route119_WeatherInstitute_2F_Text_PokemonChangesWithWeather:
 	.string "That Pokémon changes shape according\n"
@@ -325,9 +349,23 @@ Route119_WeatherInstitute_2F_Text_KyogreWeather:
 	.string "Could that mean, somewhere near\n"
 	.string "{STR_VAR_1}…$"
 
-Route119_WeatherInstitute_2F_Text_NoAbnormalWeather:
+Route119_WeatherInstitute_2F_Text_NoMoreAbnormalWeather:
 	.string "Abnormal weather conditions are\n"
 	.string "no longer being reported.\p"
+	.string "Thank you for investigating these issues.\p"
+	.string "It might look like déjà vu to you, but we\n"
+	.string "would like you to take this Pokémon.$"
+
+Route119_WeatherInstitute_2F_Text_PokemonCalculation:
+	.string "We received this Pokémon from fellow\n"
+	.string "researchers in the Kanto region.\p"
+	.string "It's a man-made Pokémon that help us\n"
+	.string "for complex calculations on PC.\p"
+	.string "We don't need that many, so we can\n"
+	.string "offer you one.$"
+
+Route119_WeatherInstitute_2F_Text_NoAbnormalWeather:
+	.string "There is no abnormal weather conditions\n"
+	.string "detected throughout the region\p"
 	.string "The occasional rainfall is a blessing,\n"
 	.string "really.$"
-

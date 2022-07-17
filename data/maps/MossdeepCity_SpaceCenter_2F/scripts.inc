@@ -8,6 +8,7 @@
 .set LOCALID_GRUNT_7, 7
 .set LOCALID_TABITHA, 8
 .set LOCALID_MAXIE, 9
+.set LOCALID_COURTNEY, 10
 
 MossdeepCity_SpaceCenter_2F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_SpaceCenter_2F_OnTransition
@@ -101,6 +102,11 @@ MossdeepCity_SpaceCenter_2F_Movement_Grunt7Defeated:
 	walk_right
 	unlock_facing_direction
 	step_end
+
+MossdeepCity_SpaceCenter_2F_EventScript_Courtney::
+	trainerbattle_single TRAINER_COURTNEY_MOSSDEEP, MossdeepCity_SpaceCenter_2F_Text_CourtneyIntro, MossdeepCity_SpaceCenter_2F_Text_CourtneyDefeat
+	msgbox MossdeepCity_SpaceCenter_2F_Text_CourtneyPostBattle, MSGBOX_AUTOCLOSE
+	end
 
 MossdeepCity_SpaceCenter_2F_EventScript_Scientist::
 	lock
@@ -297,6 +303,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha::
 	removeobject LOCALID_GRUNT_5
 	removeobject LOCALID_TABITHA
 	removeobject LOCALID_MAXIE
+	removeobject LOCALID_COURTNEY
 	setobjectxy LOCALID_SCIENTIST, 5, 6
 	turnobject LOCALID_SCIENTIST, DIR_SOUTH
 	setobjectxy LOCALID_GENTLEMAN, 11, 8
@@ -438,6 +445,28 @@ MossdeepCity_SpaceCenter_2F_Text_Grunt7PostBattle:
 MossdeepCity_SpaceCenter_2F_Text_Grunt5PostBattle:
 	.string "Are we being useful to our leader\n"
 	.string "at all?$"
+
+MossdeepCity_SpaceCenter_2F_Text_CourtneyIntro:
+	.string "So we meet again.\p"
+	.string "With Groudon gone, our Leader does\n"
+	.string "have any other solution for our cause.\p"
+	.string "We will stop at nothing for the well-\n"
+	.string "being of humanity.\p"
+	.string "But enough discussion.\p"
+	.string "I have been yearning for a rematch with\n"
+	.string "you.\p"
+	.string "If you want to get to our Leader, you\n"
+	.string "will have to satisfy me first!$"
+
+MossdeepCity_SpaceCenter_2F_Text_CourtneyDefeat:
+	.string "Again…\p"
+
+MossdeepCity_SpaceCenter_2F_Text_CourtneyPostBattle:
+	.string "But you are too late.\p"
+	.string "Our Leader might already be in\n"
+	.string "possession of the fuel.\p"
+	.string "There is nothing you can do to stop\n"
+	.string "us now!$"
 
 MossdeepCity_SpaceCenter_2F_Text_WellTakeCareOfYou:
 	.string "Hehehe!\p"

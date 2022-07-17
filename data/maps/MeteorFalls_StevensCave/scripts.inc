@@ -1,7 +1,19 @@
 .set LOCALID_STEVEN, 1
 
 MeteorFalls_StevensCave_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, MeteorFalls_StevensCave_OnLoad
 	.byte 0
+
+MeteorFalls_StevensCave_OnLoad::
+	call_if_set FLAG_DEFEATED_METEOR_FALLS_STEVEN, MeteorFalls_StevensCave_EventScript_OpenRedsCave
+	end
+
+MeteorFalls_StevensCave_EventScript_OpenRedsCave::
+	setmetatile 4, 15, METATILE_MeteorFalls_CaveEntrance_Top, TRUE
+	setmetatile 3, 16, METATILE_MeteorFalls_CaveEntrance_Left, TRUE
+	setmetatile 4, 16, METATILE_MeteorFalls_CaveEntrance_Bottom, FALSE
+	setmetatile 5, 16, METATILE_MeteorFalls_CaveEntrance_Right, TRUE
+	return
 
 MeteorFalls_StevensCave_EventScript_Steven::
 	lock

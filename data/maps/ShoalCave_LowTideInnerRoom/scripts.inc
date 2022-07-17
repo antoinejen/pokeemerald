@@ -1,11 +1,27 @@
 ShoalCave_LowTideInnerRoom_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, ShoalCave_LowTideInnerRoom_OnResume
 	map_script MAP_SCRIPT_ON_LOAD, ShoalCave_LowTideInnerRoom_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, ShoalCave_LowTideInnerRoom_OnTransition
 	.byte 0
 
+ShoalCave_LowTideInnerRoom_OnResume:
+	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, ShoalCave_LowTideInnerRoom_EventScript_TryRemoveLapras
+	end
+
+ShoalCave_LowTideInnerRoom_EventScript_TryRemoveLapras::
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
+	removeobject VAR_LAST_TALKED
+	return
+
 ShoalCave_LowTideInnerRoom_OnTransition:
+	call_if_unset FLAG_DEFEATED_LAPRAS, ShoalCave_LowTideInnerRoom_EventScript_ShowLapras
 	goto_if_set FLAG_SYS_SHOAL_TIDE, ShoalCave_LowTideInnerRoom_EventScript_SetHighTide
 	goto ShoalCave_LowTideInnerRoom_EventScript_SetLowTide
+
+ShoalCave_LowTideInnerRoom_EventScript_ShowLapras::
+	clearflag FLAG_HIDE_LAPRAS
+	return
 
 ShoalCave_LowTideInnerRoom_EventScript_SetHighTide::
 	setmaplayoutindex LAYOUT_SHOAL_CAVE_HIGH_TIDE_INNER_ROOM
@@ -134,3 +150,31 @@ ShoalCave_LowTideInnerRoom_EventScript_ShoalSalt2::
 	setflag FLAG_RECEIVED_SHOAL_SALT_2
 	releaseall
 	end
+
+ShoalCave_LowTideInnerRoom_EncounterLapras::
+	lock
+	faceplayer
+	message ShoalCave_LowTideInnerRoom_Text_LaprasCry
+	setwildbattle SPECIES_LAPRAS, 40, ITEM_MYSTIC_WATER
+	waitse
+	playmoncry SPECIES_LAPRAS, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, ShoalCave_LowTideInnerRoom_EventScript_DefeatedLapras
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, ShoalCave_LowTideInnerRoom_EventScript_DefeatedLapras
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, ShoalCave_LowTideInnerRoom_EventScript_DefeatedLapras
+	setflag FLAG_DEFEATED_LAPRAS
+	release
+	end
+
+ShoalCave_LowTideInnerRoom_EventScript_DefeatedLapras::
+	setflag FLAG_DEFEATED_LAPRAS
+	goto Common_EventScript_RemoveStaticPokemon
+	end
+
+ShoalCave_LowTideInnerRoom_Text_LaprasCry:
+	.string "Laaaa…$"

@@ -27,8 +27,7 @@ MagmaHideout_4F_OnTransition:
 	end
 
 MagmaHideout_4F_OnLoad::
-	call_if_unset FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT, MagmaHideout_4F_EventScript_ShowMoltres
-	call_if_set FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE, MagmaHideout_4F_EventScript_HideMoltres
+	call_if_unset FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE, MagmaHideout_4F_EventScript_HideMoltres
 	end
 
 MagmaHideout_4F_EventScript_ShowMoltres::
@@ -171,9 +170,12 @@ MagmaHideout_4F_EncounterMoltres::
 	waitse
 	playmoncry SPECIES_MOLTRES, CRY_MODE_ENCOUNTER
 	delay 40
+	waitmessage
 	waitmoncry
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
-	dowildbattle
+	waitbuttonpress
+	special BattleSetup_StartLegendaryBattle
+	waitstate
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, MagmaHideout_4F_EventScript_DefeatedMoltres

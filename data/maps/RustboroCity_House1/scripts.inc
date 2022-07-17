@@ -48,52 +48,84 @@ RustboroCity_House1_EventScript_TradeCompleted::
 RustboroCity_House1_EventScript_Hiker::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_RUSTBORO_EGG, RustboroCity_House1_EventScript_ReceivedEgg
-	msgbox RustboroCity_House1_Text_GiveEgg, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, RustboroCity_House1_EventScript_DeclineEgg
-	getpartysize
-	goto_if_eq VAR_RESULT, PARTY_SIZE, RustboroCity_House1_EventScript_NoRoomForEgg
-	setflag FLAG_RECEIVED_RUSTBORO_EGG
-	playfanfare MUS_OBTAIN_ITEM
-	message RustboroCity_House1_Text_ReceivedTheEgg
-	waitfanfare
+	goto_if_set FLAG_RECEIVED_RUSTBORO_MON, RustboroCity_House1_EventScript_ReceivedMon
+	msgbox RustboroCity_House1_Text_GiveMon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, RustboroCity_House1_EventScript_DeclineMon
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_House1_EventScript_GetEggPsyduck
-	case 1, RustboroCity_House1_EventScript_GetEggVoltorb
-	case 2, RustboroCity_House1_EventScript_GetEggPonyta
+	case 0, RustboroCity_House1_EventScript_GetPsyduck
+	case 1, RustboroCity_House1_EventScript_GetVoltorb
+	case 2, RustboroCity_House1_EventScript_GetPonyta
+	end
+
+RustboroCity_House1_EventScript_GetPsyduck::
+	setvar VAR_TEMP_1, SPECIES_PSYDUCK
+	bufferspeciesname STR_VAR_3, SPECIES_PSYDUCK
+	givemon SPECIES_PSYDUCK, 10, ITEM_NONE
+	goto_if_eq VAR_RESULT, 0, RustboroCity_House1_EventScript_ReceivePokemonParty
+	goto_if_eq VAR_RESULT, 1, RustboroCity_House1_EventScript_ReceivePokemonPC
+	goto Common_EventScript_NoMoreRoomForPokemon
+	end
+
+RustboroCity_House1_EventScript_GetVoltorb::
+	setvar VAR_TEMP_1, SPECIES_VOLTORB
+	bufferspeciesname STR_VAR_3, SPECIES_VOLTORB
+	givemon SPECIES_VOLTORB, 10, ITEM_NONE
+	goto_if_eq VAR_RESULT, 0, RustboroCity_House1_EventScript_ReceivePokemonParty
+	goto_if_eq VAR_RESULT, 1, RustboroCity_House1_EventScript_ReceivePokemonPC
+	goto Common_EventScript_NoMoreRoomForPokemon
+	end
+
+RustboroCity_House1_EventScript_GetPonyta::
+	setvar VAR_TEMP_1, SPECIES_PONYTA
+	bufferspeciesname STR_VAR_3, SPECIES_PONYTA
+	givemon SPECIES_PONYTA, 10, ITEM_NONE
+	goto_if_eq VAR_RESULT, 0, RustboroCity_House1_EventScript_ReceivePokemonParty
+	goto_if_eq VAR_RESULT, 1, RustboroCity_House1_EventScript_ReceivePokemonPC
+	goto Common_EventScript_NoMoreRoomForPokemon
+	end
+
+RustboroCity_House1_EventScript_ReceivedPokemonFanfare::
+	playfanfare MUS_OBTAIN_ITEM
+	message RustboroCity_House1_Text_PlayerReceivedPokemon
+	waitmessage
+	waitfanfare
+	return
+
+RustboroCity_House1_EventScript_ReceivePokemonParty::
+	call RustboroCity_House1_EventScript_ReceivedPokemonFanfare
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, RustboroCity_House1_EventScript_TakeCare
+	call Common_EventScript_GetGiftMonPartySlot
+	call Common_EventScript_NameReceivedPartyMon
+	goto RustboroCity_House1_EventScript_TakeCare
+	end
+
+RustboroCity_House1_EventScript_ReceivePokemonPC::
+	call RustboroCity_House1_EventScript_ReceivedPokemonFanfare
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, RustboroCity_House1_EventScript_SendPokemonToPC
+	call Common_EventScript_NameReceivedBoxMon
+	goto RustboroCity_House1_EventScript_SendPokemonToPC
+	end
+
+RustboroCity_House1_EventScript_SendPokemonToPC::
+	call Common_EventScript_TransferredToPC
+	goto RustboroCity_House1_EventScript_TakeCare
+	end
+
+RustboroCity_House1_EventScript_TakeCare:
+	setflag FLAG_RECEIVED_RUSTBORO_MON
+	msgbox RustboroCity_House1_Text_TakeCare, MSGBOX_DEFAULT
 	release
 	end
 
-RustboroCity_House1_EventScript_GetEggPsyduck::
-	giveegg SPECIES_PSYDUCK
-	msgbox RustboroCity_House1_Text_YoullNeedPatienceToHatchIt, MSGBOX_DEFAULT
-	release
-	end
-
-RustboroCity_House1_EventScript_GetEggVoltorb::
-	giveegg SPECIES_VOLTORB
-	msgbox RustboroCity_House1_Text_YoullNeedPatienceToHatchIt, MSGBOX_DEFAULT
-	release
-	end
-
-RustboroCity_House1_EventScript_GetEggPonyta::
-	giveegg SPECIES_PONYTA
-	msgbox RustboroCity_House1_Text_YoullNeedPatienceToHatchIt, MSGBOX_DEFAULT
-	release
-	end
-
-RustboroCity_House1_EventScript_ReceivedEgg::
+RustboroCity_House1_EventScript_ReceivedMon::
 	msgbox RustboroCity_House1_Text_AllSortsOfPlaces, MSGBOX_DEFAULT
 	release
 	end
 
-RustboroCity_House1_EventScript_DeclineEgg::
+RustboroCity_House1_EventScript_DeclineMon::
 	msgbox RustboroCity_House1_Text_AsYouWish, MSGBOX_DEFAULT
-	release
-	end
-
-RustboroCity_House1_EventScript_NoRoomForEgg::
-	msgbox RustboroCity_House1_Text_NoRoomForThisEgg, MSGBOX_DEFAULT
 	release
 	end
 
@@ -121,33 +153,28 @@ RustboroCity_House1_Text_AnyPokemonCanBeCute:
 	.string "Any Pokémon can be cute if you raise\n"
 	.string "it with care and kindness.$"
 
-RustboroCity_House1_Text_GiveEgg:
+RustboroCity_House1_Text_GiveMon:
 	.string "I am from the Kanto region.\n"
 	.string "I came here to Hoenn to go sightseeing.\p"
 	.string "You look like a new Trainer to me.\n"
 	.string "I would be happy to help you in your\l"
 	.string "journey.\p"
-	.string "How about this Egg that I brought from\n"
-	.string "home?$"
+	.string "How about I give you this Pokémon that\n"
+	.string "I brought from home?$"
 
 RustboroCity_House1_Text_AsYouWish:
 	.string "Oh, if you don't want to, that's okay.\n"
 	.string "Best of luck in your travels!$"
 
-RustboroCity_House1_Text_NoRoomForThisEgg:
-	.string "Oh? It looks like your party is full.\n"
-	.string "There's no room for this Egg…$"
+RustboroCity_House1_Text_PlayerReceivedPokemon:
+	.string "{PLAYER} received {STR_VAR_3}!$"
 
-RustboroCity_House1_Text_YoullNeedPatienceToHatchIt:
-	.string "You'll need patience to hatch it,\n"
-	.string "but I'm sure it will be reliable.$"
-
-RustboroCity_House1_Text_ReceivedTheEgg:
-	.string "{PLAYER} received an Egg.$"
+RustboroCity_House1_Text_TakeCare:
+	.string "Please take care of it.\n"
+	.string "I hope it will help you in your journey.$"
 
 RustboroCity_House1_Text_AllSortsOfPlaces:
 	.string "In all sorts of places, there are all\n"
 	.string "sorts of Pokémon and people.\p"
 	.string "I find that fascinating, so I go to all\n"
 	.string "sorts of places.$"
-

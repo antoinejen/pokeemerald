@@ -571,7 +571,7 @@
 #define TRAINER_GRUNT_SEAFLOOR_CAVERN_5     567
 #define TRAINER_GRUNT_UNUSED                568
 #define TRAINER_GRUNT_MT_PYRE_4             569
-#define TRAINER_GRUNT_JAGGED_PASS           570
+#define TRAINER_COURTNEY_JAGGED_PASS        570
 #define TRAINER_MARC                        571
 #define TRAINER_BRENDEN                     572
 #define TRAINER_LILITH                      573
@@ -856,12 +856,21 @@
 #define TRAINER_LEAF                        852
 #define TRAINER_BRENDAN_PLACEHOLDER         853
 #define TRAINER_MAY_PLACEHOLDER             854
+#define TRAINER_COURTNEY_MOSSDEEP			855
+#define TRAINER_BLUE 						856
+#define TRAINER_MAY_LAVARIDGE_TREECKO		857
+#define TRAINER_MAY_LAVARIDGE_TORCHIC		858
+#define TRAINER_MAY_LAVARIDGE_MUDKIP		859
+#define TRAINER_BRENDAN_LAVARIDGE_TREECKO	860
+#define TRAINER_BRENDAN_LAVARIDGE_TORCHIC	861
+#define TRAINER_BRENDAN_LAVARIDGE_MUDKIP	862
+#define TRAINER_ARCHIE_SLATEPORT_MUSEUM		863
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT                      855
-#define MAX_TRAINERS_COUNT                  864
+#define TRAINERS_COUNT                      864
+#define MAX_TRAINERS_COUNT                  865
 
 #endif  // GUARD_CONSTANTS_OPPONENTS_H

@@ -258,9 +258,12 @@ NewMauville_Inside_EncounterZapdos::
 	waitse
 	playmoncry SPECIES_ZAPDOS, CRY_MODE_ENCOUNTER
 	delay 40
+	waitmessage
 	waitmoncry
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
-	dowildbattle
+	waitbuttonpress
+	special BattleSetup_StartLegendaryBattle
+	waitstate
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, NewMauville_Inside_EventScript_DefeatedZapdos

@@ -1,6 +1,7 @@
 .set LOCALID_RIVAL, 16
 .set LOCALID_RIVAL_ON_BIKE, 25
 .set LOCALID_SCOTT, 43
+.set LOCALID_LEAF, 44
 
 Route119_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, Route119_OnResume
@@ -213,6 +214,38 @@ Route119_EventScript_SetRivalPos2::
 	setobjectxyperm LOCALID_RIVAL, 26, 32
 	setobjectxyperm LOCALID_RIVAL_ON_BIKE, 26, 32
 	return
+
+Route119_EventScript_Leaf::
+	lock
+	goto_if_set FLAG_DEFEATED_LEAF, Route119_EventScript_LeafDefeated
+	waitse
+	playse SE_PIN
+	applymovement LOCALID_LEAF, Common_Movement_QuestionMark
+	waitmovement 0
+	applymovement LOCALID_LEAF, Common_Movement_Delay48
+	waitmovement 0
+	applymovement LOCALID_LEAF, Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox Route119_Text_LeafIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_LEAF, Route119_Text_LeafDefeat
+	setflag FLAG_DEFEATED_LEAF
+	release
+	end
+
+Route119_EventScript_LeafDefeated::
+	msgbox Route119_Text_LeafDefeated, MSGBOX_DEFAULT
+	releaseall
+	end
+
+Route119_Text_LeafDefeated:
+	.string "… … … … … …\n"
+	.string "… … … … … …$"
+
+Route119_Text_LeafIntro:
+	.string "… … … … … …?$"
+
+Route119_Text_LeafDefeat:
+	.string "…!$"
 
 Route119_Movement_PlayerWatchRivalExit1:
 	delay_16

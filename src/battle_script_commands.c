@@ -2952,7 +2952,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 }
                 break;
             case MOVE_EFFECT_FLINCH:
-                if (GetBattlerAbility(gEffectBattler) == ABILITY_INNER_FOCUS)
+                if (GetBattlerAbility(gEffectBattler) == ABILITY_INNER_FOCUS || GetBattlerAbility(gEffectBattler) == ABILITY_STEADFAST)
                 {
                     gBattlescriptCurrInstr++;
                 }
@@ -10780,6 +10780,12 @@ static void Cmd_tryinfatuating(void)
         gLastUsedAbility = ABILITY_OBLIVIOUS;
         RecordAbilityBattle(gBattlerTarget, ABILITY_OBLIVIOUS);
     }
+    else if (GetBattlerAbility(gBattlerTarget) == ABILITY_STEADFAST)
+    {
+        gBattlescriptCurrInstr = BattleScript_NotAffectedAbilityPopUp;
+        gLastUsedAbility = ABILITY_STEADFAST;
+        RecordAbilityBattle(gBattlerTarget, ABILITY_STEADFAST);
+    }
     else
     {
         if (GetGenderFromSpeciesAndPersonality(speciesAttacker, personalityAttacker) == GetGenderFromSpeciesAndPersonality(speciesTarget, personalityTarget)
@@ -12211,6 +12217,12 @@ static void Cmd_settaunt(void)
         gBattlescriptCurrInstr = BattleScript_NotAffectedAbilityPopUp;
         gLastUsedAbility = ABILITY_OBLIVIOUS;
         RecordAbilityBattle(gBattlerTarget, ABILITY_OBLIVIOUS);
+    }
+    if (GetBattlerAbility(gBattlerTarget) == ABILITY_STEADFAST)
+    {
+        gBattlescriptCurrInstr = BattleScript_NotAffectedAbilityPopUp;
+        gLastUsedAbility = ABILITY_STEADFAST;
+        RecordAbilityBattle(gBattlerTarget, ABILITY_STEADFAST);
     }
     else if (gDisableStructs[gBattlerTarget].tauntTimer == 0)
     {

@@ -842,49 +842,28 @@ u8 GetTrainerBattleTransition(void)
 
     if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_RIVAL)
     {
-        if (gTrainerBattleOpponent_A == TRAINER_MAY_ROUTE_103_MUDKIP || gTrainerBattleOpponent_A == TRAINER_MAY_ROUTE_110_MUDKIP
-            || gTrainerBattleOpponent_A == TRAINER_MAY_ROUTE_119_MUDKIP || gTrainerBattleOpponent_A == TRAINER_MAY_ROUTE_103_TREECKO
-            || gTrainerBattleOpponent_A == TRAINER_MAY_ROUTE_110_TREECKO || gTrainerBattleOpponent_A == TRAINER_MAY_ROUTE_119_TREECKO
-            || gTrainerBattleOpponent_A == TRAINER_MAY_ROUTE_103_TORCHIC || gTrainerBattleOpponent_A == TRAINER_MAY_ROUTE_110_TORCHIC
-            || gTrainerBattleOpponent_A == TRAINER_MAY_ROUTE_119_TORCHIC || gTrainerBattleOpponent_A == TRAINER_MAY_RUSTBORO_MUDKIP
-            || gTrainerBattleOpponent_A == TRAINER_MAY_LILYCOVE_MUDKIP || gTrainerBattleOpponent_A == TRAINER_MAY_LILYCOVE_TREECKO
-            || gTrainerBattleOpponent_A == TRAINER_MAY_LILYCOVE_TORCHIC || gTrainerBattleOpponent_A == TRAINER_MAY_RUSTBORO_TREECKO
-            || gTrainerBattleOpponent_A == TRAINER_MAY_RUSTBORO_TORCHIC)
+        if (gTrainers[gTrainerBattleOpponent_A].trainerPic == TRAINER_PIC_MAY)
             return B_TRANSITION_MAY;
-        if (gTrainerBattleOpponent_A == TRAINER_BRENDAN_ROUTE_103_MUDKIP || gTrainerBattleOpponent_A == TRAINER_BRENDAN_ROUTE_110_MUDKIP
-            || gTrainerBattleOpponent_A == TRAINER_BRENDAN_ROUTE_119_MUDKIP || gTrainerBattleOpponent_A == TRAINER_BRENDAN_ROUTE_103_TREECKO
-            || gTrainerBattleOpponent_A == TRAINER_BRENDAN_ROUTE_110_TREECKO || gTrainerBattleOpponent_A == TRAINER_BRENDAN_ROUTE_119_TREECKO
-            || gTrainerBattleOpponent_A == TRAINER_BRENDAN_ROUTE_103_TORCHIC || gTrainerBattleOpponent_A == TRAINER_BRENDAN_ROUTE_110_TORCHIC
-            || gTrainerBattleOpponent_A == TRAINER_BRENDAN_ROUTE_119_TORCHIC || gTrainerBattleOpponent_A == TRAINER_BRENDAN_RUSTBORO_MUDKIP
-            || gTrainerBattleOpponent_A == TRAINER_BRENDAN_LILYCOVE_MUDKIP || gTrainerBattleOpponent_A == TRAINER_BRENDAN_LILYCOVE_TREECKO
-            || gTrainerBattleOpponent_A == TRAINER_BRENDAN_LILYCOVE_TORCHIC || gTrainerBattleOpponent_A == TRAINER_BRENDAN_RUSTBORO_TREECKO
-            || gTrainerBattleOpponent_A == TRAINER_BRENDAN_RUSTBORO_TORCHIC)
+        if (gTrainers[gTrainerBattleOpponent_A].trainerPic == TRAINER_PIC_BRENDAN)
             return B_TRANSITION_BRENDAN;
         return B_TRANSITION_WALLY;
     }
 
     if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_LEADER)
     {
-        if (gTrainerBattleOpponent_A == TRAINER_ROXANNE_1 || gTrainerBattleOpponent_A == TRAINER_ROXANNE_2 || gTrainerBattleOpponent_A == TRAINER_ROXANNE_3 || 
-            gTrainerBattleOpponent_A == TRAINER_ROXANNE_4 || gTrainerBattleOpponent_A == TRAINER_ROXANNE_5)
+        if (gTrainers[gTrainerBattleOpponent_A].trainerPic == TRAINER_PIC_LEADER_ROXANNE)
             return B_TRANSITION_ROXANNE;
-        if (gTrainerBattleOpponent_A == TRAINER_BRAWLY_1 || gTrainerBattleOpponent_A == TRAINER_BRAWLY_2 || gTrainerBattleOpponent_A == TRAINER_BRAWLY_3 || 
-            gTrainerBattleOpponent_A == TRAINER_BRAWLY_4 || gTrainerBattleOpponent_A == TRAINER_BRAWLY_5)
+        if (gTrainers[gTrainerBattleOpponent_A].trainerPic == TRAINER_PIC_LEADER_BRAWLY)
             return B_TRANSITION_BRAWLY;
-        if (gTrainerBattleOpponent_A == TRAINER_WATTSON_1 || gTrainerBattleOpponent_A == TRAINER_WATTSON_2 || gTrainerBattleOpponent_A == TRAINER_WATTSON_3 || 
-            gTrainerBattleOpponent_A == TRAINER_WATTSON_4 || gTrainerBattleOpponent_A == TRAINER_WATTSON_5)
+        if (gTrainers[gTrainerBattleOpponent_A].trainerPic == TRAINER_PIC_LEADER_WATTSON)
             return B_TRANSITION_WATTSON;
-        if (gTrainerBattleOpponent_A == TRAINER_FLANNERY_1 || gTrainerBattleOpponent_A == TRAINER_FLANNERY_2 || gTrainerBattleOpponent_A == TRAINER_FLANNERY_3 || 
-            gTrainerBattleOpponent_A == TRAINER_FLANNERY_4 || gTrainerBattleOpponent_A == TRAINER_FLANNERY_5)
+        if (gTrainers[gTrainerBattleOpponent_A].trainerPic == TRAINER_PIC_LEADER_FLANNERY)
             return B_TRANSITION_FLANNERY;
-        if (gTrainerBattleOpponent_A == TRAINER_NORMAN_1 || gTrainerBattleOpponent_A == TRAINER_NORMAN_2 || gTrainerBattleOpponent_A == TRAINER_NORMAN_3 || 
-            gTrainerBattleOpponent_A == TRAINER_NORMAN_4 || gTrainerBattleOpponent_A == TRAINER_NORMAN_5)
+        if (gTrainers[gTrainerBattleOpponent_A].trainerPic == TRAINER_PIC_LEADER_NORMAN)
             return B_TRANSITION_NORMAN;
-        if (gTrainerBattleOpponent_A == TRAINER_WINONA_1 || gTrainerBattleOpponent_A == TRAINER_WINONA_2 || gTrainerBattleOpponent_A == TRAINER_WINONA_3 || 
-            gTrainerBattleOpponent_A == TRAINER_WINONA_4 || gTrainerBattleOpponent_A == TRAINER_WINONA_5)
+        if (gTrainers[gTrainerBattleOpponent_A].trainerPic == TRAINER_PIC_LEADER_WINONA)
             return B_TRANSITION_WINONA;
-        if (gTrainerBattleOpponent_A == TRAINER_TATE_AND_LIZA_1 || gTrainerBattleOpponent_A == TRAINER_TATE_AND_LIZA_2 || gTrainerBattleOpponent_A == TRAINER_TATE_AND_LIZA_3 || 
-            gTrainerBattleOpponent_A == TRAINER_TATE_AND_LIZA_4 || gTrainerBattleOpponent_A == TRAINER_TATE_AND_LIZA_5)
+        if (gTrainers[gTrainerBattleOpponent_A].trainerPic == TRAINER_PIC_LEADER_TATE_AND_LIZA)
             return B_TRANSITION_TATE_LIZA;
         return B_TRANSITION_JUAN;
     }
@@ -910,8 +889,12 @@ u8 GetTrainerBattleTransition(void)
     }
 
     if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_CHAMPION)
+    {
+        if (gTrainerBattleOpponent_A == TRAINER_STEVEN)
+            return B_TRANSITION_STEVEN;
         return B_TRANSITION_CHAMPION;
-
+    }
+        
     if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_TEAM_MAGMA
         || gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_MAGMA_LEADER
         || gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_MAGMA_ADMIN)

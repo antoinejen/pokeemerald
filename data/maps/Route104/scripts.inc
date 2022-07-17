@@ -338,7 +338,7 @@ Route104_EventScript_Boy2::
 	end
 
 Route104_EventScript_ReceivedBulletSeed::
-	msgbox Route104_Text_TMsAreOneTimeUse, MSGBOX_DEFAULT
+	msgbox Route104_Text_TMsAreReuseable, MSGBOX_DEFAULT
 	release
 	end
 
@@ -1035,12 +1035,13 @@ Route104_Text_LikeFillingMouthWithSeedsTakeThis:
 	.string "Use it on a Pokémon, and it will learn\n"
 	.string "a move for firing seeds rapidly.$"
 
-Route104_Text_TMsAreOneTimeUse:
-	.string "A word of advice!\p"
-	.string "A TM, Technical Machine, is good only\n"
-	.string "for one-time use.\p"
-	.string "Once you use it, it's gone.\n"
-	.string "Think twice before using it!$"
+Route104_Text_TMsAreReuseable:
+	.string "Ah also!\p"
+	.string "A TM, Technical Machine, used to be\n"
+	.string "used only once, but it's not the case\l"
+	.string "anymore.\p"
+	.string "Now, you can reuse it as many times as.\n"
+	.string "you want, just like HMs!$"
 
 Route104_Text_DontNeedThisTakeIt:
 	.string "This Flower Shop started selling\n"
