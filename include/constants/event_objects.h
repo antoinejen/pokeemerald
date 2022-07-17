@@ -251,7 +251,9 @@
 #define OBJ_EVENT_GFX_RAIKOU 					 246
 #define OBJ_EVENT_GFX_CELEBI 					 247
 
-#define NUM_OBJ_EVENT_GFX                        248
+#define OBJ_EVENT_GFX_BLUE 						 248
+
+#define NUM_OBJ_EVENT_GFX                        249
 
 
 // These are dynamic object gfx ids.

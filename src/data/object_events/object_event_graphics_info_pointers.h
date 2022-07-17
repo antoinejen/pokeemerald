@@ -258,6 +258,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Raikou;
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Celebi;
 
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Blue;
 
 
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
@@ -509,7 +510,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SUICUNE] = 				   &gObjectEventGraphicsInfo_Suicune,
     [OBJ_EVENT_GFX_RAIKOU] = 				   &gObjectEventGraphicsInfo_Raikou,
     [OBJ_EVENT_GFX_CELEBI] = 				   &gObjectEventGraphicsInfo_Celebi,
-    
+    [OBJ_EVENT_GFX_BLUE] = 					   &gObjectEventGraphicsInfo_Blue,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {
