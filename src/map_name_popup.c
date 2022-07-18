@@ -185,16 +185,16 @@ static const u8 gText_PyramidFloor6[] = _("Pyramid Floor 6");
 static const u8 gText_PyramidFloor7[] = _("Pyramid Floor 7");
 static const u8 gText_Pyramid[] = _("Pyramid");
 
-static const u8 * const gBattlePyramid_MapHeaderStrings[] =
+static const u8 * const sBattlePyramid_MapHeaderStrings[] =
 {
-    gText_PyramidFloor1,
-    gText_PyramidFloor2,
-    gText_PyramidFloor3,
-    gText_PyramidFloor4,
-    gText_PyramidFloor5,
-    gText_PyramidFloor6,
-    gText_PyramidFloor7,
-    gText_Pyramid,
+    sText_PyramidFloor1,
+    sText_PyramidFloor2,
+    sText_PyramidFloor3,
+    sText_PyramidFloor4,
+    sText_PyramidFloor5,
+    sText_PyramidFloor6,
+    sText_PyramidFloor7,
+    sText_Pyramid,
 };
 
 // Unused
@@ -309,12 +309,12 @@ static void ShowMapNamePopUpWindow(void)
         if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_TOP)
         {
             withoutPrefixPtr = &(mapDisplayHeader[3]);
-            mapDisplayHeaderSource = gBattlePyramid_MapHeaderStrings[7];
+            mapDisplayHeaderSource = sBattlePyramid_MapHeaderStrings[7];
         }
         else
         {
             withoutPrefixPtr = &(mapDisplayHeader[3]);
-            mapDisplayHeaderSource = gBattlePyramid_MapHeaderStrings[gSaveBlock2Ptr->frontier.curChallengeBattleNum];
+            mapDisplayHeaderSource = sBattlePyramid_MapHeaderStrings[gSaveBlock2Ptr->frontier.curChallengeBattleNum];
         }
         StringCopy(withoutPrefixPtr, mapDisplayHeaderSource);
     }
