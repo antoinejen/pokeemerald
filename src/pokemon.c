@@ -4552,29 +4552,29 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                 retVal = FALSE;
             }
             break;
-        // Handle ITEM2 effects (more stat boosting effects)
+        // Handle itemRare effects (more stat boosting effects)
         case 2:
             // X Accuracy
-            if ((itemEffect[i] & ITEM2_X_ACCURACY)
+            if ((itemEffect[i] & itemRare_X_ACCURACY)
              && gBattleMons[gActiveBattler].statStages[STAT_ACC] < MAX_STAT_STAGE)
             {
                 if (B_X_ITEMS_BUFF >= GEN_7)
                     gBattleMons[gActiveBattler].statStages[STAT_ACC] += 2;
                 else
-                    gBattleMons[gActiveBattler].statStages[STAT_ACC] += (itemEffect[i] & ITEM2_X_ACCURACY) >> 4;
+                    gBattleMons[gActiveBattler].statStages[STAT_ACC] += (itemEffect[i] & itemRare_X_ACCURACY) >> 4;
                 if (gBattleMons[gActiveBattler].statStages[STAT_ACC] > MAX_STAT_STAGE)
                     gBattleMons[gActiveBattler].statStages[STAT_ACC] = MAX_STAT_STAGE;
                 retVal = FALSE;
             }
 
             // X Sp Attack
-            if ((itemEffect[i] & ITEM2_X_SPATK)
+            if ((itemEffect[i] & itemRare_X_SPATK)
              && gBattleMons[gActiveBattler].statStages[STAT_SPATK] < MAX_STAT_STAGE)
             {
                 if (B_X_ITEMS_BUFF >= GEN_7)
                     gBattleMons[gActiveBattler].statStages[STAT_SPATK] += 2;
                 else
-                    gBattleMons[gActiveBattler].statStages[STAT_SPATK] += itemEffect[i] & ITEM2_X_SPATK;
+                    gBattleMons[gActiveBattler].statStages[STAT_SPATK] += itemEffect[i] & itemRare_X_SPATK;
                 if (gBattleMons[gActiveBattler].statStages[STAT_SPATK] > MAX_STAT_STAGE)
                     gBattleMons[gActiveBattler].statStages[STAT_SPATK] = MAX_STAT_STAGE;
                 retVal = FALSE;
@@ -5237,10 +5237,10 @@ u8 *UseStatIncreaseItem(u16 itemId)
 #ifndef ITEM_EXPANSION
     for (i = 0; i < 3; i++)
     {
-        if (itemEffect[i] & (ITEM0_X_ATTACK | ITEM1_X_SPEED | ITEM2_X_SPATK))
+        if (itemEffect[i] & (ITEM0_X_ATTACK | ITEM1_X_SPEED | itemRare_X_SPATK))
             BufferStatRoseMessage(i * 2);
 
-        if (itemEffect[i] & (ITEM0_DIRE_HIT | ITEM1_X_DEFEND | ITEM2_X_ACCURACY))
+        if (itemEffect[i] & (ITEM0_DIRE_HIT | ITEM1_X_DEFEND | itemRare_X_ACCURACY))
         {
             if (i != 0) // Dire Hit is the only ITEM0 above
             {
@@ -6510,26 +6510,26 @@ void SetWildMonHeldItem(void)
                     if (rnd < chanceNoItem)
                         continue;
                     if (rnd < chanceCommon)
-                        SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gBaseStats[species].item1);
+                        SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gBaseStats[species].itemCommon);
                     else
-                        SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gBaseStats[species].item2);
+                        SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gBaseStats[species].itemRare);
                 }
             }
             else
             {
-                if (gBaseStats[species].item1 == gBaseStats[species].item2 && gBaseStats[species].item1 != ITEM_NONE)
+                if (gBaseStats[species].itemCommon == gBaseStats[species].itemRare && gBaseStats[species].itemCommon != ITEM_NONE)
                 {
                     // Both held items are the same, 100% chance to hold item
-                    SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gBaseStats[species].item1);
+                    SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gBaseStats[species].itemCommon);
                 }
                 else
                 {
                     if (rnd < chanceNoItem)
                         continue;
                     if (rnd < chanceCommon)
-                        SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gBaseStats[species].item1);
+                        SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gBaseStats[species].itemCommon);
                     else
-                        SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gBaseStats[species].item2);
+                        SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gBaseStats[species].itemRare);
                 }
             }
         }
