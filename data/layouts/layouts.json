@@ -4414,8 +4414,8 @@
     {
       "id": "LAYOUT_METEOR_FALLS_REDS_CAVE",
       "name": "MeteorFalls_RedsCave_Layout",
-      "width": 9,
-      "height": 20,
+      "width": 15,
+      "height": 30,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_MeteorFalls",
       "border_filepath": "data/layouts/MeteorFalls_RedsCave/border.bin",
