@@ -2015,3 +2015,11 @@
 	.macro totemboost_evas2 battler:req
 	settotemboost \battler, 0, 0, 0, 0, 0, 0, 2
 	.endm
+
+	@ Creates an "event legal" Pokémon for an encounter
+	.macro seteventmon species:req, level:req, item=ITEM_NONE
+	setvar VAR_0x8004, \species
+	setvar VAR_0x8005, \level
+	setvar VAR_0x8006, \item
+	special CreateEventLegalEnemyMon
+	.endm
