@@ -933,6 +933,15 @@ static const u8 sMovesNotAffectedByStench[] =
     [MOVE_ZING_ZAP] = 1,
 };
 
+#define SOUND_MOVES_END 0xFFFF
+
+static const u16 sSoundMovesTable[] =
+{
+    MOVE_GROWL, MOVE_ROAR, MOVE_SING, MOVE_SUPERSONIC, MOVE_SCREECH, MOVE_SNORE,
+    MOVE_UPROAR, MOVE_METAL_SOUND, MOVE_GRASS_WHISTLE, MOVE_HYPER_VOICE, SOUND_MOVES_END
+};
+
+
 static const u8 sAbilitiesAffectedByMoldBreaker[] =
 {
     [ABILITY_BATTLE_ARMOR] = 1,
@@ -4085,6 +4094,19 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
             {
                 gBattleCommunication[MULTISTRING_CHOOSER] = GetCurrentWeather();
                 BattleScriptPushCursorAndCallback(BattleScript_OverworldWeatherStarts);
+
+                for (i = 0; sSoundMovesTable[i] != SOUND_MOVES_END; i++)
+                {
+                    if (sSoundMovesTable[i] == move)
+                        break;
+                }
+                if (sSoundMovesTable[i] != SOUND_MOVES_END)
+                {
+                    if (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS)
+                        gHitMarker |= HITMARKER_NO_PPDEDUCT;
+                    gBattlescriptCurrInstr = BattleScript_SoundproofProtected;
+                    effect = 1;
+                }
             }
             break;
         case ABILITY_IMPOSTER:
