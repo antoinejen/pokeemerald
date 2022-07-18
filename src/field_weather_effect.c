@@ -18,7 +18,6 @@
 EWRAM_DATA static u8 sCurrentAbnormalWeather = 0;
 EWRAM_DATA static u16 sUnusedWeatherRelated = 0;
 
-// CONST
 const u16 gCloudsWeatherPalette[] = INCBIN_U16("graphics/weather/cloud.gbapal");
 const u16 gSandstormWeatherPalette[] = INCBIN_U16("graphics/weather/sandstorm.gbapal");
 const u8 gWeatherFogDiagonalTiles[] = INCBIN_U8("graphics/weather/fog_diagonal.4bpp");
@@ -2427,20 +2426,25 @@ static void UpdateBubbleSprite(struct Sprite *sprite)
 //------------------------------------------------------------------------------
 
 // Unused function.
-static void UnusedSetCurrentAbnormalWeather(u32 a0, u32 a1)
+static void UnusedSetCurrentAbnormalWeather(u32 weather, u32 unknown)
 {
-    sCurrentAbnormalWeather = a0;
-    sUnusedWeatherRelated = a1;
+    sCurrentAbnormalWeather = weather;
+    sUnusedWeatherRelated = unknown;
 }
+
+#define tState         data[0]
+#define tWeatherA      data[1]
+#define tWeatherB      data[2]
+#define tDelay         data[15]
 
 static void Task_DoAbnormalWeather(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
 
-    switch (data[0])
+    switch (tState)
     {
     case 0:
-        if (data[15]-- <= 0)
+        if (tDelay-- <= 0)
         {
             SetNextWeather(data[1]);
             sCurrentAbnormalWeather = data[1];
@@ -2449,7 +2453,7 @@ static void Task_DoAbnormalWeather(u8 taskId)
         }
         break;
     case 1:
-        if (data[15]-- <= 0)
+        if (tDelay-- <= 0)
         {
             SetNextWeather(data[2]);
             sCurrentAbnormalWeather = data[2];
@@ -2468,13 +2472,15 @@ static void CreateAbnormalWeatherTask(void)
     data[15] = 600;
     if (sCurrentAbnormalWeather == WEATHER_DOWNPOUR)
     {
-        data[1] = WEATHER_DROUGHT;
-        data[2] = WEATHER_DOWNPOUR;
+        // Currently Downpour, next will be Drought
+        tWeatherA = WEATHER_DROUGHT;
+        tWeatherB = WEATHER_DOWNPOUR;
     }
     else if (sCurrentAbnormalWeather == WEATHER_DROUGHT)
     {
-        data[1] = WEATHER_DOWNPOUR;
-        data[2] = WEATHER_DROUGHT;
+        // Currently Drought, next will be Downpour
+        tWeatherA = WEATHER_DOWNPOUR;
+        tWeatherB = WEATHER_DROUGHT;
     }
     else
     {
@@ -2483,6 +2489,11 @@ static void CreateAbnormalWeatherTask(void)
         data[2] = WEATHER_DOWNPOUR;
     }
 }
+
+#undef tState
+#undef tWeatherA
+#undef tWeatherB
+#undef tDelay
 
 static u8 TranslateWeatherNum(u8);
 static void UpdateRainCounter(u8, u8);
