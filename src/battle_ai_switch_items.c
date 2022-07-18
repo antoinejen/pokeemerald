@@ -5,6 +5,7 @@
 #include "battle_anim.h"
 #include "battle_controllers.h"
 #include "battle_setup.h"
+#include "battle_main.h"
 #include "data.h"
 #include "pokemon.h"
 #include "random.h"
@@ -27,14 +28,14 @@ void GetAIPartyIndexes(u32 battlerId, s32 *firstId, s32 *lastId)
     }
     else if (gBattleTypeFlags & (BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_TOWER_LINK_MULTI))
     {
-        if ((battlerId & BIT_FLANK) == B_FLANK_LEFT)
-            *firstId = 0, *lastId = 3;
+        if ((gActiveBattler & BIT_FLANK) == B_FLANK_LEFT)
+            firstId = 0, lastId = PARTY_SIZE / 2;
         else
-            *firstId = 3, *lastId = 6;
+            firstId = PARTY_SIZE / 2, lastId = PARTY_SIZE;
     }
     else
     {
-        *firstId = 0, *lastId = 6;
+        firstId = 0, lastId = PARTY_SIZE;
     }
 }
 
@@ -179,6 +180,7 @@ static bool8 FindMonThatAbsorbsOpponentsMove(void)
 
     if (AI_GetAbility(gActiveBattler) == absorbingTypeAbility)
         return FALSE;
+
 
     GetAIPartyIndexes(gActiveBattler, &firstId, &lastId);
 
@@ -739,6 +741,75 @@ u8 GetMostSuitableMonToSwitchInto(void)
         party = gEnemyParty;
 
     // Get invalid slots ids.
+    invalidMons = 0;
+
+    while (invalidMons != 0x3F) // All mons are invalid.
+    {
+        bestDmg = ;
+        bestMonId = 6;
+        // Find the mon whose type is the most suitable offensively.
+        for (i = firstId; i < lastId; i++)
+        {
+            u16 species = GetMonData(&party[i], MON_DATA_SPECIES);
+            if (species != SPECIES_NONE
+                && GetMonData(&party[i], MON_DATA_HP) != 0
+                && !(gBitTable[i] & invalidMons)
+                && gBattlerPartyIndexes[battlerIn1] != i
+                && gBattlerPartyIndexes[battlerIn2] != i
+                && i != *(gBattleStruct->monToSwitchIntoId + battlerIn1)
+                && i != *(gBattleStruct->monToSwitchIntoId + battlerIn2))
+            {
+                u8 type1 = gBaseStats[species].type1;
+                u8 type2 = gBaseStats[species].type2;
+                u8 typeDmg = TYPE_MUL_NORMAL;
+                ModulateByTypeEffectiveness(gBattleMons[opposingBattler].type1, type1, type2, &typeDmg);
+                ModulateByTypeEffectiveness(gBattleMons[opposingBattler].type2, type1, type2, &typeDmg);
+
+                /* Possible bug: this comparison gives the type that takes the most damage, when
+                a "good" AI would want to select the type that takes the least damage. Unknown if this
+                is a legitimate mistake or if it's an intentional, if weird, design choice*/
+                if (bestDmg < typeDmg)
+                {
+                    bestDmg = typeDmg;
+                    bestMonId = i;
+                }
+            }
+            else
+            {
+                invalidMons |= gBitTable[i];
+            }
+        }
+
+        // Ok, we know the mon has the right typing but does it have at least one super effective move?
+        if (bestMonId != PARTY_SIZE)
+        {
+            for (i = 0; i < MAX_MON_MOVES; i++)
+            {
+                move = GetMonData(&party[bestMonId], MON_DATA_MOVE1 + i);
+                if (move != MOVE_NONE && TypeCalc(move, gActiveBattler, opposingBattler) & MOVE_RESULT_SUPER_EFFECTIVE)
+                    break;
+            }
+
+            if (i != MAX_MON_MOVES)
+                return bestMonId; // Has both the typing and at least one super effective move.
+
+            invalidMons |= gBitTable[bestMonId]; // Sorry buddy, we want something better.
+        }
+        else
+        {
+            invalidMons = 0x3F; // No viable mon to switch.
+        }
+    }
+
+    gDynamicBasePower = 0;
+    gBattleStruct->dynamicMoveType = 0;
+    gBattleScripting.dmgMultiplier = 1;
+    gMoveResultFlags = 0;
+    gCritMultiplier = 1;
+    bestDmg = 0;
+    bestMonId = 6;
+
+    // If we couldn't find the best mon in terms of typing, find the one that deals most damage.
     for (i = firstId; i < lastId; i++)
     {
         if (GetMonData(&party[i], MON_DATA_SPECIES) == SPECIES_NONE
