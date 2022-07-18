@@ -699,12 +699,16 @@ static u32 GetBestMonDmg(struct Pokemon *party, int firstId, int lastId, u8 inva
 
 u8 GetMostSuitableMonToSwitchInto(void)
 {
-    u32 opposingBattler = 0;
-    u32 bestDmg = 0;
-    u32 bestMonId = 0;
-    u8 battlerIn1 = 0, battlerIn2 = 0;
-    s32 firstId = 0;
-    s32 lastId = 0; // + 1
+    u8 opposingBattler;
+#ifdef BUGFIX
+    s32 bestDmg;
+#else
+    u8 bestDmg; // Note: should be changed to s32 since it is also used for the actual damage done later
+#endif
+    u8 bestMonId;
+    u8 battlerIn1, battlerIn2;
+    s32 firstId;
+    s32 lastId; // + 1
     struct Pokemon *party;
     s32 i, j, aliveCount = 0;
     u8 invalidMons = 0;
@@ -745,8 +749,8 @@ u8 GetMostSuitableMonToSwitchInto(void)
 
     while (invalidMons != 0x3F) // All mons are invalid.
     {
-        bestDmg = ;
-        bestMonId = 6;
+        bestDmg = TYPE_MUL_NO_EFFECT;
+        bestMonId = PARTY_SIZE;
         // Find the mon whose type is the most suitable offensively.
         for (i = firstId; i < lastId; i++)
         {
@@ -767,7 +771,7 @@ u8 GetMostSuitableMonToSwitchInto(void)
 
                 /* Possible bug: this comparison gives the type that takes the most damage, when
                 a "good" AI would want to select the type that takes the least damage. Unknown if this
-                is a legitimate mistake or if it's an intentional, if weird, design choice*/
+                is a legitimate mistake or if it's an intentional, if weird, design choice */
                 if (bestDmg < typeDmg)
                 {
                     bestDmg = typeDmg;
