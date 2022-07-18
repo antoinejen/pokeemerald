@@ -2832,7 +2832,7 @@ void BufferStringBattle(u16 stringID)
         }
         else
         {
-            stringPtr = gBattleStringsTable[stringID - BATTLESTRINGS_TABLE_START];
+            stringPtr = gBattleStringsTable[stringID - 12];
         }
         break;
     }
@@ -3523,7 +3523,7 @@ static void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst)
         {
         case B_BUFF_STRING: // battle string
             hword = T1_READ_16(&src[srcID + 1]);
-            StringAppend(dst, gBattleStringsTable[hword - BATTLESTRINGS_TABLE_START]);
+            StringAppend(dst, gBattleStringsTable[hword - 12]);
             srcID += 3;
             break;
         case B_BUFF_NUMBER: // int to string

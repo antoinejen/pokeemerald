@@ -11,6 +11,7 @@
 #include "random.h"
 #include "util.h"
 #include "constants/abilities.h"
+#include "constants/global.h"
 #include "constants/item_effects.h"
 #include "constants/items.h"
 #include "constants/moves.h"
@@ -28,14 +29,14 @@ void GetAIPartyIndexes(u32 battlerId, s32 *firstId, s32 *lastId)
     }
     else if (gBattleTypeFlags & (BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_TOWER_LINK_MULTI))
     {
-        if ((gActiveBattler & BIT_FLANK) == B_FLANK_LEFT)
-            firstId = 0, lastId = PARTY_SIZE / 2;
+        if ((battlerId & BIT_FLANK) == B_FLANK_LEFT)
+            *firstId = 0, *lastId = PARTY_SIZE / 2;
         else
-            firstId = PARTY_SIZE / 2, lastId = PARTY_SIZE;
+            *firstId = PARTY_SIZE / 2, *lastId = PARTY_SIZE;
     }
     else
     {
-        firstId = 0, lastId = PARTY_SIZE;
+        *firstId = 0, *lastId = PARTY_SIZE;
     }
 }
 
@@ -700,6 +701,30 @@ static u32 GetBestMonDmg(struct Pokemon *party, int firstId, int lastId, u8 inva
     return bestMonId;
 }
 
+static void ModulateByTypeEffectiveness(u8 atkType, u8 defType1, u8 defType2, u8 *var)
+{
+    s32 i = 0;
+
+    while (TYPE_EFFECT_ATK_TYPE(i) != TYPE_ENDTABLE)
+    {
+        if (TYPE_EFFECT_ATK_TYPE(i) == TYPE_FORESIGHT)
+        {
+            i += 3;
+            continue;
+        }
+        else if (TYPE_EFFECT_ATK_TYPE(i) == atkType)
+        {
+            // Check type1.
+            if (TYPE_EFFECT_DEF_TYPE(i) == defType1)
+                *var = (*var * TYPE_EFFECT_MULTIPLIER(i)) / TYPE_MUL_NORMAL;
+            // Check type2.
+            if (TYPE_EFFECT_DEF_TYPE(i) == defType2 && defType1 != defType2)
+                *var = (*var * TYPE_EFFECT_MULTIPLIER(i)) / TYPE_MUL_NORMAL;
+        }
+        i += 3;
+    }
+}
+
 u8 GetMostSuitableMonToSwitchInto(void)
 {
     u8 opposingBattler;
@@ -715,6 +740,7 @@ u8 GetMostSuitableMonToSwitchInto(void)
     struct Pokemon *party;
     s32 i, j, aliveCount = 0;
     u8 invalidMons = 0;
+    u16 move;
 
     if (*(gBattleStruct->monToSwitchIntoId + gActiveBattler) != PARTY_SIZE)
         return *(gBattleStruct->monToSwitchIntoId + gActiveBattler);
@@ -793,7 +819,7 @@ u8 GetMostSuitableMonToSwitchInto(void)
             for (i = 0; i < MAX_MON_MOVES; i++)
             {
                 move = GetMonData(&party[bestMonId], MON_DATA_MOVE1 + i);
-                if (move != MOVE_NONE && TypeCalc(move, gActiveBattler, opposingBattler) & MOVE_RESULT_SUPER_EFFECTIVE)
+                if (move != MOVE_NONE && AI_GetTypeEffectiveness(move, gActiveBattler, opposingBattler) & MOVE_RESULT_SUPER_EFFECTIVE)
                     break;
             }
 

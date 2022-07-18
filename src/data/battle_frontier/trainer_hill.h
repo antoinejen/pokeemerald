@@ -6,7 +6,7 @@
 #define TRAINER_DIRS(a, b)  (((a-1)<<4)|(b-1))
 #define TRAINER_RANGE(a, b) ((a<<4)|(b))
 
-static const struct TrHillTag sDataTagJPDefault = {
+static const struct TrainerHillChallenge sDataTagJPDefault = {
     .numTrainers = NUM_TRAINER_HILL_TRAINERS_JP,
     .unused1 = 1,
     .numFloors = NUM_TRAINER_HILL_FLOORS_JP,
@@ -14,7 +14,7 @@ static const struct TrHillTag sDataTagJPDefault = {
 };
 
 
-static const struct TrHillFloor sDataTagJPDefault_Floors[] = {
+static const struct TrainerHillFloor sDataTagJPDefault_Floors[] = {
     [0] = {
         .trainerNum1 = 0,
         .trainerNum2 = 0,
@@ -95,9 +95,9 @@ static const struct TrHillFloor sDataTagJPDefault_Floors[] = {
                         .nickname = __("サンド$$$$$$$$"),
                         .friendship = MAX_FRIENDSHIP
                     },
-                    [3] = NULL_BATTLE_TOWER_POKEMON,
-                    [4] = NULL_BATTLE_TOWER_POKEMON,
-                    [5] = NULL_BATTLE_TOWER_POKEMON
+                    [3] = DUMMY_HILL_MON,
+                    [4] = DUMMY_HILL_MON,
+                    [5] = DUMMY_HILL_MON
                 }
             },
             [1] = {
@@ -109,9 +109,9 @@ static const struct TrHillFloor sDataTagJPDefault_Floors[] = {
                 .speechLose = { EC_WORD_OH_QUES, EC_MOVE(EARTHQUAKE), EC_WORD_EXISTS, EC_WORD_OF, EC_WORD_WITHOUT, EC_WORD_EXCL },
                 .speechAfter = { EC_WORD_YOU_RE, EC_WORD_PROBABLY, EC_WORD_END, EC_WORD_UNTIL, EC_WORD_GOING, EC_WORD_ANYWHERE },
                 .mons = {
-                    [0] = NULL_BATTLE_TOWER_POKEMON,
-                    [1] = NULL_BATTLE_TOWER_POKEMON,
-                    [2] = NULL_BATTLE_TOWER_POKEMON,
+                    [0] = DUMMY_HILL_MON,
+                    [1] = DUMMY_HILL_MON,
+                    [2] = DUMMY_HILL_MON,
                     [3] = {
                         .species = SPECIES_WINGULL,
                         .heldItem = ITEM_CHERI_BERRY,
@@ -273,9 +273,9 @@ static const struct TrHillFloor sDataTagJPDefault_Floors[] = {
                         .nickname = __("ヤジロン$$$$$$$"),
                         .friendship = MAX_FRIENDSHIP
                     },
-                    [3] = NULL_BATTLE_TOWER_POKEMON,
-                    [4] = NULL_BATTLE_TOWER_POKEMON,
-                    [5] = NULL_BATTLE_TOWER_POKEMON,
+                    [3] = DUMMY_HILL_MON,
+                    [4] = DUMMY_HILL_MON,
+                    [5] = DUMMY_HILL_MON,
                 }
             },
             [1] = {
@@ -287,9 +287,9 @@ static const struct TrHillFloor sDataTagJPDefault_Floors[] = {
                 .speechLose = { EC_WORD_AWFUL, EC_WORD_GWAH, EC_WORD_HOPELESS, EC_WORD_CAN_T_WIN, EC_WORD_IS, EC_WORD_NONE },
                 .speechAfter = { EC_WORD_AWW, EC_EMPTY_WORD, EC_EMPTY_WORD, EC_WORD_ALMOST, EC_WORD_GOOD, EC_WORD_ANYWHERE },
                 .mons = {
-                    [0] = NULL_BATTLE_TOWER_POKEMON,
-                    [1] = NULL_BATTLE_TOWER_POKEMON,
-                    [2] = NULL_BATTLE_TOWER_POKEMON,
+                    [0] = DUMMY_HILL_MON,
+                    [1] = DUMMY_HILL_MON,
+                    [2] = DUMMY_HILL_MON,
                     [3] = {
                         .species = SPECIES_SPHEAL,
                         .heldItem = ITEM_FOCUS_BAND,
@@ -373,7 +373,7 @@ static const struct TrHillFloor sDataTagJPDefault_Floors[] = {
     },
 };
 
-static const struct TrHillTag sDataTagNormal =
+static const struct TrainerHillChallenge sChallenge_Normal =
 {
     .numTrainers = NUM_TRAINER_HILL_TRAINERS,
     .unused1 = 2,
@@ -381,7 +381,7 @@ static const struct TrHillTag sDataTagNormal =
     .checksum = 0x00051E05
 };
 
-static const struct TrHillFloor sDataTagNormal_Floors[] =
+static const struct TrainerHillFloor sDataTagNormal_Floors[] =
 {
     [0] =
     {
@@ -1585,7 +1585,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
     },
 };
 
-static const struct TrHillTag sDataTagVariety =
+static const struct TrainerHillChallenge sChallenge_Variety =
 {
     .numTrainers = NUM_TRAINER_HILL_TRAINERS,
     .unused1 = 1,
@@ -1593,7 +1593,7 @@ static const struct TrHillTag sDataTagVariety =
     .checksum = 0x00054C15
 };
 
-static const struct TrHillFloor sDataTagVariety_Floors[] = {
+static const struct TrainerHillFloor sDataTagVariety_Floors[] = {
     [0] =
         {
             .trainerNum1 = 41,
@@ -2803,7 +2803,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
         },
 };
 
-static const struct TrHillTag sDataTagUnique =
+static const struct TrainerHillChallenge sChallenge_Unique =
 {
     .numTrainers = NUM_TRAINER_HILL_TRAINERS,
     .unused1 = 3,
@@ -2811,7 +2811,7 @@ static const struct TrHillTag sDataTagUnique =
     .checksum = 0x000652F3
 };
 
-static const struct TrHillFloor sDataTagUnique_Floors[] = {
+static const struct TrainerHillFloor sDataTagUnique_Floors[] = {
     [0] =
         {
             .trainerNum1 = 49,
@@ -4006,7 +4006,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
         },
 };
 
-static const struct TrHillTag sDataTagExpert =
+static const struct TrainerHillChallenge sChallenge_Expert =
 {
     .numTrainers = NUM_TRAINER_HILL_TRAINERS,
     .unused1 = 1,
@@ -4014,7 +4014,7 @@ static const struct TrHillTag sDataTagExpert =
     .checksum = 0x00061F3F
 };
 
-static const struct TrHillFloor sDataTagExpert_Floors[] = {
+static const struct TrainerHillFloor sDataTagExpert_Floors[] = {
     [0] =
         {
             .trainerNum1 = 57,

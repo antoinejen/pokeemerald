@@ -9521,6 +9521,7 @@ static void Cmd_trymirrormove(void)
     s32 i;
     u16 move;
     u16 movesArray[4] = {0};
+    u16 validMoves[MAX_BATTLERS_COUNT];
 
     for (validMovesCount = 0, i = 0; i < gBattlersCount; i++)
     {

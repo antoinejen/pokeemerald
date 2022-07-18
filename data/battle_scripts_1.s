@@ -2926,7 +2926,7 @@ BattleScript_EffectMindBlown::
 	attackcanceler
 	attackstring
 	ppreduce
-	faintifabilitynotdamp
+	tryexplosion
 	dmg_1_2_attackerhp
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER

@@ -4557,26 +4557,26 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
         // Handle itemRare effects (more stat boosting effects)
         case 2:
             // X Accuracy
-            if ((itemEffect[i] & itemRare_X_ACCURACY)
+            if ((itemEffect[i] & ITEM2_X_ACCURACY)
              && gBattleMons[gActiveBattler].statStages[STAT_ACC] < MAX_STAT_STAGE)
             {
                 if (B_X_ITEMS_BUFF >= GEN_7)
                     gBattleMons[gActiveBattler].statStages[STAT_ACC] += 2;
                 else
-                    gBattleMons[gActiveBattler].statStages[STAT_ACC] += (itemEffect[i] & itemRare_X_ACCURACY) >> 4;
+                    gBattleMons[gActiveBattler].statStages[STAT_ACC] += (itemEffect[i] & ITEM2_X_ACCURACY) >> 4;
                 if (gBattleMons[gActiveBattler].statStages[STAT_ACC] > MAX_STAT_STAGE)
                     gBattleMons[gActiveBattler].statStages[STAT_ACC] = MAX_STAT_STAGE;
                 retVal = FALSE;
             }
 
             // X Sp Attack
-            if ((itemEffect[i] & itemRare_X_SPATK)
+            if ((itemEffect[i] & ITEM2_X_SPATK)
              && gBattleMons[gActiveBattler].statStages[STAT_SPATK] < MAX_STAT_STAGE)
             {
                 if (B_X_ITEMS_BUFF >= GEN_7)
                     gBattleMons[gActiveBattler].statStages[STAT_SPATK] += 2;
                 else
-                    gBattleMons[gActiveBattler].statStages[STAT_SPATK] += itemEffect[i] & itemRare_X_SPATK;
+                    gBattleMons[gActiveBattler].statStages[STAT_SPATK] += itemEffect[i] & ITEM2_X_SPATK;
                 if (gBattleMons[gActiveBattler].statStages[STAT_SPATK] > MAX_STAT_STAGE)
                     gBattleMons[gActiveBattler].statStages[STAT_SPATK] = MAX_STAT_STAGE;
                 retVal = FALSE;
@@ -5204,7 +5204,7 @@ u8 GetItemEffectParamOffset(u16 itemId, u8 effectByte, u8 effectBit)
 static void BufferStatRoseMessage(s32 statIdx)
 {
     gBattlerTarget = gBattlerInMenuId;
-    StringCopy(gBattleTextBuff1, gStatNamesTable[sStatsToRaise[arg0]]);
+    StringCopy(gBattleTextBuff1, gStatNamesTable[sStatsToRaise[statIdx]]);
     if (B_X_ITEMS_BUFF >= GEN_7)
     {
         StringCopy(gBattleTextBuff2, gText_StatSharply);
@@ -5239,10 +5239,10 @@ u8 *UseStatIncreaseItem(u16 itemId)
 #ifndef ITEM_EXPANSION
     for (i = 0; i < 3; i++)
     {
-        if (itemEffect[i] & (ITEM0_X_ATTACK | ITEM1_X_SPEED | itemRare_X_SPATK))
+        if (itemEffect[i] & (ITEM0_X_ATTACK | ITEM1_X_SPEED | ITEM2_X_SPATK))
             BufferStatRoseMessage(i * 2);
 
-        if (itemEffect[i] & (ITEM0_DIRE_HIT | ITEM1_X_DEFEND | itemRare_X_ACCURACY))
+        if (itemEffect[i] & (ITEM0_DIRE_HIT | ITEM1_X_DEFEND | ITEM_X_ACCURACY))
         {
             if (i != 0) // Dire Hit is the only ITEM0 above
             {

@@ -33,6 +33,15 @@
 #include "constants/battle_config.h"
 #include "constants/items.h"
 
+struct TestingBar
+{
+    s32 maxValue;
+    s32 oldValue;
+    s32 receivedValue;
+    u32 unkC_0:5;
+    u32 unk10;
+};
+
 enum
 {   // Corresponds to gHealthboxElementsGfxTable (and the tables after it) in graphics.c
     // These are indexes into the tables, which are filled with 8x8 square pixel data.
@@ -589,6 +598,11 @@ static const struct WindowTemplate sHealthboxWindowTemplate = {
     .paletteNum = 0,
     .baseBlock = 0
 };
+
+static s32 DummiedOutFunction(s16 unused1, s16 unused2, s32 unused3)
+{
+    return 9;
+}
 
 static const u8 sMegaTriggerGfx[] = INCBIN_U8("graphics/battle_interface/mega_trigger.4bpp");
 static const u16 sMegaTriggerPal[] = INCBIN_U16("graphics/battle_interface/mega_trigger.gbapal");

@@ -23031,6 +23031,11 @@ SilverWindContinue:
 	delay 0
 	call UnsetBugBg
 	end
+SilverWindOnPlayer:
+	fadetobg BG_BUG_PLAYER
+	waitbgfadeout
+	createvisualtask AnimTask_StartSlidingBg, 5, -1536, 0, 0, -1
+	goto SilverWindContinue
 
 Move_SNATCH:
 	playsewithpan SE_M_TAKE_DOWN, SOUND_PAN_ATTACKER
