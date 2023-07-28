@@ -16,6 +16,8 @@
 #define TRAINER_UNION_ROOM                  3072
 #define TRAINER_STEVEN_PARTNER              3075
 #define TRAINER_CUSTOM_PARTNER              3076
+#define TRAINER_BRENDAN_PARTNER             3077
+#define TRAINER_MAY_PARTNER                 3078
 
 #define TRAINER_PIC_HIKER                  0
 #define TRAINER_PIC_AQUA_GRUNT_M           1

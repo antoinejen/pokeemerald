@@ -5407,6 +5407,7 @@ BattleScript_PrintBankAbilityMadeIneffective::
 	copybyte sBATTLER, gBattlerAbility
 BattleScript_PrintAbilityMadeIneffective::
 	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
 	printstring STRINGID_PKMNSXMADEITINEFFECTIVE
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd

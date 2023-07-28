@@ -609,8 +609,10 @@
 #define STRINGID_NEUTRALIZINGGASOVER                  608
 #define STRINGID_PLAYERLOSTTOENEMYTRAINER			  609
 #define STRINGID_PLAYERPAIDPRIZEMONEY				  610
+#define STRINGID_ITISTHUNDERING						  611
+#define STRINGID_THUNDERCONTINUES					  612
 
-#define BATTLESTRINGS_COUNT                           611
+#define BATTLESTRINGS_COUNT                           613
 
 // The below IDs are all indexes into battle message tables,
 // used to determine which of a set of messages to print.
@@ -674,6 +676,7 @@
 #define B_MSG_RAIN_CONTINUES     0
 #define B_MSG_DOWNPOUR_CONTINUES 1
 #define B_MSG_RAIN_STOPPED       2
+#define B_MSG_THUNDERSTORM_CONTINUES       3
 
 // gSandStormHailContinuesStringIds / gSandStormHailDmgStringIds/ gSandStormHailEndStringIds
 #define B_MSG_SANDSTORM  0
