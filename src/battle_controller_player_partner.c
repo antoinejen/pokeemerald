@@ -1305,6 +1305,18 @@ static void PlayerPartnerHandleDrawTrainerPic(void)
         xPos = 90;
         yPos = (8 - gTrainerBackPicCoords[trainerPicId].size) * 4 + 80;
     }
+    else if (gPartnerTrainerId == TRAINER_BRENDAN_PARTNER)
+    {
+        trainerPicId = TRAINER_BACK_PIC_BRENDAN;
+        xPos = 90;
+        yPos = (8 - gTrainerBackPicCoords[trainerPicId].size) * 4 + 80;
+    }
+    else if (gPartnerTrainerId == TRAINER_MAY_PARTNER)
+    {
+        trainerPicId = TRAINER_BACK_PIC_MAY;
+        xPos = 90;
+        yPos = (8 - gTrainerBackPicCoords[trainerPicId].size) * 4 + 80;
+    }
     else if (gPartnerTrainerId >= TRAINER_CUSTOM_PARTNER)
     {
         trainerPicId = gPartnerSpriteId;
@@ -1806,6 +1818,16 @@ static void PlayerPartnerHandleIntroTrainerBallThrow(void)
     if (gPartnerTrainerId == TRAINER_STEVEN_PARTNER)
     {
         u8 spriteId = TRAINER_BACK_PIC_STEVEN;
+        LoadCompressedPalette(gTrainerBackPicPaletteTable[spriteId].data, 0x100 + paletteNum * 16, 32);
+    }
+    else if (gPartnerTrainerId == TRAINER_BRENDAN_PARTNER)
+    {
+        u8 spriteId = TRAINER_BACK_PIC_BRENDAN;
+        LoadCompressedPalette(gTrainerBackPicPaletteTable[spriteId].data, 0x100 + paletteNum * 16, 32);
+    }
+    else if (gPartnerTrainerId == TRAINER_MAY_PARTNER)
+    {
+        u8 spriteId = TRAINER_BACK_PIC_MAY;
         LoadCompressedPalette(gTrainerBackPicPaletteTable[spriteId].data, 0x100 + paletteNum * 16, 32);
     }
     else if (gPartnerTrainerId >= TRAINER_CUSTOM_PARTNER)

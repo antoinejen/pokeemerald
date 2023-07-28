@@ -473,6 +473,8 @@ static const u8 sText_Someones[] = _("someone's");
 static const u8 sText_Lanettes[] = _("Lanette's");
 static const u8 sText_PkmnDataAddedToDex[] = _("{B_DEF_NAME}'s data was\nadded to the POKéDEX.\p");
 static const u8 sText_ItIsRaining[] = _("It is raining.");
+static const u8 sText_ItIsThundering[] = _("The thunder is clapping.");
+static const u8 sText_ThunderContinues[] = _("The thunder continues to rumble.");
 static const u8 sText_SandstormIsRaging[] = _("A sandstorm is raging.");
 static const u8 sText_BoxIsFull[] = _("The box is full!\nYou can't catch any more!\p");
 static const u8 sText_EnigmaBerry[] = _("Enigma Berry");
@@ -1340,6 +1342,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_CANTESCAPEBECAUSEOFCURRENTMOVE - 12] = sText_CantEscapeBecauseOfCurrentMove,
     [STRINGID_PLAYERLOSTTOENEMYTRAINER - 12] = sText_PlayerLostToEnemyTrainer,
     [STRINGID_PLAYERPAIDPRIZEMONEY - 12] = sText_PlayerPaidPrizeMoney,
+    [STRINGID_ITISTHUNDERING - 12] = sText_ItIsThundering,
+    [STRINGID_THUNDERCONTINUES - 12] = sText_ThunderContinues,
 };
 
 const u16 gMentalHerbCureStringIds[] = 
@@ -1455,7 +1459,8 @@ const u16 gRainContinuesStringIds[] =
 {
     [B_MSG_RAIN_CONTINUES]     = STRINGID_RAINCONTINUES,
     [B_MSG_DOWNPOUR_CONTINUES] = STRINGID_DOWNPOURCONTINUES,
-    [B_MSG_RAIN_STOPPED]       = STRINGID_RAINSTOPPED
+    [B_MSG_RAIN_STOPPED]       = STRINGID_RAINSTOPPED,
+    [B_MSG_THUNDERSTORM_CONTINUES]     = STRINGID_THUNDERCONTINUES,
 };
 
 const u16 gProtectLikeUsedStringIds[] =
@@ -1684,7 +1689,7 @@ const u16 gWeatherStartsStringIds[] =
     [WEATHER_SUNNY]              = STRINGID_ITISRAINING,
     [WEATHER_RAIN]               = STRINGID_ITISRAINING,
     [WEATHER_SNOW]               = STRINGID_STARTEDHAIL,
-    [WEATHER_RAIN_THUNDERSTORM]  = STRINGID_ITISRAINING,
+    [WEATHER_RAIN_THUNDERSTORM]  = STRINGID_ITISTHUNDERING,
     [WEATHER_FOG_HORIZONTAL]     = STRINGID_ITISRAINING,
     [WEATHER_VOLCANIC_ASH]       = STRINGID_ITISRAINING,
     [WEATHER_SANDSTORM]          = STRINGID_SANDSTORMISRAGING,

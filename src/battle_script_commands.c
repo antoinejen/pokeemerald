@@ -4675,6 +4675,7 @@ static void Cmd_playanimation(void)
         gBattlescriptCurrInstr = BattleScript_Pausex20;
     }
     else if (animId == B_ANIM_RAIN_CONTINUES
+          || animId == B_ANIM_THUNDER_CONTINUES
           || animId == B_ANIM_SUN_CONTINUES
           || animId == B_ANIM_SANDSTORM_CONTINUES
           || animId == B_ANIM_HAIL_CONTINUES)
@@ -4722,6 +4723,7 @@ static void Cmd_playanimation_var(void)
         gBattlescriptCurrInstr += 10;
     }
     else if (*animationIdPtr == B_ANIM_RAIN_CONTINUES
+          || *animationIdPtr == B_ANIM_THUNDER_CONTINUES
           || *animationIdPtr == B_ANIM_SUN_CONTINUES
           || *animationIdPtr == B_ANIM_SANDSTORM_CONTINUES
           || *animationIdPtr == B_ANIM_HAIL_CONTINUES)

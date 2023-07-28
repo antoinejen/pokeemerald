@@ -41,6 +41,12 @@ MeteorFalls_1F_1R_EventScript_MagmaStealsMeteoriteScene::
 	closemessage
 	applymovement LOCALID_MAGMA_GRUNT_1, MeteorFalls_1F_1R_Movement_MagmaGruntApproachPlayer
 	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, MeteorFalls_1F_1R_Movement_PlayerWalkBackwards
+	waitmovement 0
+	applymovement LOCALID_MAGMA_GRUNT_2, MeteorFalls_1F_1R_Movement_MagmaGrunt2TrapPlayer
+	waitmovement 0
+	applymovement LOCALID_MAGMA_GRUNT_1, MeteorFalls_1F_1R_Movement_MagmaGrunt1TrapPlayer
+	waitmovement 0
 	msgbox MeteorFalls_1F_1R_Text_HoldItRightThereMagma, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
@@ -99,7 +105,30 @@ MeteorFalls_1F_1R_EventScript_MagmaStealsMeteoriteScene::
 MeteorFalls_1F_1R_Movement_MagmaGruntApproachPlayer:
 	walk_right
 	walk_right
-	walk_in_place_faster_up
+	walk_up
+	step_end
+
+MeteorFalls_1F_1R_Movement_PlayerWalkBackwards:
+	lock_facing_direction
+	walk_up
+	step_end
+
+MeteorFalls_1F_1R_Movement_MagmaGrunt2TrapPlayer:
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_up
+	walk_up
+	walk_in_place_faster_left
+	step_end
+
+MeteorFalls_1F_1R_Movement_MagmaGrunt1TrapPlayer:
+	walk_up
+	walk_left
+	walk_up
+	walk_up
+	walk_in_place_faster_right
 	step_end
 
 MeteorFalls_1F_1R_Movement_MagmaGrunt1Exit:

@@ -459,7 +459,7 @@ MossdeepCity_SpaceCenter_2F_Text_CourtneyIntro:
 	.string "will have to satisfy me first!$"
 
 MossdeepCity_SpaceCenter_2F_Text_CourtneyDefeat:
-	.string "Again…\p"
+	.string "Again…$"
 
 MossdeepCity_SpaceCenter_2F_Text_CourtneyPostBattle:
 	.string "But you are too late.\p"

@@ -2236,6 +2236,10 @@ u8 DoFieldEndTurnEffects(void)
                 {
                     gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_DOWNPOUR_CONTINUES;
                 }
+                else if (gBattleWeather & B_WEATHER_RAIN_THUNDERSTORM)
+                {
+                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_THUNDERSTORM_CONTINUES;
+                }
                 else
                 {
                     gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_RAIN_CONTINUES;
@@ -4045,12 +4049,19 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 switch (GetCurrentWeather())
                 {
                 case WEATHER_RAIN:
-                case WEATHER_RAIN_THUNDERSTORM:
                 case WEATHER_DOWNPOUR:
                     if (!(gBattleWeather & B_WEATHER_RAIN))
                     {
                         gBattleWeather = (B_WEATHER_RAIN_TEMPORARY | B_WEATHER_RAIN_PERMANENT);
                         gBattleScripting.animArg1 = B_ANIM_RAIN_CONTINUES;
+                        effect++;
+                    }
+                    break;
+                case WEATHER_RAIN_THUNDERSTORM:
+                    if (!(gBattleWeather & B_WEATHER_RAIN_THUNDERSTORM))
+                    {
+                        gBattleWeather = B_WEATHER_RAIN_THUNDERSTORM;
+                        gBattleScripting.animArg1 = B_ANIM_THUNDER_CONTINUES;
                         effect++;
                     }
                     break;

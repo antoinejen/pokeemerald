@@ -510,27 +510,28 @@
 #define B_ANIM_SMOKEBALL_ESCAPE         8
 #define B_ANIM_HANGED_ON                9
 #define B_ANIM_RAIN_CONTINUES           10
-#define B_ANIM_SUN_CONTINUES            11
-#define B_ANIM_SANDSTORM_CONTINUES      12
-#define B_ANIM_HAIL_CONTINUES           13
-#define B_ANIM_LEECH_SEED_DRAIN         14
-#define B_ANIM_MON_HIT                  15
-#define B_ANIM_ITEM_STEAL               16
-#define B_ANIM_SNATCH_MOVE              17
-#define B_ANIM_FUTURE_SIGHT_HIT         18
-#define B_ANIM_DOOM_DESIRE_HIT          19
-#define B_ANIM_FOCUS_PUNCH_SETUP        20
-#define B_ANIM_INGRAIN_HEAL             21
-#define B_ANIM_WISH_HEAL                22
-#define B_ANIM_MEGA_EVOLUTION           23
-#define B_ANIM_ILLUSION_OFF             24
-#define B_ANIM_FORM_CHANGE              25
-#define B_ANIM_SLIDE_OFFSCREEN          26 // for Emergency Exit
-#define B_ANIM_RESTORE_BG               27 // for Terrain Endings
-#define B_ANIM_TOTEM_FLARE              28 // Totem boosts aura flare
-#define B_ANIM_GULP_MISSILE             29
-#define B_ANIM_STRONG_WINDS             30
-#define B_ANIM_PRIMAL_REVERSION         31
+#define B_ANIM_THUNDER_CONTINUES        11
+#define B_ANIM_SUN_CONTINUES            12
+#define B_ANIM_SANDSTORM_CONTINUES      13
+#define B_ANIM_HAIL_CONTINUES           14
+#define B_ANIM_LEECH_SEED_DRAIN         15
+#define B_ANIM_MON_HIT                  16
+#define B_ANIM_ITEM_STEAL               17
+#define B_ANIM_SNATCH_MOVE              18
+#define B_ANIM_FUTURE_SIGHT_HIT         19
+#define B_ANIM_DOOM_DESIRE_HIT          20
+#define B_ANIM_FOCUS_PUNCH_SETUP        21
+#define B_ANIM_INGRAIN_HEAL             22
+#define B_ANIM_WISH_HEAL                23
+#define B_ANIM_MEGA_EVOLUTION           24
+#define B_ANIM_ILLUSION_OFF             25
+#define B_ANIM_FORM_CHANGE              26
+#define B_ANIM_SLIDE_OFFSCREEN          27 // for Emergency Exit
+#define B_ANIM_RESTORE_BG               28 // for Terrain Endings
+#define B_ANIM_TOTEM_FLARE              29 // Totem boosts aura flare
+#define B_ANIM_GULP_MISSILE             30
+#define B_ANIM_STRONG_WINDS             31
+#define B_ANIM_PRIMAL_REVERSION         32
 
 // special animations table (gBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0
