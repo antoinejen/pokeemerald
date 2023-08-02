@@ -72,7 +72,6 @@ u8 GetBattlerForBattleScript(u8 caseId);
 void PressurePPLose(u8 target, u8 attacker, u16 move);
 void PressurePPLoseOnUsingPerishSong(u8 attacker);
 void PressurePPLoseOnUsingImprison(u8 attacker);
-void MarkAllBattlersForControllerExec(void); // unused
 bool32 IsBattlerMarkedForControllerExec(u8 battlerId);
 void MarkBattlerForControllerExec(u8 battlerId);
 void MarkBattlerReceivedLinkData(u8 battlerId);
@@ -82,7 +81,7 @@ void PrepareStringBattle(u16 stringId, u8 battlerId);
 void ResetSentPokesToOpponentValue(void);
 void OpponentSwitchInResetSentPokesToOpponentValue(u8 battlerId);
 void UpdateSentPokesToOpponentValue(u8 battlerId);
-void BattleScriptPush(const u8* bsPtr);
+void BattleScriptPush(const u8 *bsPtr);
 void BattleScriptPushCursor(void);
 void BattleScriptPop(void);
 u8 TrySetCantSelectMoveBattleScript(void);

@@ -134,11 +134,11 @@ static void Task_Truck2(u8 taskId)
     }
     else
     {
-        if (sTruckCamera_HorizontalTable[data[1]] == 2)
+        if (sTruckCamera_HorizontalTable[tMoveStep] == 2)
             gTasks[taskId].func = Task_Truck3;
 
-        cameraXpan = sTruckCamera_HorizontalTable[data[1]];
-        cameraYpan = GetTruckCameraBobbingY(data[2]);
+        cameraXpan = sTruckCamera_HorizontalTable[tMoveStep];
+        cameraYpan = GetTruckCameraBobbingY(tTimerVertical);
         SetCameraPanning(cameraXpan, cameraYpan);
         yBox1 = GetTruckBoxYMovement(tTimerVertical + 30) * 4;
         SetObjectEventSpritePosByLocalIdAndMap(LOCALID_TRUCK_BOX_TOP,      gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, BOX1_X_OFFSET - cameraXpan, BOX1_Y_OFFSET + yBox1);
@@ -168,9 +168,9 @@ static void Task_Truck3(u8 taskId)
    }
    else
    {
-       cameraXpan = sTruckCamera_HorizontalTable[data[1]];
+       cameraXpan = sTruckCamera_HorizontalTable[tMoveStep];
        cameraYpan = 0;
-       SetCameraPanning(cameraXpan, 0);
+       SetCameraPanning(cameraXpan, cameraYpan);
        SetObjectEventSpritePosByLocalIdAndMap(LOCALID_TRUCK_BOX_TOP,      gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, BOX1_X_OFFSET - cameraXpan, BOX1_Y_OFFSET + cameraYpan);
        SetObjectEventSpritePosByLocalIdAndMap(LOCALID_TRUCK_BOX_BOTTOM_L, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, BOX2_X_OFFSET - cameraXpan, BOX2_Y_OFFSET + cameraYpan);
        SetObjectEventSpritePosByLocalIdAndMap(LOCALID_TRUCK_BOX_BOTTOM_R, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, BOX3_X_OFFSET - cameraXpan, BOX3_Y_OFFSET + cameraYpan);
@@ -251,7 +251,7 @@ static void Task_HandleTruckSequence(u8 taskId)
             DrawWholeMapView();
             PlaySE(SE_TRUCK_DOOR);
             DestroyTask(taskId);
-            ScriptContext2_Disable();
+            UnlockPlayerFieldControls();
         }
         break;
     }
@@ -263,8 +263,8 @@ void ExecuteTruckSequence(void)
     MapGridSetMetatileIdAt(4 + MAP_OFFSET, 2 + MAP_OFFSET, METATILE_InsideOfTruck_DoorClosedFloor_Mid);
     MapGridSetMetatileIdAt(4 + MAP_OFFSET, 3 + MAP_OFFSET, METATILE_InsideOfTruck_DoorClosedFloor_Bottom);
     DrawWholeMapView();
-    ScriptContext2_Enable();
-    CpuFastFill(0, gPlttBufferFaded, 0x400);
+    LockPlayerFieldControls();
+    CpuFastFill(0, gPlttBufferFaded, PLTT_SIZE);
     CreateTask(Task_HandleTruckSequence, 0xA);
 }
 
@@ -371,7 +371,7 @@ void FieldCB_ShowPortholeView(void)
     gObjectEvents[gPlayerAvatar.objectEventId].invisible = TRUE;
     FadeInFromBlack();
     CreateTask(Task_HandlePorthole, 80);
-    ScriptContext2_Enable();
+    LockPlayerFieldControls();
 }
 
 void LookThroughPorthole(void)

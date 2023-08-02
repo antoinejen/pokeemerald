@@ -15,7 +15,8 @@
 #include "constants/items.h"
 #include "constants/trainer_hill.h"
 
-STATIC_ASSERT(sizeof(struct TrainerHillChallenge) <= SECTOR_DATA_SIZE, TrainerHillChallengeFreeSpace);
+// Save data using TryWriteSpecialSaveSector is allowed to exceed SECTOR_DATA_SIZE (up to the counter field)
+STATIC_ASSERT(sizeof(struct TrainerHillChallenge) <= SECTOR_COUNTER_OFFSET, TrainerHillChallengeFreeSpace);
 
 struct SendRecvMgr
 {
@@ -146,8 +147,6 @@ static const struct TrainerHillTrainer sTrainerHillTrainerTemplates_JP[] = {
                 .species = SPECIES_CACTURNE,
                 .heldItem = ITEM_QUICK_CLAW,
                 .moves = { MOVE_GIGA_DRAIN, MOVE_FEINT_ATTACK, MOVE_THUNDER_PUNCH, MOVE_GROWTH },
-                .level = 0,
-                .ppBonuses = 0x0,
                 .hpEV = 55,
                 .attackEV = 0,
                 .defenseEV = 100,

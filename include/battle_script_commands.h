@@ -16,6 +16,12 @@ struct StatFractions
 s32 CalcCritChanceStage(u8 battlerAtk, u8 battlerDef, u32 move, bool32 recordAbility);
 s8 GetInverseCritChance(u8 battlerAtk, u8 battlerDef, u32 move);
 u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move);
+// Arguments for 'xStart, yStart, xEnd, yEnd' in HandleBattleWindow
+#define YESNOBOX_X_Y 24, 8, 29, 13
+
+void AI_CalcDmg(u8 battlerIdAtk, u8 battlerIdDef);
+u8 TypeCalc(u16 move, u8 battlerIdAtk, u8 battlerIdDef);
+u8 AI_TypeCalc(u16 move, u16 targetSpecies, u8 targetAbility);
 u8 GetBattlerTurnOrderNum(u8 battlerId);
 bool32 NoAliveMonsForEitherParty(void);
 void SetMoveEffect(bool32 primary, u32 certain);

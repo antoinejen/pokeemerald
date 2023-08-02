@@ -94,7 +94,7 @@ BattleScript_SuccessBallThrowEnd::
 	finishturn
 
 BattleScript_WallyBallThrow::
-	printstring STRINGID_GOTCHAPKMNCAUGHT2
+	printstring STRINGID_GOTCHAPKMNCAUGHTWALLY
 	setbyte gBattleOutcome, B_OUTCOME_CAUGHT
 	finishturn
 
