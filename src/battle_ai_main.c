@@ -785,6 +785,10 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
                 if (TestMoveFlags(move, FLAG_SOUND))
                     RETURN_SCORE_MINUS(10);
                 break;
+            case ABILITY_STEADFAST:
+                if (TestMoveFlags(move, FLAG_STEADFAST))
+                    RETURN_SCORE_MINUS(10);
+                break;
             case ABILITY_BULLETPROOF:
                 if (TestMoveFlags(move, FLAG_BALLISTIC))
                     RETURN_SCORE_MINUS(10);

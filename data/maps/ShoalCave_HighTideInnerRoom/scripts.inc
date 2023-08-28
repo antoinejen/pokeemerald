@@ -1,3 +1,50 @@
 ShoalCave_HighTideInnerRoom_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, ShoalCave_HighTideInnerRoom_OnResume
+	map_script MAP_SCRIPT_ON_TRANSITION, ShoalCave_HighTideInnerRoom_OnTransition
 	.byte 0
 
+ShoalCave_HighTideInnerRoom_OnResume:
+	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, ShoalCave_HighTideInnerRoom_EventScript_TryRemoveLapras
+	end
+
+ShoalCave_HighTideInnerRoom_EventScript_TryRemoveLapras::
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
+	removeobject VAR_LAST_TALKED
+	return
+
+ShoalCave_HighTideInnerRoom_OnTransition:
+	call_if_unset FLAG_DEFEATED_LAPRAS, ShoalCave_HighTideInnerRoom_EventScript_ShowLapras
+	end
+
+ShoalCave_HighTideInnerRoom_EventScript_ShowLapras::
+	clearflag FLAG_HIDE_LAPRAS
+	return
+
+ShoalCave_HighTideInnerRoom_EncounterLapras::
+	lock
+	faceplayer
+	message ShoalCave_HighTideInnerRoom_Text_LaprasCry
+	setwildbattle SPECIES_LAPRAS, 40, ITEM_MYSTIC_WATER
+	waitse
+	playmoncry SPECIES_LAPRAS, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, ShoalCave_HighTideInnerRoom_EventScript_DefeatedLapras
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, ShoalCave_HighTideInnerRoom_EventScript_DefeatedLapras
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, ShoalCave_HighTideInnerRoom_EventScript_DefeatedLapras
+	setflag FLAG_DEFEATED_LAPRAS
+	release
+	end
+
+ShoalCave_HighTideInnerRoom_EventScript_DefeatedLapras::
+	setflag FLAG_DEFEATED_LAPRAS
+	goto Common_EventScript_RemoveStaticPokemon
+	end
+
+ShoalCave_HighTideInnerRoom_Text_LaprasCry:
+	.string "Laaaa…$"

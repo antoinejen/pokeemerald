@@ -794,7 +794,7 @@ static void AnimTask_FlashAnimTagWithColor_Step2(u8 taskId)
     if (!gPaletteFade.active)
     {
         selectedPalettes = 1 << (IndexOfSpritePaletteTag(gTasks[taskId].data[7]) + 16);
-        BeginNormalPaletteFade(selectedPalettes, 0, 0, 0, RGB(0, 0, 0));
+        BeginNormalPaletteFade(selectedPalettes, 0, 0, 0, RGB_BLACK);
         DestroyAnimVisualTask(taskId);
     }
 }
@@ -802,6 +802,8 @@ static void AnimTask_FlashAnimTagWithColor_Step2(u8 taskId)
 void AnimTask_InvertScreenColor(u8 taskId)
 {
     u32 selectedPalettes = 0;
+    u8 attackerBattler = gBattleAnimAttacker;
+    u8 targetBattler = gBattleAnimTarget;
 
     if (gBattleAnimArgs[0] & 0x1)
         selectedPalettes = GetBattlePalettesMask(TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE);

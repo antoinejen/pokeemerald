@@ -1,3 +1,55 @@
 ShoalCave_LowTideIceRoom_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, ShoalCave_LowTideIceRoom_OnResume
+	map_script MAP_SCRIPT_ON_TRANSITION, ShoalCave_LowTideIceRoom_OnTransition
 	.byte 0
 
+ShoalCave_LowTideIceRoom_OnResume:
+	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, ShoalCave_LowTideIceRoom_EventScript_TryRemoveArticuno
+	end
+
+ShoalCave_LowTideIceRoom_EventScript_TryRemoveArticuno::
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
+	removeobject VAR_LAST_TALKED
+	return
+
+ShoalCave_LowTideIceRoom_OnTransition::
+	call_if_unset FLAG_DEFEATED_ARTICUNO, ShoalCave_LowTideIceRoom_EventScript_ShowArticuno
+	end
+
+ShoalCave_LowTideIceRoom_EventScript_ShowArticuno::
+	clearflag FLAG_HIDE_ARTICUNO
+	return
+
+ShoalCave_LowTideIceRoom_EncounterArticuno::
+	lock
+	faceplayer
+	message gText_Gyaoo
+	setwildbattle SPECIES_ARTICUNO, 50, ITEM_NEVER_MELT_ICE
+	waitse
+	playmoncry SPECIES_ARTICUNO, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmessage
+	waitmoncry
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	waitbuttonpress
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, ShoalCave_LowTideIceRoom_EventScript_DefeatedArticuno
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, ShoalCave_LowTideIceRoom_EventScript_RanFromArticuno
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, ShoalCave_LowTideIceRoom_EventScript_RanFromArticuno
+	setflag FLAG_DEFEATED_ARTICUNO
+	release
+	end
+
+ShoalCave_LowTideIceRoom_EventScript_DefeatedArticuno::
+	setflag FLAG_DEFEATED_ARTICUNO
+	goto Common_EventScript_RemoveStaticPokemon
+	end
+
+ShoalCave_LowTideIceRoom_EventScript_RanFromArticuno::
+	setvar VAR_0x8004, SPECIES_ARTICUNO
+	goto Common_EventScript_LegendaryFlewAway
+	end

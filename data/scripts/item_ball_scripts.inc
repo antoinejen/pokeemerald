@@ -274,6 +274,10 @@ Route127_EventScript_ItemRareCandy::
 	finditem ITEM_RARE_CANDY
 	end
 
+Route127_EventScript_ItemDomeFossil::
+	finditem ITEM_DOME_FOSSIL
+	end
+
 Route132_EventScript_ItemRareCandy::
 	finditem ITEM_RARE_CANDY
 	end
@@ -562,6 +566,10 @@ ShoalCave_LowTideIceRoom_EventScript_ItemNeverMeltIce::
 	finditem ITEM_NEVER_MELT_ICE
 	end
 
+SeafloorCavern_Room7_EventScript_ItemHelixFossil::
+	finditem ITEM_HELIX_FOSSIL
+	end
+	
 SeafloorCavern_Room9_EventScript_ItemTM26::
 	finditem ITEM_TM26
 	end
@@ -657,3 +665,5 @@ MagmaHideout_4F_EventScript_ItemMaxRevive::
 MagmaHideout_3F_3R_EventScript_ItemEscapeRope::
 	finditem ITEM_ESCAPE_ROPE
 	end
+
+

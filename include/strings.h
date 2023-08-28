@@ -53,6 +53,9 @@ extern const u8 gText_Key_Items[];
 extern const u8 gText_Poke_Balls[];
 extern const u8 gText_TMs_Hms[];
 extern const u8 gText_Berries2[];
+extern const u8 gText_Medicine[];
+extern const u8 gText_BattleItems[];
+extern const u8 gText_Treasures[];
 
 extern const u8 gText_Single2[];
 extern const u8 gText_Double2[];
@@ -1019,10 +1022,12 @@ extern const u8 gText_InBagVar1[];
 extern const u8 gText_Var1AndYouWantedVar2[];
 extern const u8 gText_HereYouGoThankYou[];
 extern const u8 gText_NoMoreRoomForThis[];
+extern const u8 gText_YouAlreadyHaveThis[];
 extern const u8 gText_ThankYouIllSendItHome[];
 extern const u8 gText_ThanksIllSendItHome[];
 extern const u8 gText_SpaceForVar1Full[];
 extern const u8 gText_ThrowInPremierBall[];
+extern const u8 gText_ThrowInPremierBalls[];
 extern const u8 gText_ShopBuy[];
 extern const u8 gText_ShopSell[];
 extern const u8 gText_ShopQuit[];
@@ -1253,6 +1258,9 @@ extern const u8 gText_10BP[];
 extern const u8 gText_15BP[];
 extern const u8 gText_ClawFossil[];
 extern const u8 gText_RootFossil[];
+extern const u8 gText_HelixFossil[];
+extern const u8 gText_DomeFossil[];
+extern const u8 gText_OldAmber[];
 extern const u8 gText_No4[];
 extern const u8 gText_TwoStyles[];
 extern const u8 gText_Lv50_3[];
@@ -2985,7 +2993,7 @@ extern const u8 gText_ReturnToConditionMenu[];
 extern const u8 gText_NoRibbonWinners[];
 
 // Pokenav
-extern const u8 gText_NumberIndex[];
+extern const u8 gText_NumberF700[];
 extern const u8 gText_RibbonsF700[];
 
 // use_pokeblock

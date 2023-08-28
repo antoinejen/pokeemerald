@@ -1,4 +1,4 @@
-.set LOCALID_STEVEN, 19
+.set LOCALID_WALLY, 19
 
 Route118_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route118_OnTransition
@@ -61,87 +61,98 @@ Route118_EventScript_RouteSign119::
 	msgbox Route118_Text_RouteSign119, MSGBOX_SIGN
 	end
 
-Route118_EventScript_StevenTrigger0::
+Route118_EventScript_WallyTrigger0::
 	lockall
 	setvar VAR_0x8008, 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
-	applymovement LOCALID_STEVEN, Route118_Movement_StevenApproachLedge0
+	applymovement LOCALID_WALLY, Route118_Movement_WallyApproachLedge0
 	waitmovement 0
-	goto Route118_EventScript_StevenTrigger
+	goto Route118_EventScript_WallyTrigger
 	end
 
-Route118_EventScript_StevenTrigger1::
+Route118_EventScript_WallyTrigger1::
 	lockall
 	setvar VAR_0x8008, 1
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
-	goto Route118_EventScript_StevenTrigger
+	goto Route118_EventScript_WallyTrigger
 	end
 
-Route118_EventScript_StevenTrigger2::
+Route118_EventScript_WallyTrigger2::
 	lockall
 	setvar VAR_0x8008, 2
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
-	applymovement LOCALID_STEVEN, Route118_Movement_StevenApproachLedge2
+	applymovement LOCALID_WALLY, Route118_Movement_WallyApproachLedge2
 	waitmovement 0
-	goto Route118_EventScript_StevenTrigger
+	goto Route118_EventScript_WallyTrigger
 	end
 
-Route118_EventScript_StevenTrigger::
+Route118_EventScript_WallyTrigger::
 	playse SE_LEDGE
-	applymovement LOCALID_STEVEN, Route118_Movement_StevenJumpLedge
+	applymovement LOCALID_WALLY, Route118_Movement_WallyJumpLedge
 	waitmovement 0
 	delay 30
-	msgbox Route118_Text_StevenQuestions, MSGBOX_DEFAULT
+	msgbox Route118_Text_WallyQuestions, MSGBOX_DEFAULT
 	closemessage
-	call_if_eq VAR_0x8008, 0, Route118_EventScript_StevenExit0
-	call_if_eq VAR_0x8008, 1, Route118_EventScript_StevenExit1
-	call_if_eq VAR_0x8008, 2, Route118_EventScript_StevenExit2
+	trainerbattle_no_intro TRAINER_WALLY_ROUTE_118, Route118_Text_WallyDefeated
+	goto Route118_EventScript_AfterWallyBattle
+	end
+
+Route118_EventScript_AfterWallyBattle::
+	msgbox Route118_Text_WallyGo, MSGBOX_DEFAULT
+	goto Route118_EventScript_WallyExit
+	end
+
+Route118_EventScript_WallyExit::
+	closemessage
+	call_if_eq VAR_0x8008, 0, Route118_EventScript_WallyExit0
+	call_if_eq VAR_0x8008, 1, Route118_EventScript_WallyExit1
+	call_if_eq VAR_0x8008, 2, Route118_EventScript_WallyExit2
 	setvar VAR_ROUTE118_STATE, 1
-	removeobject LOCALID_STEVEN
+	removeobject LOCALID_WALLY
 	releaseall
 	end
 
-Route118_EventScript_StevenExit0::
-	applymovement OBJ_EVENT_ID_PLAYER, Route118_Movement_PlayerWatchStevenExit
-	applymovement LOCALID_STEVEN, Route118_Movement_StevenExit0
+Route118_EventScript_WallyExit0::
+	applymovement OBJ_EVENT_ID_PLAYER, Route118_Movement_PlayerWatchWallyExit
+	applymovement LOCALID_WALLY, Route118_Movement_WallyExit0
 	waitmovement 0
 	return
 
-Route118_EventScript_StevenExit1::
-	applymovement OBJ_EVENT_ID_PLAYER, Route118_Movement_PlayerWatchStevenExit
-	applymovement LOCALID_STEVEN, Route118_Movement_StevenExit1
+Route118_EventScript_WallyExit1::
+	applymovement OBJ_EVENT_ID_PLAYER, Route118_Movement_PlayerWatchWallyExit
+	applymovement LOCALID_WALLY, Route118_Movement_WallyExit1
 	waitmovement 0
 	return
 
-Route118_EventScript_StevenExit2::
-	applymovement OBJ_EVENT_ID_PLAYER, Route118_Movement_PlayerWatchStevenExit
-	applymovement LOCALID_STEVEN, Route118_Movement_StevenExit2
+Route118_EventScript_WallyExit2::
+	applymovement OBJ_EVENT_ID_PLAYER, Route118_Movement_PlayerWatchWallyExit
+	applymovement LOCALID_WALLY, Route118_Movement_WallyExit2
 	waitmovement 0
 	return
 
-Route118_Movement_PlayerWatchStevenExit:
+Route118_Movement_PlayerWatchWallyExit:
 	delay_16
 	walk_in_place_faster_right
 	step_end
 
-Route118_Movement_StevenApproachLedge0:
+Route118_Movement_WallyApproachLedge0:
 	walk_left
 	step_end
 
-Route118_Movement_StevenApproachLedge2:
+Route118_Movement_WallyApproachLedge2:
 	walk_right
 	step_end
 
-Route118_Movement_StevenJumpLedge:
+Route118_Movement_WallyJumpLedge:
 	jump_2_down
 	delay_16
 	walk_down
 	step_end
 
-Route118_Movement_StevenExit0:
+Route118_Movement_WallyExit0:
 	walk_right
 	walk_right
 	walk_right
@@ -154,7 +165,7 @@ Route118_Movement_StevenExit0:
 	walk_right
 	step_end
 
-Route118_Movement_StevenExit1:
+Route118_Movement_WallyExit1:
 	walk_right
 	walk_right
 	walk_right
@@ -166,7 +177,7 @@ Route118_Movement_StevenExit1:
 	walk_right
 	step_end
 
-Route118_Movement_StevenExit2:
+Route118_Movement_WallyExit2:
 	walk_right
 	walk_right
 	walk_right
@@ -244,34 +255,46 @@ Route118_EventScript_Deandre::
 	msgbox Route118_Text_DeandrePostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route118_Text_StevenQuestions:
-	.string "STEVEN: Hi, {PLAYER}{KUN}!\p"
-	.string "It's me, STEVEN!\n"
-	.string "We met in the cave near DEWFORD.\p"
-	.string "Have you met many kinds of POKéMON\n"
-	.string "since I last saw you?\p"
-	.string "There are many, many kinds of POKéMON\n"
-	.string "in this wide world of ours.\p"
-	.string "If you wanted to raise only your\n"
-	.string "favorites, that's fine.\p"
-	.string "Perhaps you find it more fun to raise\n"
-	.string "all sorts of POKéMON.\p"
-	.string "As a TRAINER of POKéMON,\n"
-	.string "what do you think?\p"
-	.string "Of course, it's not any of my business.\p"
-	.string "It would be nice if we were to meet\n"
-	.string "again somewhere.$"
+Route118_Text_WallyQuestions:
+	.string "Wally: Hi, {PLAYER}{KUN}!\p"
+	.string "It's me, Wally!\n"
+	.string "I bet you didn't expect me here!\p"
+	.string "Thanks to you, I can explore the\n"
+	.string "entire region.\p"
+	.string "I met many, many kinds of Pokémon\n"
+	.string "during my journey.\p"
+	.string "I also trained really, really hard\n"
+	.string "with Ralts and the friends I made\l"
+	.string "along the way.\p"
+	.string "I have matured as a person, and as\n"
+	.string "a Trainer.\p"
+	.string "And now, I wish to prove myself\n"
+	.string "to you once again.\p"
+	.string "{PLAYER}{KUN}! I demand a rematch!$"
+
+Route118_Text_WallyDefeated:
+	.string "Wow {PLAYER}{KUN}, you're so strong!$"
+
+Route118_Text_WallyGo:
+	.string "{PLAYER}{KUN}, you became so much stronger!\p"
+	.string "I feel like the gap between us\n"
+	.string "has never shrunk...\p"
+	.string "But you'll see! I'll come back stronger\n"
+	.string "than ever! And when I do, I hope\l"
+	.string "you'll be surprised.\p"
+	.string "Until then, I'll get even stronger\n"
+	.string "so watch your back!$"
 
 Route118_Text_YouAgreeGoodRodIsGood:
 	.string "Hmm!\n"
-	.string "A GOOD ROD is really good!\p"
+	.string "A Good Rod is really good!\p"
 	.string "Wouldn't you agree?$"
 
 Route118_Text_IdenticalMindsTakeThis:
 	.string "Hmm!\n"
 	.string "We're of identical minds!\p"
 	.string "Hmm!\n"
-	.string "Take this GOOD ROD!$"
+	.string "Take this Good Rod!$"
 
 Route118_Text_TryYourLuckFishing:
 	.string "Wherever there's water, try your luck\n"
@@ -281,21 +304,21 @@ Route118_Text_DontYouLikeToFish:
 	.string "Don't you like to fish?$"
 
 Route118_Text_TryCatchingMonWithGoodRod:
-	.string "Try catching all sorts of POKéMON\n"
-	.string "with your GOOD ROD.$"
+	.string "Try catching all sorts of Pokémon\n"
+	.string "with your Good Rod.$"
 
 Route118_Text_CanCrossRiversWithSurf:
 	.string "Even if there isn't a boat, you can\n"
 	.string "cross rivers and the sea if you have\l"
-	.string "a POKéMON that knows SURF.\p"
-	.string "POKéMON can be counted on to do so\n"
+	.string "a Pokémon that knows Surf.\p"
+	.string "Pokémon can be counted on to do so\n"
 	.string "much!$"
 
 Route118_Text_RouteSignMauville:
-	.string "ROUTE 118\n"
-	.string "{LEFT_ARROW} MAUVILLE CITY$"
+	.string "Route 118\n"
+	.string "{LEFT_ARROW} Mauville City$"
 
 Route118_Text_RouteSign119:
-	.string "ROUTE 118\n"
-	.string "{UP_ARROW} ROUTE 119$"
+	.string "Route 118\n"
+	.string "{UP_ARROW} Route 119$"
 

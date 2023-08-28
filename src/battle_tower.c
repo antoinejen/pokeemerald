@@ -762,7 +762,7 @@ static const u8 *const *const sPartnerApprenticeTextTables[NUM_APPRENTICES] =
     sPartnerApprenticeTexts16
 };
 
-struct
+struct PartnerParty
 {
     u16 species;
     u8 fixedIV;
@@ -770,20 +770,22 @@ struct
     u8 nature;
     u8 evs[NUM_STATS];
     u16 moves[MAX_MON_MOVES];
-} static const sStevenMons[MULTI_PARTY_SIZE] =
+};
+
+static const struct PartnerParty sStevenMons[MULTI_PARTY_SIZE] =
 {
     {
-        .species = SPECIES_METANG,
+        .species = SPECIES_METAGROSS,
         .fixedIV = MAX_PER_STAT_IVS,
-        .level = 42,
+        .level = 62,
         .nature = NATURE_BRAVE,
         .evs = {0, 252, 252, 0, 6, 0},
-        .moves = {MOVE_LIGHT_SCREEN, MOVE_PSYCHIC, MOVE_REFLECT, MOVE_METAL_CLAW}
+        .moves = {MOVE_LIGHT_SCREEN, MOVE_PSYCHIC, MOVE_REFLECT, MOVE_METEOR_MASH}
     },
     {
         .species = SPECIES_SKARMORY,
         .fixedIV = MAX_PER_STAT_IVS,
-        .level = 43,
+        .level = 63,
         .nature = NATURE_IMPISH,
         .evs = {252, 0, 0, 0, 6, 252},
         .moves = {MOVE_TOXIC, MOVE_AERIAL_ACE, MOVE_PROTECT, MOVE_STEEL_WING}
@@ -791,10 +793,94 @@ struct
     {
         .species = SPECIES_AGGRON,
         .fixedIV = MAX_PER_STAT_IVS,
-        .level = 44,
+        .level = 64,
         .nature = NATURE_ADAMANT,
         .evs = {0, 252, 0, 0, 252, 6},
         .moves = {MOVE_THUNDER, MOVE_PROTECT, MOVE_SOLAR_BEAM, MOVE_DRAGON_CLAW}
+    }
+};
+
+static const struct PartnerParty sRivalMonsMudkip[MULTI_PARTY_SIZE] =
+{
+    {
+        .species = SPECIES_SLUGMA,
+        .fixedIV = 24,
+        .level = 28,
+        .nature = NATURE_QUIET,
+        .evs = {126, 0, 4, 0, 0, 126},
+        .moves = {MOVE_EMBER, MOVE_ANCIENT_POWER, MOVE_SMOG, MOVE_YAWN}
+    },
+    {
+        .species = SPECIES_ARON,
+        .fixedIV = 24,
+        .level = 29,
+        .nature = NATURE_ADAMANT,
+        .evs = {0, 126, 0, 0, 126, 3},
+        .moves = {MOVE_PROTECT, MOVE_ROAR, MOVE_IRON_HEAD, MOVE_ROCK_SLIDE}
+    },
+    {
+        .species = SPECIES_GROVYLE,
+        .fixedIV = 24,
+        .level = 30,
+        .nature = NATURE_HASTY,
+        .evs = {0, 16, 0, 0, 126, 112},
+        .moves = {MOVE_LEAF_BLADE, MOVE_FURY_CUTTER, MOVE_MEGA_DRAIN, MOVE_AGILITY}
+    }
+};
+
+static const struct PartnerParty sRivalMonsTorchic[MULTI_PARTY_SIZE] =
+{
+    {
+        .species = SPECIES_LOMBRE,
+        .fixedIV = 24,
+        .level = 28,
+        .nature = NATURE_MODEST,
+        .evs = {76, 0, 0, 52, 126, 0},
+        .moves = {MOVE_BUBBLE_BEAM, MOVE_FAKE_OUT, MOVE_FURY_SWIPES, MOVE_ABSORB}
+    },
+    {
+        .species = SPECIES_ARON,
+        .fixedIV = 24,
+        .level = 29,
+        .nature = NATURE_ADAMANT,
+        .evs = {0, 126, 0, 0, 126, 3},
+        .moves = {MOVE_PROTECT, MOVE_ROAR, MOVE_IRON_HEAD, MOVE_ROCK_SLIDE}
+    },
+    {
+        .species = SPECIES_MARSHTOMP,
+        .fixedIV = 24,
+        .level = 30,
+        .nature = NATURE_RASH,
+        .evs = {0, 0, 54, 0, 126, 74},
+        .moves = {MOVE_ROCK_SLIDE, MOVE_MUD_BOMB, MOVE_WATER_PULSE, MOVE_BIDE}
+    }
+};
+
+static const struct PartnerParty sRivalMonsTreecko[MULTI_PARTY_SIZE] =
+{
+    {
+        .species = SPECIES_PELIPPER,
+        .fixedIV = MAX_PER_STAT_IVS,
+        .level = 28,
+        .nature = NATURE_BOLD,
+        .evs = {126, 0, 126, 2, 0, 0},
+        .moves = {MOVE_PAYBACK, MOVE_PROTECT, MOVE_WATER_PULSE, MOVE_MIST}
+    },
+    {
+        .species = SPECIES_ARON,
+        .fixedIV = MAX_PER_STAT_IVS,
+        .level = 29,
+        .nature = NATURE_ADAMANT,
+        .evs = {0, 126, 0, 0, 126, 3},
+        .moves = {MOVE_PROTECT, MOVE_ROAR, MOVE_IRON_HEAD, MOVE_ROCK_SLIDE}
+    },
+    {
+        .species = SPECIES_COMBUSKEN,
+        .fixedIV = MAX_PER_STAT_IVS,
+        .level = 30,
+        .nature = NATURE_ADAMANT,
+        .evs = {40, 136, 0, 48, 0, 0},
+        .moves = {MOVE_QUICK_ATTACK, MOVE_AERIAL_ACE, MOVE_DOUBLE_KICK, MOVE_EMBER}
     }
 };
 
@@ -1452,6 +1538,14 @@ u8 GetFrontierOpponentClass(u16 trainerId)
     {
         trainerClass = gTrainers[TRAINER_STEVEN].trainerClass;
     }
+    else if (trainerId == TRAINER_BRENDAN_PARTNER)
+    {
+        trainerClass = gTrainers[TRAINER_BRENDAN_LAVARIDGE_TREECKO].trainerClass;
+    }
+    else if (trainerId == TRAINER_MAY_PARTNER)
+    {
+        trainerClass = gTrainers[TRAINER_MAY_LAVARIDGE_TREECKO].trainerClass;
+    }
     else if (trainerId >= TRAINER_CUSTOM_PARTNER)
     {
         trainerClass = gTrainers[trainerId - TRAINER_CUSTOM_PARTNER].trainerClass;
@@ -1536,6 +1630,16 @@ void GetFrontierTrainerName(u8 *dst, u16 trainerId)
     {
         for (i = 0; i < PLAYER_NAME_LENGTH; i++)
             dst[i] = gTrainers[TRAINER_STEVEN].trainerName[i];
+    }
+    else if (trainerId == TRAINER_BRENDAN_PARTNER)
+    {
+        for (i = 0; i < PLAYER_NAME_LENGTH; i++)
+            dst[i] = gTrainers[TRAINER_BRENDAN_LAVARIDGE_TREECKO].trainerName[i];
+    }
+    else if (trainerId == TRAINER_MAY_PARTNER)
+    {
+        for (i = 0; i < PLAYER_NAME_LENGTH; i++)
+            dst[i] = gTrainers[TRAINER_MAY_LAVARIDGE_TREECKO].trainerName[i];
     }
     else if (trainerId >= TRAINER_CUSTOM_PARTNER)
     {
@@ -2136,6 +2240,18 @@ void DoSpecialTrainerBattle(void)
         BattleTransition_StartOnField(GetSpecialBattleTransition(B_TRANSITION_GROUP_B_PIKE));
         break;
     case SPECIAL_BATTLE_STEVEN:
+        gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
+        FillPartnerParty(TRAINER_STEVEN_PARTNER);
+        gApproachingTrainerId = 0;
+        BattleSetup_ConfigureTrainerBattle(MossdeepCity_SpaceCenter_2F_EventScript_MaxieTrainer + 1);
+        gApproachingTrainerId = 1;
+        BattleSetup_ConfigureTrainerBattle(MossdeepCity_SpaceCenter_2F_EventScript_TabithaTrainer + 1);
+        gPartnerTrainerId = TRAINER_STEVEN_PARTNER;
+        CreateTask(Task_StartBattleAfterTransition, 1);
+        PlayMapChosenOrBattleBGM(0);
+        BattleTransition_StartOnField(B_TRANSITION_MAGMA);
+        break;
+    case SPECIAL_BATTLE_RIVAL:
         gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
         FillPartnerParty(TRAINER_STEVEN_PARTNER);
         gApproachingTrainerId = 0;
@@ -2999,6 +3115,8 @@ void TryHideBattleTowerReporter(void)
 }
 
 #define STEVEN_OTID 61226
+#define BRENDAN_OTID 95810
+#define MAY_OTID 82501
 
 static void FillPartnerParty(u16 trainerId)
 {
@@ -3036,6 +3154,158 @@ static void FillPartnerParty(u16 trainerId)
                 SetMonMoveSlot(&gPlayerParty[MULTI_PARTY_SIZE + i], sStevenMons[i].moves[j], j);
             SetMonData(&gPlayerParty[MULTI_PARTY_SIZE + i], MON_DATA_OT_NAME, gTrainers[TRAINER_STEVEN].trainerName);
             j = MALE;
+            SetMonData(&gPlayerParty[MULTI_PARTY_SIZE + i], MON_DATA_OT_GENDER, &j);
+            CalculateMonStats(&gPlayerParty[MULTI_PARTY_SIZE + i]);
+        }
+    }
+    else if (trainerId == TRAINER_BRENDAN_PARTNER) //VarGet(VAR_STARTER_MON)
+    {
+       for (i = 0; i < MULTI_PARTY_SIZE; i++)
+        {
+            switch (VarGet(VAR_STARTER_MON))
+            {
+                case 0:
+                    do
+                    {
+                        j = Random32();
+                    } while (IsShinyOtIdPersonality(BRENDAN_OTID, j) || sRivalMonsTreecko[i].nature != GetNatureFromPersonality(j));
+                    CreateMon(&gPlayerParty[MULTI_PARTY_SIZE + i],
+                              sRivalMonsTreecko[i].species,
+                              sRivalMonsTreecko[i].level,
+                              sRivalMonsTreecko[i].fixedIV,
+                              TRUE,
+                              #ifdef BUGFIX
+                              j,
+                              #else
+                              i, // BUG: personality was stored in the 'j' variable. As a result, Steven's pokemon do not have the intended natures.
+                              #endif
+                              OT_ID_PRESET, BRENDAN_OTID);
+                    for (j = 0; j < PARTY_SIZE; j++)
+                        SetMonData(&gPlayerParty[MULTI_PARTY_SIZE + i], MON_DATA_HP_EV + j, &sRivalMonsTreecko[i].evs[j]);
+                    for (j = 0; j < MAX_MON_MOVES; j++)
+                        SetMonMoveSlot(&gPlayerParty[MULTI_PARTY_SIZE + i], sRivalMonsTreecko[i].moves[j], j);
+                break;
+                case 1:
+                    do
+                    {
+                        j = Random32();
+                    } while (IsShinyOtIdPersonality(BRENDAN_OTID, j) || sRivalMonsTorchic[i].nature != GetNatureFromPersonality(j));
+                    CreateMon(&gPlayerParty[MULTI_PARTY_SIZE + i],
+                              sRivalMonsTorchic[i].species,
+                              sRivalMonsTorchic[i].level,
+                              sRivalMonsTorchic[i].fixedIV,
+                              TRUE,
+                              #ifdef BUGFIX
+                              j,
+                              #else
+                              i, // BUG: personality was stored in the 'j' variable. As a result, Steven's pokemon do not have the intended natures.
+                              #endif
+                              OT_ID_PRESET, BRENDAN_OTID);
+                    for (j = 0; j < PARTY_SIZE; j++)
+                        SetMonData(&gPlayerParty[MULTI_PARTY_SIZE + i], MON_DATA_HP_EV + j, &sRivalMonsTorchic[i].evs[j]);
+                    for (j = 0; j < MAX_MON_MOVES; j++)
+                        SetMonMoveSlot(&gPlayerParty[MULTI_PARTY_SIZE + i], sRivalMonsTorchic[i].moves[j], j);
+                break;
+                case 2:
+                    do
+                    {
+                        j = Random32();
+                    } while (IsShinyOtIdPersonality(BRENDAN_OTID, j) || sRivalMonsMudkip[i].nature != GetNatureFromPersonality(j));
+                    CreateMon(&gPlayerParty[MULTI_PARTY_SIZE + i],
+                              sRivalMonsMudkip[i].species,
+                              sRivalMonsMudkip[i].level,
+                              sRivalMonsMudkip[i].fixedIV,
+                              TRUE,
+                              #ifdef BUGFIX
+                              j,
+                              #else
+                              i, // BUG: personality was stored in the 'j' variable. As a result, Steven's pokemon do not have the intended natures.
+                              #endif
+                              OT_ID_PRESET, BRENDAN_OTID);
+                    for (j = 0; j < PARTY_SIZE; j++)
+                        SetMonData(&gPlayerParty[MULTI_PARTY_SIZE + i], MON_DATA_HP_EV + j, &sRivalMonsMudkip[i].evs[j]);
+                    for (j = 0; j < MAX_MON_MOVES; j++)
+                        SetMonMoveSlot(&gPlayerParty[MULTI_PARTY_SIZE + i], sRivalMonsMudkip[i].moves[j], j);
+                break;
+            }
+            SetMonData(&gPlayerParty[MULTI_PARTY_SIZE + i], MON_DATA_OT_NAME, gTrainers[TRAINER_BRENDAN_LAVARIDGE_TREECKO].trainerName);
+            j = MALE;
+            SetMonData(&gPlayerParty[MULTI_PARTY_SIZE + i], MON_DATA_OT_GENDER, &j);
+            CalculateMonStats(&gPlayerParty[MULTI_PARTY_SIZE + i]);
+        }
+    }
+    else if (trainerId == TRAINER_MAY_PARTNER) //VarGet(VAR_STARTER_MON)
+    {
+       for (i = 0; i < MULTI_PARTY_SIZE; i++)
+        {
+            switch (VarGet(VAR_STARTER_MON))
+            {
+                case 0:
+                    do
+                    {
+                        j = Random32();
+                    } while (IsShinyOtIdPersonality(MAY_OTID, j) || sRivalMonsTreecko[i].nature != GetNatureFromPersonality(j));
+                    CreateMon(&gPlayerParty[MULTI_PARTY_SIZE + i],
+                              sRivalMonsTreecko[i].species,
+                              sRivalMonsTreecko[i].level,
+                              sRivalMonsTreecko[i].fixedIV,
+                              TRUE,
+                              #ifdef BUGFIX
+                              j,
+                              #else
+                              i, // BUG: personality was stored in the 'j' variable. As a result, Steven's pokemon do not have the intended natures.
+                              #endif
+                              OT_ID_PRESET, MAY_OTID);
+                    for (j = 0; j < PARTY_SIZE; j++)
+                        SetMonData(&gPlayerParty[MULTI_PARTY_SIZE + i], MON_DATA_HP_EV + j, &sRivalMonsTreecko[i].evs[j]);
+                    for (j = 0; j < MAX_MON_MOVES; j++)
+                        SetMonMoveSlot(&gPlayerParty[MULTI_PARTY_SIZE + i], sRivalMonsTreecko[i].moves[j], j);
+                break;
+                case 1:
+                    do
+                    {
+                        j = Random32();
+                    } while (IsShinyOtIdPersonality(MAY_OTID, j) || sRivalMonsTorchic[i].nature != GetNatureFromPersonality(j));
+                    CreateMon(&gPlayerParty[MULTI_PARTY_SIZE + i],
+                              sRivalMonsTorchic[i].species,
+                              sRivalMonsTorchic[i].level,
+                              sRivalMonsTorchic[i].fixedIV,
+                              TRUE,
+                              #ifdef BUGFIX
+                              j,
+                              #else
+                              i, // BUG: personality was stored in the 'j' variable. As a result, Steven's pokemon do not have the intended natures.
+                              #endif
+                              OT_ID_PRESET, MAY_OTID);
+                    for (j = 0; j < PARTY_SIZE; j++)
+                        SetMonData(&gPlayerParty[MULTI_PARTY_SIZE + i], MON_DATA_HP_EV + j, &sRivalMonsTorchic[i].evs[j]);
+                    for (j = 0; j < MAX_MON_MOVES; j++)
+                        SetMonMoveSlot(&gPlayerParty[MULTI_PARTY_SIZE + i], sRivalMonsTorchic[i].moves[j], j);
+                break;
+                case 2:
+                    do
+                    {
+                        j = Random32();
+                    } while (IsShinyOtIdPersonality(MAY_OTID, j) || sRivalMonsMudkip[i].nature != GetNatureFromPersonality(j));
+                    CreateMon(&gPlayerParty[MULTI_PARTY_SIZE + i],
+                              sRivalMonsMudkip[i].species,
+                              sRivalMonsMudkip[i].level,
+                              sRivalMonsMudkip[i].fixedIV,
+                              TRUE,
+                              #ifdef BUGFIX
+                              j,
+                              #else
+                              i, // BUG: personality was stored in the 'j' variable. As a result, Steven's pokemon do not have the intended natures.
+                              #endif
+                              OT_ID_PRESET, MAY_OTID);
+                    for (j = 0; j < PARTY_SIZE; j++)
+                        SetMonData(&gPlayerParty[MULTI_PARTY_SIZE + i], MON_DATA_HP_EV + j, &sRivalMonsMudkip[i].evs[j]);
+                    for (j = 0; j < MAX_MON_MOVES; j++)
+                        SetMonMoveSlot(&gPlayerParty[MULTI_PARTY_SIZE + i], sRivalMonsMudkip[i].moves[j], j);
+                break;
+            }
+            SetMonData(&gPlayerParty[MULTI_PARTY_SIZE + i], MON_DATA_OT_NAME, gTrainers[TRAINER_MAY_LAVARIDGE_TREECKO].trainerName);
+            j = FEMALE;
             SetMonData(&gPlayerParty[MULTI_PARTY_SIZE + i], MON_DATA_OT_GENDER, &j);
             CalculateMonStats(&gPlayerParty[MULTI_PARTY_SIZE + i]);
         }

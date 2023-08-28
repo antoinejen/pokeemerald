@@ -14,6 +14,7 @@
 #include "trig.h"
 #include "gpu_regs.h"
 
+// EWRAM
 EWRAM_DATA static u8 sCurrentAbnormalWeather = 0;
 EWRAM_DATA static u16 sUnusedWeatherRelated = 0;
 
@@ -768,9 +769,9 @@ void Snow_InitVars(void)
 {
     gWeatherPtr->initStep = 0;
     gWeatherPtr->weatherGfxLoaded = FALSE;
-    gWeatherPtr->targetColorMapIndex = 3;
-    gWeatherPtr->colorMapStepDelay = 20;
-    gWeatherPtr->targetSnowflakeSpriteCount = 16;
+    gWeatherPtr->gammaTargetIndex = 3;
+    gWeatherPtr->gammaStepDelay = 20;
+    gWeatherPtr->targetSnowflakeSpriteCount = 48;
     gWeatherPtr->snowflakeVisibleCounter = 0;
 }
 
@@ -941,7 +942,7 @@ static void InitSnowflakeSpriteMovement(struct Sprite *sprite)
 static void WaitSnowflakeSprite(struct Sprite *sprite)
 {
     // Timer is never incremented
-    if (gWeatherPtr->snowflakeTimer > 18)
+    if (++gWeatherPtr->snowflakeTimer > 18)
     {
         sprite->invisible = FALSE;
         sprite->callback = UpdateSnowflakeSprite;

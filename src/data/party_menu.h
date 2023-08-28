@@ -1,3 +1,9 @@
+enum {
+    TAG_POKEBALL = 1200,
+    TAG_POKEBALL_SMALL,
+    TAG_STATUS_ICONS,
+};
+
 static const struct BgTemplate sPartyMenuBgTemplates[] =
 {
     {

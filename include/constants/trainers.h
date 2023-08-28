@@ -16,6 +16,8 @@
 #define TRAINER_UNION_ROOM                  3072
 #define TRAINER_STEVEN_PARTNER              3075
 #define TRAINER_CUSTOM_PARTNER              3076
+#define TRAINER_BRENDAN_PARTNER             3077
+#define TRAINER_MAY_PARTNER                 3078
 
 #define TRAINER_PIC_HIKER                  0
 #define TRAINER_PIC_AQUA_GRUNT_M           1
@@ -108,8 +110,10 @@
 #define TRAINER_PIC_PYRAMID_KING_BRANDON  88
 #define TRAINER_PIC_RED                   89
 #define TRAINER_PIC_LEAF                  90
-#define TRAINER_PIC_RS_BRENDAN            91
-#define TRAINER_PIC_RS_MAY                92
+#define TRAINER_PIC_BLUE                  91
+#define TRAINER_PIC_RS_BRENDAN            92
+#define TRAINER_PIC_RS_MAY                93
+#define TRAINER_PIC_MAGMA_ADMIN_F		  94
 
 // The player back pics are assumed to alternate according to the gender values (MALE/FEMALE)
 #define TRAINER_BACK_PIC_BRENDAN                0
@@ -286,12 +290,12 @@
 
 #define RS_FACILITY_CLASSES_COUNT               0x4D
 
-#define TRAINER_CLASS_PKMN_TRAINER_1 0x0  // Unused
-#define TRAINER_CLASS_PKMN_TRAINER_2 0x1  // Unused
+#define TRAINER_CLASS_PKMN_TRAINER_1 0x0  // Red/Leaf
+#define TRAINER_CLASS_PKMN_TRAINER_2 0x1  // Blue
 #define TRAINER_CLASS_HIKER          0x2
 #define TRAINER_CLASS_TEAM_AQUA      0x3
 #define TRAINER_CLASS_PKMN_BREEDER   0x4
-#define TRAINER_CLASS_COOLTRAINER    0x5
+#define TRAINER_CLASS_ACE_TRAINER    0x5
 #define TRAINER_CLASS_BIRD_KEEPER    0x6
 #define TRAINER_CLASS_COLLECTOR      0x7
 #define TRAINER_CLASS_SWIMMER_M      0x8
@@ -334,7 +338,7 @@
 #define TRAINER_CLASS_SWIMMER_F      0x2d
 #define TRAINER_CLASS_TWINS          0x2e
 #define TRAINER_CLASS_SAILOR         0x2f
-#define TRAINER_CLASS_COOLTRAINER_2  0x30 // Used for only one trainer.
+#define TRAINER_CLASS_ACE_TRAINER_2  0x30 // Used for only one trainer.
 #define TRAINER_CLASS_MAGMA_ADMIN    0x31
 #define TRAINER_CLASS_RIVAL          0x32
 #define TRAINER_CLASS_BUG_CATCHER    0x33

@@ -67,6 +67,8 @@ struct MultiNameFlyDest
     u16 flag;
 };
 
+// Static RAM declarations
+
 static EWRAM_DATA struct RegionMap *sRegionMap = NULL;
 
 static EWRAM_DATA struct {

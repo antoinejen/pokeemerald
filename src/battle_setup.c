@@ -550,12 +550,18 @@ void BattleSetup_StartLegendaryBattle(void)
     case SPECIES_DEOXYS:
         CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RG_VS_DEOXYS);
         break;
+    case SPECIES_MOLTRES:
+    case SPECIES_ARTICUNO:
+    case SPECIES_ZAPDOS:
     case SPECIES_LUGIA:
     case SPECIES_HO_OH:
         CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RG_VS_LEGEND);
         break;
     case SPECIES_MEW:
         CreateBattleStartTask(B_TRANSITION_GRID_SQUARES, MUS_VS_MEW);
+        break;
+    case SPECIES_MEWTWO:
+        CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RG_VS_MEWTWO);
         break;
     }
 
@@ -843,6 +849,41 @@ u8 GetTrainerBattleTransition(void)
     if (gTrainerBattleOpponent_A == TRAINER_SECRET_BASE)
         return B_TRANSITION_CHAMPION;
 
+    if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_RIVAL)
+    {
+        if (gTrainers[gTrainerBattleOpponent_A].trainerPic == TRAINER_PIC_MAY)
+            return B_TRANSITION_MAY;
+        if (gTrainers[gTrainerBattleOpponent_A].trainerPic == TRAINER_PIC_BRENDAN)
+            return B_TRANSITION_BRENDAN;
+        return B_TRANSITION_WALLY;
+    }
+
+    if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_LEADER)
+    {
+        if (gTrainers[gTrainerBattleOpponent_A].trainerPic == TRAINER_PIC_LEADER_ROXANNE)
+            return B_TRANSITION_ROXANNE;
+        if (gTrainers[gTrainerBattleOpponent_A].trainerPic == TRAINER_PIC_LEADER_BRAWLY)
+            return B_TRANSITION_BRAWLY;
+        if (gTrainers[gTrainerBattleOpponent_A].trainerPic == TRAINER_PIC_LEADER_WATTSON)
+            return B_TRANSITION_WATTSON;
+        if (gTrainers[gTrainerBattleOpponent_A].trainerPic == TRAINER_PIC_LEADER_FLANNERY)
+            return B_TRANSITION_FLANNERY;
+        if (gTrainers[gTrainerBattleOpponent_A].trainerPic == TRAINER_PIC_LEADER_NORMAN)
+            return B_TRANSITION_NORMAN;
+        if (gTrainers[gTrainerBattleOpponent_A].trainerPic == TRAINER_PIC_LEADER_WINONA)
+            return B_TRANSITION_WINONA;
+        if (gTrainers[gTrainerBattleOpponent_A].trainerPic == TRAINER_PIC_LEADER_TATE_AND_LIZA)
+            return B_TRANSITION_TATE_LIZA;
+        return B_TRANSITION_JUAN;
+    }
+
+    if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_PKMN_TRAINER_1)
+    {
+        if (gTrainerBattleOpponent_A == TRAINER_RED)
+            return B_TRANSITION_RED;
+        return B_TRANSITION_LEAF;
+    }
+
     if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_ELITE_FOUR)
     {
         if (gTrainerBattleOpponent_A == TRAINER_SIDNEY)
@@ -857,8 +898,12 @@ u8 GetTrainerBattleTransition(void)
     }
 
     if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_CHAMPION)
+    {
+        if (gTrainerBattleOpponent_A == TRAINER_STEVEN)
+            return B_TRANSITION_STEVEN;
         return B_TRANSITION_CHAMPION;
-
+    }
+        
     if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_TEAM_MAGMA
         || gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_MAGMA_LEADER
         || gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_MAGMA_ADMIN)
