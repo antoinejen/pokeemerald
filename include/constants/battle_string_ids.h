@@ -619,6 +619,11 @@
 // They are assigned to the MULTISTRING_CHOOSER byte of gBattleCommunication
 // and read when e.g. the command printfromtable is used.
 
+// This is the string id that gBattleStringsTable starts with.
+// String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
+// and are instead handled explicitly by BufferStringBattle.
+#define BATTLESTRINGS_TABLE_START  STRINGID_TRAINER1LOSETEXT
+
 // gStatUpStringIds
 #define B_MSG_ATTACKER_STAT_ROSE 0
 #define B_MSG_DEFENDER_STAT_ROSE 1

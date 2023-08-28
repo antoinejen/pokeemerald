@@ -589,7 +589,7 @@ static void InitLinkBtlControllers(void)
 
 bool32 IsValidForBattle(struct Pokemon *mon)
 {
-    u32 species = GetMonData(mon, MON_DATA_SPECIES2);
+    u32 species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG);
     return (species != SPECIES_NONE && species != SPECIES_EGG
              && GetMonData(mon, MON_DATA_HP) != 0
              && GetMonData(mon, MON_DATA_IS_EGG) == 0);
@@ -675,7 +675,7 @@ static void PrepareBufferDataTransfer(u8 bufferId, u8 *data, u16 size)
             break;
         case BUFFER_B:
             for (i = 0; i < size; data++, i++)
-                gBattleBufferB[gActiveBattler][i] = *data;
+                gBattleResources->bufferB[gActiveBattler][i] = *data;
             break;
         }
     }
