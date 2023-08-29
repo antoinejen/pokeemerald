@@ -346,7 +346,8 @@ const struct TrainerMoney gTrainerMoneyTable[] =
     {TRAINER_CLASS_TUBER_F, 1},
     {TRAINER_CLASS_TUBER_M, 1},
     {TRAINER_CLASS_SIS_AND_BRO, 3},
-    {TRAINER_CLASS_COOLTRAINER, 12},
+    {TRAINER_CLASS_ACE_TRAINER, 12},
+    {TRAINER_CLASS_ACE_TRAINER_2, 12},
     {TRAINER_CLASS_HEX_MANIAC, 6},
     {TRAINER_CLASS_LADY, 50},
     {TRAINER_CLASS_BEAUTY, 20},
@@ -403,7 +404,7 @@ static const u16 sTrainerBallTable[TRAINER_CLASS_COUNT] =
 #elif B_TRAINER_CLASS_POKE_BALLS == GEN_8
     [TRAINER_CLASS_PKMN_BREEDER] = ITEM_HEAL_BALL,
 #endif
-    [TRAINER_CLASS_COOLTRAINER] = ITEM_ULTRA_BALL,
+    [TRAINER_CLASS_ACE_TRAINER] = ITEM_ULTRA_BALL,
     [TRAINER_CLASS_COLLECTOR] = ITEM_PREMIER_BALL,
     [TRAINER_CLASS_SWIMMER_M] = ITEM_DIVE_BALL,
     [TRAINER_CLASS_BLACK_BELT] = ITEM_ULTRA_BALL,
@@ -416,7 +417,7 @@ static const u16 sTrainerBallTable[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_FISHERMAN] = ITEM_DIVE_BALL,
 #endif
     [TRAINER_CLASS_SWIMMER_F] = ITEM_DIVE_BALL,
-    [TRAINER_CLASS_COOLTRAINER_2] = ITEM_ULTRA_BALL,
+    [TRAINER_CLASS_ACE_TRAINER_2] = ITEM_ULTRA_BALL,
     [TRAINER_CLASS_MAGMA_LEADER] = ITEM_MASTER_BALL,
 };
 #endif
@@ -1964,6 +1965,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
     u8 fixedIV;
     s32 i, j;
     u8 monsCount;
+    s32 ball = -1;
     if (battleTypeFlags & BATTLE_TYPE_TRAINER && !(battleTypeFlags & (BATTLE_TYPE_FRONTIER
                                                                         | BATTLE_TYPE_EREADER_TRAINER
                                                                         | BATTLE_TYPE_TRAINER_HILL)))
@@ -1985,7 +1987,6 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
 
         for (i = 0; i < monsCount; i++)
         {
-            s32 ball = -1;
             u32 personalityHash = GeneratePartyHash(trainer, i);
             if (trainer->doubleBattle == TRUE)
                 personalityValue = 0x80;
@@ -3129,8 +3130,8 @@ static void BattleStartClearSetData(void)
     }
 
     gBattleScripting.battleStyle = gSaveBlock2Ptr->optionsBattleStyle;
-	gBattleScripting.expOnCatch = (B_EXP_CATCH >= GEN_6);
-	gBattleScripting.monCaught = FALSE;
+    gBattleScripting.expOnCatch = (B_EXP_CATCH >= GEN_6);
+    gBattleScripting.monCaught = FALSE;
 
     gMultiHitCounter = 0;
     gBattleScripting.savedDmg = 0;
@@ -3170,10 +3171,7 @@ static void BattleStartClearSetData(void)
 
     gBattleStruct->mega.triggerSpriteId = 0xFF;
 
-    for (i = 0; i < ARRAY_COUNT(gSideTimers); i++)
-    {
-        gSideTimers[i].stickyWebBattlerId = 0xFF;
-    }
+    gBattleStruct->stickyWebUser = 0xFF;
     gBattleStruct->appearedInBattle = 0;
     gBattleStruct->beatUpSlot = 0;
 
@@ -3279,12 +3277,8 @@ void SwitchInClearSetData(void)
     gBattleStruct->lastMoveFailed &= ~(gBitTable[gActiveBattler]);
     gBattleStruct->palaceFlags &= ~(gBitTable[gActiveBattler]);
 
-    for (i = 0; i < ARRAY_COUNT(gSideTimers); i++)
-    {
-        // Switched into sticky web user slot, so reset stored battler ID
-        if (gSideTimers[i].stickyWebBattlerId == gActiveBattler)
-            gSideTimers[i].stickyWebBattlerId = 0xFF;
-    }
+    if (gActiveBattler == gBattleStruct->stickyWebUser)
+        gBattleStruct->stickyWebUser = 0xFF;    // Switched into sticky web user slot so reset it
 
     for (i = 0; i < gBattlersCount; i++)
     {
@@ -3397,12 +3391,8 @@ void FaintClearSetData(void)
 
     gBattleStruct->palaceFlags &= ~(gBitTable[gActiveBattler]);
 
-    for (i = 0; i < ARRAY_COUNT(gSideTimers); i++)
-    {
-        // User of sticky web fainted, so reset the stored battler ID
-        if (gSideTimers[i].stickyWebBattlerId == gActiveBattler)
-            gSideTimers[i].stickyWebBattlerId = 0xFF;
-    }
+    if (gActiveBattler == gBattleStruct->stickyWebUser)
+        gBattleStruct->stickyWebUser = 0xFF;    // User of sticky web fainted, so reset the stored battler ID
 
     for (i = 0; i < gBattlersCount; i++)
     {
@@ -4595,11 +4585,7 @@ static void HandleTurnActionSelectionState(void)
         {
             // if we choose to throw a ball with our second mon, skip the action of the first
             // (if we have chosen throw ball with first, second's is already skipped)
-            // if throwing a ball in a wild battle with an in-game partner, skip partner's turn when throwing a ball
-            if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
-                gChosenActionByBattler[GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT)] = B_ACTION_NOTHING_FAINTED;
-            else
-                gChosenActionByBattler[GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)] = B_ACTION_NOTHING_FAINTED;
+            gChosenActionByBattler[GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)] = B_ACTION_NOTHING_FAINTED;
         }
 
         gBattleMainFunc = SetActionsAndBattlersTurnOrder;

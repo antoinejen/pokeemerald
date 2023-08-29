@@ -921,7 +921,6 @@ gBattleAnims_General::
 	.4byte General_SmokeballEscape          @ B_ANIM_SMOKEBALL_ESCAPE
 	.4byte General_HangedOn                 @ B_ANIM_HANGED_ON
 	.4byte General_Rain                     @ B_ANIM_RAIN_CONTINUES
-	.4byte General_Thunderstorm             @ B_ANIM_THUNDER_CONTINUES
 	.4byte General_Sun                      @ B_ANIM_SUN_CONTINUES
 	.4byte General_Sandstorm                @ B_ANIM_SANDSTORM_CONTINUES
 	.4byte General_Hail                     @ B_ANIM_HAIL_CONTINUES
@@ -23268,11 +23267,6 @@ Move_SILVER_WIND:
 	delay 0
 	call UnsetBugBg
 	end
-SilverWindOnPlayer:
-	fadetobg BG_BUG_PLAYER
-	waitbgfadeout
-	createvisualtask AnimTask_StartSlidingBg, 5, -1536, 0, 0, -1
-	goto SilverWindContinue
 
 Move_SNATCH:
 	playsewithpan SE_M_TAKE_DOWN, SOUND_PAN_ATTACKER
@@ -24685,43 +24679,6 @@ General_Rain:
 	waitforvisualfinish
 	createvisualtask AnimTask_BlendBattleAnimPal, 10, (F_PAL_BG | F_PAL_BATTLERS), 2, 4, 0, RGB_BLACK
 	waitforvisualfinish
-	end
-
-General_Thunderstorm:
-	loadspritegfx ANIM_TAG_RAIN_DROPS
-	loadspritegfx ANIM_TAG_LIGHTNING
-	monbg ANIM_DEF_PARTNER
-	fadetobg BG_THUNDER
-	playsewithpan SE_M_RAIN_DANCE, SOUND_PAN_ATTACKER
-	createvisualtask AnimTask_BlendBattleAnimPal, 10, 0x781, 2, 0, 4, RGB_BLACK
-	waitforvisualfinish
-	createvisualtask AnimTask_CreateRaindrops, 2, 0, 3, 60
-	playsewithpan SE_M_THUNDER_WAVE, SOUND_PAN_TARGET
-	delay 1
-	createsprite gLightningSpriteTemplate, ANIM_TARGET, 2, 16, -36
-	delay 1
-	createsprite gLightningSpriteTemplate, ANIM_TARGET, 2, 16, -20
-	delay 1
-	createsprite gLightningSpriteTemplate, ANIM_TARGET, 2, 16, 12
-	delay 20
-	playsewithpan SE_M_THUNDER_WAVE, SOUND_PAN_ATTACKER
-	delay 1
-	createsprite gLightningSpriteTemplate, ANIM_ATTACKER, 2, -24, -32
-	delay 1
-	createsprite gLightningSpriteTemplate, ANIM_ATTACKER, 2, -24, -16
-	delay 1
-	createsprite gLightningSpriteTemplate, ANIM_ATTACKER, 2, -24, 16
-	delay 30
-	createvisualtask AnimTask_CreateRaindrops, 2, 0, 3, 60
-	delay 50
-	waitforvisualfinish
-	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG | F_PAL_BATTLERS_2, 2, 4, 0, RGB_BLACK
-	waitforvisualfinish
-	clearmonbg ANIM_DEF_PARTNER
-	restorebg
-	waitbgfadeout
-	setarg 7, 0xFFFF
-	waitbgfadein
 	end
 
 General_Sun:

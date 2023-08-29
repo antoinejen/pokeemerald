@@ -181,7 +181,7 @@ Route119_WeatherInstitute_2F_EventScript_ReceivePorygon::
 	goto_if_set FLAG_RECEIVED_PORYGON, Route119_WeatherInstitute_2F_EventScript_NoAbnormalWeather
 	setvar VAR_TEMP_1, SPECIES_PORYGON
 	bufferspeciesname STR_VAR_1, SPECIES_PORYGON
-	givemon SPECIES_PORYGON, 25, ITEM_UP_GRADE
+	givemon SPECIES_PORYGON, 25, ITEM_UPGRADE
 	goto_if_eq VAR_RESULT, 0, Route119_WeatherInstitute_2F_EventScript_ReceivePokemonParty
 	goto_if_eq VAR_RESULT, 1, Route119_WeatherInstitute_2F_EventScript_ReceivePokemonPC
 	goto Common_EventScript_NoMoreRoomForPokemon

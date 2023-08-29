@@ -172,13 +172,19 @@ RustboroCity_DevonCorp_2F_EventScript_ReceiveLileep::
 	goto Common_EventScript_NoMoreRoomForPokemon
 	end
 
+RustboroCity_DevonCorp_2F_EventScript_FinishReceivingFossil::
+	setvar VAR_FOSSIL_RESURRECTION_STATE, 0
+	setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
+	release
+	end
+
 RustboroCity_DevonCorp_2F_EventScript_ReceiveLileepParty::
 	call RustboroCity_DevonCorp_2F_EventScript_ReceivedLileepFanfare
 	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, RustboroCity_DevonCorp_2F_EventScript_FinishReceivingLileep
+	goto_if_eq VAR_RESULT, NO, RustboroCity_DevonCorp_2F_EventScript_FinishReceivingFossil
 	call Common_EventScript_GetGiftMonPartySlot
 	call Common_EventScript_NameReceivedPartyMon
-	goto RustboroCity_DevonCorp_2F_EventScript_FinishReceivingLileep
+	goto RustboroCity_DevonCorp_2F_EventScript_FinishReceivingFossil
 	end
 
 RustboroCity_DevonCorp_2F_EventScript_ReceiveLileepPC::
@@ -191,7 +197,7 @@ RustboroCity_DevonCorp_2F_EventScript_ReceiveLileepPC::
 
 RustboroCity_DevonCorp_2F_EventScript_TransferLileepToPC::
 	call Common_EventScript_TransferredToPC
-	goto RustboroCity_DevonCorp_2F_EventScript_FinishReceivingLileep
+	goto RustboroCity_DevonCorp_2F_EventScript_FinishReceivingFossil
 	end
 
 RustboroCity_DevonCorp_2F_EventScript_ReceivedLileepFanfare::
@@ -202,12 +208,6 @@ RustboroCity_DevonCorp_2F_EventScript_ReceivedLileepFanfare::
 	waitfanfare
 	bufferspeciesname STR_VAR_1, SPECIES_LILEEP
 	return
-
-RustboroCity_DevonCorp_2F_EventScript_FinishReceivingLileep::
-	setvar VAR_FOSSIL_RESURRECTION_STATE, 0
-	setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
-	release
-	end
 
 RustboroCity_DevonCorp_2F_EventScript_ReceiveAnorith::
 	setvar VAR_TEMP_1, SPECIES_ANORITH
@@ -220,10 +220,10 @@ RustboroCity_DevonCorp_2F_EventScript_ReceiveAnorith::
 RustboroCity_DevonCorp_2F_EventScript_ReceiveAnorithParty::
 	call RustboroCity_DevonCorp_2F_EventScript_ReceivedAnorithFanfare
 	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, RustboroCity_DevonCorp_2F_EventScript_FinishReceivingAnorith
+	goto_if_eq VAR_RESULT, NO, RustboroCity_DevonCorp_2F_EventScript_FinishReceivingFossil
 	call Common_EventScript_GetGiftMonPartySlot
 	call Common_EventScript_NameReceivedPartyMon
-	goto RustboroCity_DevonCorp_2F_EventScript_FinishReceivingAnorith
+	goto RustboroCity_DevonCorp_2F_EventScript_FinishReceivingFossil
 	end
 
 RustboroCity_DevonCorp_2F_EventScript_ReceiveAnorithPC::
@@ -236,7 +236,7 @@ RustboroCity_DevonCorp_2F_EventScript_ReceiveAnorithPC::
 
 RustboroCity_DevonCorp_2F_EventScript_TransferAnorithToPC::
 	call Common_EventScript_TransferredToPC
-	goto RustboroCity_DevonCorp_2F_EventScript_FinishReceivingAnorith
+	goto RustboroCity_DevonCorp_2F_EventScript_FinishReceivingFossil
 	end
 
 RustboroCity_DevonCorp_2F_EventScript_ReceivedAnorithFanfare::
@@ -301,12 +301,6 @@ RustboroCity_DevonCorp_2F_EventScript_ReceiveFossilPC::
 RustboroCity_DevonCorp_2F_EventScript_TransferFossilToPC::
 	call Common_EventScript_TransferredToPC
 	goto RustboroCity_DevonCorp_2F_EventScript_FinishReceivingFossil
-	end
-
-RustboroCity_DevonCorp_2F_EventScript_FinishReceivingFossil::
-	setvar VAR_FOSSIL_RESURRECTION_STATE, 0
-	setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
-	release
 	end
 
 RustboroCity_DevonCorp_2F_EventScript_ChooseFossil::

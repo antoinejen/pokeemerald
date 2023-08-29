@@ -1208,7 +1208,11 @@ const u8 gText_PsychUp48BP[] = _("Psych Up{CLEAR_TO 0x4E}48BP");
 const u8 gText_IcePunch48BP[] = _("Ice Punch{CLEAR_TO 0x4E}48BP");
 const u8 gText_ThunderPunch48BP[] = _("Thunderpunch{CLEAR_TO 0x4E}48BP");
 const u8 gText_FirePunch48BP[] = _("Fire Punch{CLEAR_TO 0x4E}48BP");
-const u8 gText_PkmnFainted3[] = _("{STR_VAR_1} survived the poisoning.\nThe poison faded away!\p");
+#if OW_POISON_DAMAGE < GEN_4
+const u8 gText_PkmnFainted_FldPsn[] = _("{STR_VAR_1} fainted…\p\n");
+#else
+const u8 gText_PkmnFainted_FldPsn[] = _("{STR_VAR_1} survived the poisoning.\nThe poison faded away!\p");
+#endif
 const u8 gText_Marco[] = _("Marco");
 const u8 gText_TrainerCardName[] = _("Name: ");
 const u8 gText_TrainerCardIDNo[] = _("IDNo.");

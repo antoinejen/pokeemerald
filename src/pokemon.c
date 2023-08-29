@@ -4508,8 +4508,12 @@ void SetMultiuseSpriteTemplateToPokemon(u16 speciesTag, u8 battlerPosition)
 {
     if (gMonSpritesGfxPtr != NULL)
         gMultiuseSpriteTemplate = gMonSpritesGfxPtr->templates[battlerPosition];
-    else if (sMonSpritesGfxManager)
-        gMultiuseSpriteTemplate = sMonSpritesGfxManager->templates[battlerPosition];
+    else if (sMonSpritesGfxManagers[MON_SPR_GFX_MANAGER_A])
+        gMultiuseSpriteTemplate = sMonSpritesGfxManagers[MON_SPR_GFX_MANAGER_A]->templates[battlerPosition];
+    else if (sMonSpritesGfxManagers[MON_SPR_GFX_MANAGER_B])
+        gMultiuseSpriteTemplate = sMonSpritesGfxManagers[MON_SPR_GFX_MANAGER_B]->templates[battlerPosition];
+    else
+        gMultiuseSpriteTemplate = gBattlerSpriteTemplates[battlerPosition];
 
     gMultiuseSpriteTemplate.paletteTag = speciesTag;
     if (battlerPosition == B_POSITION_PLAYER_LEFT || battlerPosition == B_POSITION_PLAYER_RIGHT)
@@ -5964,12 +5968,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                             if (dataUnsigned == 0)
                                 dataUnsigned = 1;
                             break;
-                        case ITEM6_HEAL_QUARTER:
-                            dataUnsigned = GetMonData(mon, MON_DATA_MAX_HP, NULL) / 4;
-                            if (dataUnsigned == 0)
-                                dataUnsigned = 1;
-                            break;
-                        case ITEM6_HEAL_LVL_UP:
+                        case ITEM6_HEAL_HP_LVL_UP:
                             dataUnsigned = gBattleScripting.levelUpHP;
                             break;
                         case ITEM6_HEAL_HP_QUARTER:
@@ -8458,32 +8457,6 @@ bool32 DoesSpeciesHaveFormChangeMethod(u16 species, u16 method)
     }
 
     return FALSE;
-}
-
-u16 MonTryLearningNewMoveEvolution(struct Pokemon *mon, bool8 firstMove)
-{
-    u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    u8 level = GetMonData(mon, MON_DATA_LEVEL, NULL);
-
-    // Since you can learn more than one move per level,
-    // the game needs to know whether you decided to
-    // learn it or keep the old set to avoid asking
-    // you to learn the same move over and over again.
-    if (firstMove)
-    {
-        sLearningMoveTableID = 0;
-    }
-    while(gLevelUpLearnsets[species][sLearningMoveTableID].move != LEVEL_UP_END)
-    {
-        while (gLevelUpLearnsets[species][sLearningMoveTableID].level == 0 || gLevelUpLearnsets[species][sLearningMoveTableID].level == level)
-        {
-            gMoveToLearn = gLevelUpLearnsets[species][sLearningMoveTableID].move;
-            sLearningMoveTableID++;
-            return GiveMoveToMon(mon, gMoveToLearn);
-        }
-        sLearningMoveTableID++;
-    }
-    return 0;
 }
 
 static void RemoveIVIndexFromList(u8 *ivs, u8 selectedIv)

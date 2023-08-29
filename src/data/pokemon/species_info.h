@@ -5608,12 +5608,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .baseSpeed     = 90,
         .baseSpAttack  = 55,
         .baseSpDefense = 55,
-        #if P_UPDATED_STATS >= GEN_7
-            .baseDefense   = 85,
-        #else
-            .baseDefense   = 75,
-        #endif
-        .types = { TYPE_WATER, TYPE_POISON},
+        .types = { TYPE_WATER, TYPE_POISON },
         .catchRate = 45,
         .expYield = 88,
         .evYield_Attack    = 1,
@@ -8962,8 +8957,8 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .baseDefense   = 120,
         .baseSpeed     = 50,
         .baseSpAttack  = 70,
-        .baseSpDefense = 120,        .baseSpDefense = 130,
-        .types = { TYPE_GHOST, TYPE_GHOST},
+        .baseSpDefense = 130,
+        .types = { TYPE_GHOST, TYPE_GHOST },
         .catchRate = 90,
         .expYield = 159,
         .evYield_Defense   = 1,

@@ -12,7 +12,7 @@ gText_GreatAppealButNoMoreToEnd::
 	.string "allows no more to the end.$"
 
 gText_UsedRepeatedlyWithoutBoringJudge::
-	.string "Can be repeatedly used\n
+	.string "Can be repeatedly used\n"
 	.string "without boring the Judge.$"
 
 gText_AvoidStartledByOthersOnce::
@@ -32,7 +32,7 @@ gText_UserLessLikelyStartled::
 	.string "less likely to be startled.$"
 
 gText_SlightlyStartleFrontMon::
-	.string "Slightly startles the\n
+	.string "Slightly startles the\n"
 	.string "Pokémon in front.$"
 
 gText_SlightlyStartleAppealed::
@@ -40,15 +40,15 @@ gText_SlightlyStartleAppealed::
 	.string "that have made appeals.$"
 
 gText_StartleAppealedBeforeUser::
-	.string "Startles the Pokémon that\n
+	.string "Startles the Pokémon that\n"
 	.string "appealed before the user.$"
 
 gText_StartleAllAppealed::
-	.string "Startles all Pokémon that\n
+	.string "Startles all Pokémon that\n"
 	.string "have done their appeals.$"
 
 gText_BadlyStartleFrontMon::
-	.string "Badly startles the\n
+	.string "Badly startles the\n"
 	.string "Pokémon in front.$"
 
 gText_BadlyStartleAppealed::
@@ -56,7 +56,7 @@ gText_BadlyStartleAppealed::
 	.string "have made appeals.$"
 
 gText_StartleAppealedBeforeUser2::
-	.string "Startles the Pokémon that\n
+	.string "Startles the Pokémon that\n"
 	.string "appealed before the user.$"
 
 gText_StartleAllAppealed2::
@@ -73,35 +73,35 @@ gText_JamOthersMissesTurn::
 	.string "one turn of appeals.$"
 
 gText_StartleMonsMadeSameTypeAppeal::
-	.string "Startles Pokémon that\n
+	.string "Startles Pokémon that\n"
 	.string "made a same-type appeal.$"
 
 gText_BadlyStartleCoolAppeals::
-	.string "Badly startles Pokémon\n
+	.string "Badly startles Pokémon\n"
 	.string "that made Cool appeals.$"
 
 gText_BadlyStartleBeautyAppeals::
-	.string "Badly startles Pokémon\n
+	.string "Badly startles Pokémon\n"
 	.string "that made Beauty appeals.$"
 
 gText_BadlyStartleCuteAppeals::
-	.string "Badly startles Pokémon\n
+	.string "Badly startles Pokémon\n"
 	.string "that made Cute appeals.$"
 
 gText_BadlyStartleSmartAppeals::
-	.string "Badly startles Pokémon\n
+	.string "Badly startles Pokémon\n"
 	.string "that made Smart appeals.$"
 
 gText_BadlyStartleToughAppeals::
-	.string "Badly startles Pokémon\n
+	.string "Badly startles Pokémon\n"
 	.string "that made Tough appeals.$"
 
 gText_MakeMonAfterUserNervous::
-	.string "Makes one Pokémon after\n
+	.string "Makes one Pokémon after\n"
 	.string "the user nervous.$"
 
 gText_MakeAllMonsAfterUserNervous::
-	.string "Makes all Pokémon after\n
+	.string "Makes all Pokémon after\n"
 	.string "the user nervous.$"
 
 gText_WorsenConditionOfThoseMadeAppeals::
@@ -109,7 +109,7 @@ gText_WorsenConditionOfThoseMadeAppeals::
 	.string "those that made appeals.$"
 
 gText_BadlyStartleMonsGoodCondition::
-	.string "Badly startles Pokémon in\n
+	.string "Badly startles Pokémon in\n"
 	.string "good condition.$"
 
 gText_AppealGreatIfPerformedFirst::
@@ -173,11 +173,11 @@ gText_ScrambleOrderOfNextAppeals::
 	.string "appeals on the next turn.$"
 
 gText_AppealExcitesAudienceInAnyContest::
-	.string "An appeal that excites the\n
+	.string "An appeal that excites the\n"
 	.string "audience in any Contest.$"
 
 gText_BadlyStartlesMonsGoodAppeals::
-	.string "Badly startles all Pokémon\n
+	.string "Badly startles all Pokémon\n"
 	.string "that made good appeals.$"
 
 gText_AppealBestMoreCrowdExcited::
@@ -767,4 +767,3 @@ gText_ToughMove::
 
 gText_3QuestionMarks::
 	.string "???$"
-
