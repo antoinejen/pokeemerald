@@ -25,13 +25,8 @@
 
 static bool8 CheckPyramidBagHasItem(u16 itemId, u16 count);
 static bool8 CheckPyramidBagHasSpace(u16 itemId, u16 count);
-static void ShowItemIconSprite(u16 item, bool8 firstTime, bool8 flash);
-static void DestroyItemIconSprite(void);
 
 EWRAM_DATA struct BagPocket gBagPockets[POCKETS_COUNT] = {0};
-EWRAM_DATA static u8 sHeaderBoxWindowId = 0;
-EWRAM_DATA u8 sItemIconSpriteId = 0;
-EWRAM_DATA u8 sItemIconSpriteId2 = 0;
 
 #include "data/text/item_descriptions.h"
 #include "data/items.h"
@@ -103,16 +98,21 @@ void CopyItemName(u16 itemId, u8 *dst)
     StringCopy(dst, ItemId_GetName(itemId));
 }
 
-static const u8 sText_s[] = _("s");
 void CopyItemNameHandlePlural(u16 itemId, u8 *dst, u32 quantity)
 {
-    StringCopy(dst, ItemId_GetName(itemId));
-    if (quantity > 1)
+    if (itemId == ITEM_POKE_BALL)
     {
-        if (ItemId_GetPocket(itemId) == POCKET_BERRIES)
-            GetBerryCountString(dst, gBerries[itemId - ITEM_CHERI_BERRY].name, quantity);
+        if (quantity < 2)
+            StringCopy(dst, ItemId_GetName(ITEM_POKE_BALL));
         else
-            StringAppend(dst, sText_s);
+            StringCopy(dst, gText_PokeBalls);
+    }
+    else
+    {
+        if (itemId >= FIRST_BERRY_INDEX && itemId <= LAST_BERRY_INDEX)
+            GetBerryCountString(dst, gBerries[itemId - FIRST_BERRY_INDEX].name, quantity);
+        else
+            StringCopy(dst, ItemId_GetName(itemId));
     }
 }
 
