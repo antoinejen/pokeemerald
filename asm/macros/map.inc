@@ -49,12 +49,12 @@
 	.endm
 
 	@ Defines a coord event for map data. Mirrors the struct layout of CoordEvent in include/global.fieldmap.h
-	.macro coord_event x:req, y:req, elevation:req, trigger:req, index:req, script:req
+	.macro coord_event x:req, y:req, elevation:req, var:req, varValue:req, script:req
 	.2byte \x, \y
 	.byte \elevation
 	.space 1  @ Padding
-	.2byte \trigger
-	.2byte \index
+	.2byte \var
+	.2byte \varValue
 	.space 2  @ Padding
 	.4byte \script
 	inc _num_traps
