@@ -20,12 +20,10 @@
 #include "task.h"
 #include "trig.h"
 #include "util.h"
-#include "constants/battle_transition.h"
 #include "constants/field_effects.h"
 #include "constants/songs.h"
 #include "constants/trainers.h"
 #include "constants/rgb.h"
-#include "event_data.h"
 
 #define PALTAG_UNUSED_MUGSHOT 0x100A
 

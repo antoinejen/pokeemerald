@@ -722,7 +722,7 @@ static void CreateFossilMultichoice(void)
 
         InitMenuInUpperLeftCornerNormal(windowId, count, count - 1);
         CopyWindowToVram(windowId, COPYWIN_FULL);
-        InitMultichoiceCheckWrap(FALSE, count, windowId, MULTI_FOSSIL_2);
+        InitMultichoiceCheckWrap(FALSE, count, windowId, MULTI_FOSSIL);
     }
 }
 

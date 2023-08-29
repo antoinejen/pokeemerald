@@ -8083,7 +8083,7 @@ static void DoGroundEffects_OnSpawn(struct ObjectEvent *objEvent, struct Sprite 
 {
     u32 flags;
 
-    if (objEvent->triggerGroundEffectsOnMove && !objEvent->invisible)
+    if (objEvent->triggerGroundEffectsOnMove)
     {
         flags = 0;
         UpdateObjectEventElevationAndPriority(objEvent, sprite);
@@ -8099,7 +8099,7 @@ static void DoGroundEffects_OnBeginStep(struct ObjectEvent *objEvent, struct Spr
 {
     u32 flags;
 
-    if (objEvent->triggerGroundEffectsOnMove && !objEvent->invisible)
+    if (objEvent->triggerGroundEffectsOnMove)
     {
         flags = 0;
         UpdateObjectEventElevationAndPriority(objEvent, sprite);
@@ -8116,7 +8116,7 @@ static void DoGroundEffects_OnFinishStep(struct ObjectEvent *objEvent, struct Sp
 {
     u32 flags;
 
-    if (objEvent->triggerGroundEffectsOnStop && !objEvent->invisible)
+    if (objEvent->triggerGroundEffectsOnStop)
     {
         flags = 0;
         UpdateObjectEventElevationAndPriority(objEvent, sprite);

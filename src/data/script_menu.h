@@ -600,8 +600,8 @@ static const struct MenuAction MultichoiceList_UnusedSSTidal4[] =
 
 static const struct MenuAction MultichoiceList_Fossil[] =
 {
-    {gText_ClawFossil},
     {gText_RootFossil},
+    {gText_ClawFossil},
     {gText_HelixFossil},
     {gText_DomeFossil},
     {gText_OldAmber},

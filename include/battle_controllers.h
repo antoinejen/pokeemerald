@@ -66,7 +66,7 @@ enum {
 
 // Special arguments for Battle Controller functions.
 
-enum { // Values given to the emit functions to choose gBattleBufferA or gBattleResources->bufferB
+enum { // Values given to the emit functions to choose gBattleBufferA or gBattleBufferB
     BUFFER_A,
     BUFFER_B
 };
@@ -96,7 +96,7 @@ enum {
 
 #define PARTY_SUMM_SKIP_DRAW_DELAY (1 << 7)
 
-// Special return values in gBattleResources->bufferB from Battle Controller functions.
+// Special return values in gBattleBufferB from Battle Controller functions.
 #define RET_VALUE_LEVELED_UP   11
 #define RET_MEGA_EVOLUTION 0x80
 
