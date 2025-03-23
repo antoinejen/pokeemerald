@@ -29,7 +29,7 @@ static void AnimArmThrustHit_Step(struct Sprite *sprite);
 static void AnimFocusPunchFist(struct Sprite *);
 static void AnimForcePalm(struct Sprite *sprite);
 
-extern struct SpriteTemplate gBasicHitSplatSpriteTemplate;
+extern const struct SpriteTemplate gBasicHitSplatSpriteTemplate;
 
 // Unused
 static const struct SpriteTemplate sUnusedHumanoidFootSpriteTemplate =
@@ -565,7 +565,7 @@ static void AnimFistOrFootRandomPos(struct Sprite *sprite)
         y *= -1;
 
     if (GET_BATTLER_SIDE2(battler) == B_SIDE_PLAYER)
-        y += 0xFFF0;
+        y -= 16;
 
     sprite->x += x;
     sprite->y += y;

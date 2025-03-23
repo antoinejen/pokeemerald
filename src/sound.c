@@ -23,7 +23,7 @@ static u8 sMapMusicState;
 static u8 sMapMusicFadeInSpeed;
 static u16 sFanfareCounter;
 
-bool8 gDisableMusic;
+COMMON_DATA bool8 gDisableMusic = 0;
 
 extern struct ToneData gCryTable[];
 extern struct ToneData gCryTable_Reverse[];
@@ -156,8 +156,7 @@ void FadeOutAndFadeInNewMapMusic(u16 songNum, u8 fadeOutSpeed, u8 fadeInSpeed)
     sMapMusicFadeInSpeed = fadeInSpeed;
 }
 
-// Unused
-static void FadeInNewMapMusic(u16 songNum, u8 speed)
+static void UNUSED FadeInNewMapMusic(u16 songNum, u8 speed)
 {
     FadeInNewBGM(songNum, speed);
     sCurrentMapMusic = songNum;
@@ -460,8 +459,34 @@ void PlayCryInternal(u16 species, s8 pan, s8 volume, u8 priority, u8 mode)
     SetPokemonCryChorus(chorus);
     SetPokemonCryPriority(priority);
 
-    species--;
-    gMPlay_PokemonCry = SetPokemonCryTone(reverse ? &gCryTable_Reverse[species] : &gCryTable[species]);
+    // This is a fancy way to get a cry of a Pokémon.
+    // It creates 4 sets of 128 mini cry tables.
+    // If you wish to expand Pokémon, you need to
+    // append new cases to the switch.
+    species = SpeciesToCryId(species);
+    index = species % 128;
+    table = species / 128;
+
+    #define GET_CRY(speciesIndex, tableId, reversed) \
+        ((reversed) ? &gCryTable_Reverse[(128 * (tableId)) + (speciesIndex)] : &gCryTable[(128 * (tableId)) + (speciesIndex)])
+
+    switch (table)
+    {
+    case 0:
+        gMPlay_PokemonCry = SetPokemonCryTone(GET_CRY(index, 0, reverse));
+        break;
+    case 1:
+        gMPlay_PokemonCry = SetPokemonCryTone(GET_CRY(index, 1, reverse));
+        break;
+    case 2:
+        gMPlay_PokemonCry = SetPokemonCryTone(GET_CRY(index, 2, reverse));
+        break;
+    case 3:
+        gMPlay_PokemonCry = SetPokemonCryTone(GET_CRY(index, 3, reverse));
+        break;
+    }
+
+    #undef GET_CRY
 }
 
 bool8 IsCryFinished(void)

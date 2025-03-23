@@ -30,6 +30,37 @@ struct PlayerInfo
     u16 language;
 };
 
+struct RecordedBattleSave
+{
+    struct Pokemon playerParty[PARTY_SIZE];
+    struct Pokemon opponentParty[PARTY_SIZE];
+    u8 playersName[MAX_LINK_PLAYERS][PLAYER_NAME_LENGTH + 1];
+    u8 playersGender[MAX_LINK_PLAYERS];
+    u32 playersTrainerId[MAX_LINK_PLAYERS];
+    u8 playersLanguage[MAX_LINK_PLAYERS];
+    u32 rngSeed;
+    u32 battleFlags;
+    u8 playersBattlers[MAX_LINK_PLAYERS];
+    u16 opponentA;
+    u16 opponentB;
+    u16 partnerId;
+    u16 multiplayerId;
+    u8 lvlMode;
+    u8 frontierFacility;
+    u8 frontierBrainSymbol;
+    u8 battleScene:1;
+    u8 textSpeed:3;
+    u32 AI_scripts;
+    u8 recordMixFriendName[PLAYER_NAME_LENGTH + 1];
+    u8 recordMixFriendClass;
+    u8 apprenticeId;
+    u16 easyChatSpeech[EASY_CHAT_BATTLE_WORDS_COUNT];
+    u8 recordMixFriendLanguage;
+    u8 apprenticeLanguage;
+    u8 battleRecord[MAX_BATTLERS_COUNT][BATTLER_RECORD_SIZE];
+    u32 checksum;
+};
+
 // Save data using TryWriteSpecialSaveSector is allowed to exceed SECTOR_DATA_SIZE (up to the counter field)
 STATIC_ASSERT(sizeof(struct RecordedBattleSave) <= SECTOR_COUNTER_OFFSET, RecordedBattleSaveFreeSpace);
 
@@ -53,7 +84,7 @@ EWRAM_DATA static u32 sAI_Scripts = 0;
 EWRAM_DATA static struct Pokemon sSavedPlayerParty[PARTY_SIZE] = {0};
 EWRAM_DATA static struct Pokemon sSavedOpponentParty[PARTY_SIZE] = {0};
 EWRAM_DATA static u16 sPlayerMonMoves[MAX_BATTLERS_COUNT / 2][MAX_MON_MOVES] = {0};
-EWRAM_DATA static struct PlayerInfo sPlayers[MAX_BATTLERS_COUNT] = {0};
+EWRAM_DATA static struct PlayerInfo sPlayers[MAX_LINK_PLAYERS] = {0};
 EWRAM_DATA static bool8 sIsPlaybackFinished = 0;
 EWRAM_DATA static u8 sRecordMixFriendName[PLAYER_NAME_LENGTH + 1] = {0};
 EWRAM_DATA static u8 sRecordMixFriendClass = 0;
@@ -116,7 +147,7 @@ void RecordedBattle_SetTrainerInfo(void)
         gRecordedBattleMultiplayerId = GetMultiplayerId();
         linkPlayersCount = GetLinkPlayerCount();
 
-        for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+        for (i = 0; i < MAX_LINK_PLAYERS; i++)
         {
             sPlayers[i].trainerId = gLinkPlayers[i].trainerId;
             sPlayers[i].gender = gLinkPlayers[i].gender;
@@ -193,8 +224,7 @@ u8 RecordedBattle_GetBattlerAction(u32 actionType, u8 battlerId)
     }
 }
 
-// Unused
-static u8 GetRecordedBattleMode(void)
+static u8 UNUSED GetRecordedBattleMode(void)
 {
     return sRecordMode;
 }
@@ -305,7 +335,7 @@ bool32 MoveRecordedBattleToSaveData(void)
         battleSave->opponentParty[i] = sSavedOpponentParty[i];
     }
 
-    for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+    for (i = 0; i < MAX_LINK_PLAYERS; i++)
     {
         for (j = 0; j < PLAYER_NAME_LENGTH + 1; j++)
             battleSave->playersName[i][j] = sPlayers[i].name[j];
@@ -507,7 +537,7 @@ void SetVariablesForRecordedBattle(struct RecordedBattleSave *src)
         gEnemyParty[i] = src->opponentParty[i];
     }
 
-    for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+    for (i = 0; i < MAX_LINK_PLAYERS; i++)
     {
         for (var = FALSE, j = 0; j < PLAYER_NAME_LENGTH + 1; j++)
         {
