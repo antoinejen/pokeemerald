@@ -2884,7 +2884,7 @@ static const struct BardSoundTemplate sBardSoundTemplates_Pokemon[NUM_SPECIES][M
         NULL_BARD_SOUND,
         NULL_BARD_SOUND,
     },
-    [SPECIES_CASTFORM] = {
+    [SPECIES_CASTFORM_NORMAL] = {
         { .songId = PHONEME_ID(PH_TRAP_BLEND) },
         { .songId = PHONEME_ID(PH_GOAT_SOLO) },
         PREV_BARD_SOUND,
@@ -3084,7 +3084,7 @@ static const struct BardSoundTemplate sBardSoundTemplates_Pokemon[NUM_SPECIES][M
         NULL_BARD_SOUND,
         NULL_BARD_SOUND,
     },
-    [SPECIES_DEOXYS] = {
+    [SPECIES_DEOXYS_NORMAL] = {
         { .songId = PHONEME_ID(PH_FLEECE_BLEND) },
         { .songId = PHONEME_ID(PH_THOUGHT_BLEND) },
         { .songId = PHONEME_ID(PH_KIT_SOLO) },

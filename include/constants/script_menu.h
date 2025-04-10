@@ -97,7 +97,7 @@
 #define MULTI_FORCED_START_MENU            86
 #define MULTI_FRONTIER_GAMBLER_BET         87
 #define MULTI_TENT                         88
-#define MULTI_FOSSIL_2             		   89 // These 4 were replaced by CreateLilycoveSSTidalMultichoice
+#define MULTI_UNUSED_SSTIDAL_1             89 // These 4 were replaced by CreateLilycoveSSTidalMultichoice
 #define MULTI_UNUSED_SSTIDAL_2             90 //
 #define MULTI_UNUSED_SSTIDAL_3             91 //
 #define MULTI_UNUSED_SSTIDAL_4             92 //
@@ -122,6 +122,7 @@
 #define MULTI_SLATEPORT_TENT_RULES         111
 #define MULTI_FALLARBOR_TENT_RULES         112
 #define MULTI_TAG_MATCH_TYPE               113
+#define MULTI_BERRY_PLOT                   114
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0
@@ -132,15 +133,6 @@
 #define SSTIDAL_SELECTION_FARAWAY_ISLAND   5
 #define SSTIDAL_SELECTION_EXIT             6
 #define SSTIDAL_SELECTION_COUNT            7
-
-// Rustboro Devon Corp Fossil Multichoice Selections
-#define FOSSIL_SELECTION_CLAW_FOSSIL       	0
-#define FOSSIL_SELECTION_ROOT_FOSSIL  		1
-#define FOSSIL_SELECTION_HELIX_FOSSIL  		2
-#define FOSSIL_SELECTION_DOME_FOSSIL       	3
-#define FOSSIL_SELECTION_OLD_AMBER     		4
-#define FOSSIL_SELECTION_EXIT             	5
-#define FOSSIL_SELECTION_COUNT            	6
 
 // Std String Ids
 #define STDSTRING_COOL             0
@@ -174,8 +166,10 @@
 #define STDSTRING_BATTLE_PIKE      28
 #define STDSTRING_BATTLE_PYRAMID   29
 
-#define STDSTRING_MEDICINE         30
-#define STDSTRING_BATTLEITEMS      31
-#define STDSTRING_TREASURES        32
+// Dynamic Multichoice Callbacks
+
+#define DYN_MULTICHOICE_CB_DEBUG      0
+#define DYN_MULTICHOICE_CB_SHOW_ITEM  1
+#define DYN_MULTICHOICE_CB_NONE       255
 
 #endif //GUARD_SCRIPT_MENU_CONSTANTS_H

@@ -7,23 +7,43 @@ SINGLE_BATTLE_TEST("Static inflicts paralysis on contact")
     PARAMETRIZE { move = MOVE_TACKLE; }
     PARAMETRIZE { move = MOVE_SWIFT; }
     GIVEN {
-        ASSUME(gBattleMoves[MOVE_TACKLE].flags & FLAG_MAKES_CONTACT);
-        ASSUME(!(gBattleMoves[MOVE_SWIFT].flags & FLAG_MAKES_CONTACT));
+        ASSUME(MoveMakesContact(MOVE_TACKLE));
+        ASSUME(!MoveMakesContact(MOVE_SWIFT));
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_PIKACHU) { Ability(ABILITY_STATIC); }
     } WHEN {
         TURN { MOVE(player, move); }
     } SCENE {
-        if (gBattleMoves[move].flags & FLAG_MAKES_CONTACT) {
+        if (MoveMakesContact(move)) {
             ABILITY_POPUP(opponent, ABILITY_STATIC);
             ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PRZ, player);
-            MESSAGE("Foe Pikachu's Static paralyzed Wobbuffet! It may be unable to move!");
+            MESSAGE("The opposing Pikachu's Static paralyzed Wobbuffet, so it may be unable to move!");
             STATUS_ICON(player, paralysis: TRUE);
         } else {
-            NOT ABILITY_POPUP(opponent, ABILITY_STATIC);
-            NOT ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PRZ, player);
-            NOT MESSAGE("Foe Pikachu's Static paralyzed Wobbuffet! It may be unable to move!");
-            NOT STATUS_ICON(player, paralysis: TRUE);
+            NONE_OF {
+                ABILITY_POPUP(opponent, ABILITY_STATIC);
+                ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PRZ, player);
+                MESSAGE("The opposing Pikachu's Static paralyzed Wobbuffet, so it may be unable to move!");
+                STATUS_ICON(player, paralysis: TRUE);
+            }
         }
+    }
+}
+
+SINGLE_BATTLE_TEST("Static triggers 30% of the time")
+{
+    PASSES_RANDOMLY(3, 10, RNG_STATIC);
+    GIVEN {
+        ASSUME(B_ABILITY_TRIGGER_CHANCE >= GEN_4);
+        ASSUME(MoveMakesContact(MOVE_TACKLE));
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_PIKACHU) { Ability(ABILITY_STATIC); }
+    } WHEN {
+        TURN { MOVE(player, MOVE_TACKLE); }
+    } SCENE {
+        ABILITY_POPUP(opponent, ABILITY_STATIC);
+        ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PRZ, player);
+        MESSAGE("The opposing Pikachu's Static paralyzed Wobbuffet, so it may be unable to move!");
+        STATUS_ICON(player, paralysis: TRUE);
     }
 }

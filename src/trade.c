@@ -1165,7 +1165,7 @@ static bool8 BufferTradeParties(void)
                     GetMonData(mon, MON_DATA_NICKNAME, name);
 
                     if (!StringCompareWithoutExtCtrlCodes(name, sText_ShedinjaJP))
-                        SetMonData(mon, MON_DATA_NICKNAME, gSpeciesNames[SPECIES_SHEDINJA]);
+                        SetMonData(mon, MON_DATA_NICKNAME, GetSpeciesName(SPECIES_SHEDINJA));
                 }
             }
         }
@@ -1570,15 +1570,8 @@ static u8 CheckValidityOfTradeMons(u8 *aliveMons, u8 playerPartyCount, u8 player
     partnerMonIdx %= PARTY_SIZE;
     partnerSpecies = GetMonData(&gEnemyParty[partnerMonIdx], MON_DATA_SPECIES);
 
-    // Partner cant trade illegitimate Deoxys or Mew
-    if (partnerSpecies == SPECIES_DEOXYS || partnerSpecies == SPECIES_MEW)
-    {
-        if (!GetMonData(&gEnemyParty[partnerMonIdx], MON_DATA_MODERN_FATEFUL_ENCOUNTER))
-            return PARTNER_MON_INVALID;
-    }
-
     // Can't trade specific species
-    if (gSpeciesInfo[partnerSpecies].flags & SPECIES_FLAG_CANNOT_BE_TRADED)
+    if (gSpeciesInfo[partnerSpecies].cannotBeTraded)
         return PARTNER_MON_INVALID;
 
     // Partner cant trade Egg or non-Hoenn mon if player doesn't have National Dex
@@ -1981,7 +1974,7 @@ static void BufferMovesString(u8 *str, u8 whichParty, u8 partyIdx)
         for (i = 0; i < MAX_MON_MOVES; i++)
         {
             if (moves[i] != MOVE_NONE)
-                StringAppend(str, gMoveNames[moves[i]]);
+                StringAppend(str, GetMoveName(moves[i]));
 
             StringAppend(str, sText_NewLine);
         }
@@ -2424,14 +2417,8 @@ static u32 CanTradeSelectedMon(struct Pokemon *playerParty, int partyCount, int 
         }
     }
 
-    if (species[monIdx] == SPECIES_DEOXYS || species[monIdx] == SPECIES_MEW)
-    {
-        if (!GetMonData(&playerParty[monIdx], MON_DATA_MODERN_FATEFUL_ENCOUNTER))
-            return CANT_TRADE_INVALID_MON;
-    }
-
     // Can't trade specific species
-    if (gSpeciesInfo[species[monIdx]].flags & SPECIES_FLAG_CANNOT_BE_TRADED)
+    if (gSpeciesInfo[species[monIdx]].cannotBeTraded)
         return CANT_TRADE_INVALID_MON;
 
     // Make Eggs not count for numMonsLeft
@@ -2495,16 +2482,6 @@ s32 GetGameProgressForLinkTrade(void)
     return TRADE_BOTH_PLAYERS_READY;
 }
 
-static bool32 IsDeoxysOrMewUntradable(u16 species, bool8 isModernFatefulEncounter)
-{
-    if (species == SPECIES_DEOXYS || species == SPECIES_MEW)
-    {
-        if (!isModernFatefulEncounter)
-            return TRUE;
-    }
-    return FALSE;
-}
-
 int GetUnionRoomTradeMessageId(struct RfuGameCompatibilityData player, struct RfuGameCompatibilityData partner, u16 playerSpecies2, u16 partnerSpecies, u8 requestedType, u16 playerSpecies, bool8 isModernFatefulEncounter)
 {
     bool8 playerHasNationalDex = player.hasNationalDex;
@@ -2523,12 +2500,8 @@ int GetUnionRoomTradeMessageId(struct RfuGameCompatibilityData player, struct Rf
             return UR_TRADE_MSG_CANT_TRADE_WITH_PARTNER_2;
     }
 
-    // Cannot trade illegitimate Deoxys/Mew
-    if (IsDeoxysOrMewUntradable(playerSpecies, isModernFatefulEncounter))
-        return UR_TRADE_MSG_MON_CANT_BE_TRADED;
-
     // Can't trade specific species
-    if (gSpeciesInfo[playerSpecies].flags & SPECIES_FLAG_CANNOT_BE_TRADED)
+    if (gSpeciesInfo[playerSpecies].cannotBeTraded)
         return UR_TRADE_MSG_MON_CANT_BE_TRADED;
 
     if (partnerSpecies == SPECIES_EGG)
@@ -2575,11 +2548,8 @@ int CanRegisterMonForTradingBoard(struct RfuGameCompatibilityData player, u16 sp
 {
     bool8 hasNationalDex = player.hasNationalDex;
 
-    if (IsDeoxysOrMewUntradable(species, isModernFatefulEncounter))
-        return CANT_REGISTER_MON_NOW;
-
     // Can't trade specific species
-    if (gSpeciesInfo[species].flags & SPECIES_FLAG_CANNOT_BE_TRADED)
+    if (gSpeciesInfo[species].cannotBeTraded)
         return CANT_REGISTER_MON;
 
     if (hasNationalDex)
@@ -2797,7 +2767,7 @@ static void LoadTradeMonPic(u8 whichParty, u8 state)
 {
     int pos = 0;
     struct Pokemon *mon = NULL;
-    u16 species;
+    u16 species = SPECIES_NONE;
     u32 personality;
 
     if (whichParty == TRADE_PLAYER)
@@ -2811,21 +2781,21 @@ static void LoadTradeMonPic(u8 whichParty, u8 state)
         mon = &gEnemyParty[gSelectedTradeMonPositions[TRADE_PARTNER] % PARTY_SIZE];
         pos = B_POSITION_OPPONENT_RIGHT;
     }
+    species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG);
 
     switch (state)
     {
     case 0:
-        species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG);
         personality = GetMonData(mon, MON_DATA_PERSONALITY);
 
-        HandleLoadSpecialPokePic(TRUE, gMonSpritesGfxPtr->sprites.ptr[whichParty * 2 + B_POSITION_OPPONENT_LEFT], species, personality);
+        HandleLoadSpecialPokePic(TRUE, gMonSpritesGfxPtr->spritesGfx[whichParty * 2 + B_POSITION_OPPONENT_LEFT], species, personality);
 
-        LoadCompressedSpritePalette(GetMonSpritePalStruct(mon));
+        LoadCompressedSpritePaletteWithTag(GetMonFrontSpritePal(mon), species);
         sTradeAnim->monSpecies[whichParty] = species;
         sTradeAnim->monPersonalities[whichParty] = personality;
         break;
     case 1:
-        SetMultiuseSpriteTemplateToPokemon(GetMonSpritePalStruct(mon)->tag, pos);
+        SetMultiuseSpriteTemplateToPokemon(species, pos);
         sTradeAnim->monSpriteIds[whichParty] = CreateSprite(&gMultiuseSpriteTemplate, 120, 60, 6);
         gSprites[sTradeAnim->monSpriteIds[whichParty]].invisible = TRUE;
         gSprites[sTradeAnim->monSpriteIds[whichParty]].callback = SpriteCallbackDummy;
@@ -2989,17 +2959,11 @@ static void TradeAnimInit_LoadGfx(void)
     SetBgTilemapBuffer(1, Alloc(BG_SCREEN_SIZE));
     SetBgTilemapBuffer(3, Alloc(BG_SCREEN_SIZE));
     DeactivateAllTextPrinters();
-    // Doing the graphics load...
+    // Doing the graphics load.
     DecompressAndLoadBgGfxUsingHeap(0, gBattleTextboxTiles, 0, 0, 0);
-    LZDecompressWram(gBattleTextboxTilemap, gDecompressionBuffer);
-    CopyToBgTilemapBuffer(0, gDecompressionBuffer, BG_SCREEN_SIZE, 0);
+    DecompressAndCopyToBgTilemapBuffer(0, gBattleTextboxTilemap, BG_SCREEN_SIZE, 0);
     LoadCompressedPalette(gBattleTextboxPalette, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
     InitWindows(sTradeSequenceWindowTemplates);
-    // ... and doing the same load again
-    DecompressAndLoadBgGfxUsingHeap(0, gBattleTextboxTiles, 0, 0, 0);
-    LZDecompressWram(gBattleTextboxTilemap, gDecompressionBuffer);
-    CopyToBgTilemapBuffer(0, gDecompressionBuffer, BG_SCREEN_SIZE, 0);
-    LoadCompressedPalette(gBattleTextboxPalette, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
 }
 
 static void CB2_InitInGameTrade(void)
@@ -3453,7 +3417,7 @@ static bool8 DoTradeAnim_Cable(void)
     case STATE_START:
         gSprites[sTradeAnim->monSpriteIds[TRADE_PLAYER]].invisible = FALSE;
         gSprites[sTradeAnim->monSpriteIds[TRADE_PLAYER]].x2 = -180;
-        gSprites[sTradeAnim->monSpriteIds[TRADE_PLAYER]].y2 = gMonFrontPicCoords[sTradeAnim->monSpecies[TRADE_PLAYER]].y_offset;
+        gSprites[sTradeAnim->monSpriteIds[TRADE_PLAYER]].y2 = gSpeciesInfo[sTradeAnim->monSpecies[TRADE_PLAYER]].frontPicYOffset;
         sTradeAnim->state++;
         sTradeAnim->cachedMapMusic = GetCurrentMapMusic();
         PlayNewMapMusic(MUS_EVOLUTION);
@@ -3814,7 +3778,7 @@ static bool8 DoTradeAnim_Cable(void)
         if (gSprites[sTradeAnim->bouncingPokeballSpriteId].callback == SpriteCallbackDummy)
         {
             HandleLoadSpecialPokePic(TRUE,
-                                     gMonSpritesGfxPtr->sprites.ptr[B_POSITION_OPPONENT_RIGHT],
+                                     gMonSpritesGfxPtr->spritesGfx[B_POSITION_OPPONENT_RIGHT],
                                      sTradeAnim->monSpecies[TRADE_PARTNER],
                                      sTradeAnim->monPersonalities[TRADE_PARTNER]);
             sTradeAnim->state++;
@@ -3822,7 +3786,7 @@ static bool8 DoTradeAnim_Cable(void)
         break;
     case STATE_SHOW_NEW_MON:
         gSprites[sTradeAnim->monSpriteIds[TRADE_PARTNER]].x = 120;
-        gSprites[sTradeAnim->monSpriteIds[TRADE_PARTNER]].y = gMonFrontPicCoords[sTradeAnim->monSpecies[TRADE_PARTNER]].y_offset + 60;
+        gSprites[sTradeAnim->monSpriteIds[TRADE_PARTNER]].y = gSpeciesInfo[sTradeAnim->monSpecies[TRADE_PARTNER]].frontPicYOffset + 60;
         gSprites[sTradeAnim->monSpriteIds[TRADE_PARTNER]].x2 = 0;
         gSprites[sTradeAnim->monSpriteIds[TRADE_PARTNER]].y2 = 0;
         StartSpriteAnim(&gSprites[sTradeAnim->monSpriteIds[TRADE_PARTNER]], 0);
@@ -3926,7 +3890,7 @@ static bool8 DoTradeAnim_Wireless(void)
     case STATE_START:
         gSprites[sTradeAnim->monSpriteIds[TRADE_PLAYER]].invisible = FALSE;
         gSprites[sTradeAnim->monSpriteIds[TRADE_PLAYER]].x2 = -180;
-        gSprites[sTradeAnim->monSpriteIds[TRADE_PLAYER]].y2 = gMonFrontPicCoords[sTradeAnim->monSpecies[TRADE_PLAYER]].y_offset;
+        gSprites[sTradeAnim->monSpriteIds[TRADE_PLAYER]].y2 = gSpeciesInfo[sTradeAnim->monSpecies[TRADE_PLAYER]].frontPicYOffset;
         sTradeAnim->state++;
         sTradeAnim->cachedMapMusic = GetCurrentMapMusic();
         PlayNewMapMusic(MUS_EVOLUTION);
@@ -4311,7 +4275,7 @@ static bool8 DoTradeAnim_Wireless(void)
         if (gSprites[sTradeAnim->bouncingPokeballSpriteId].callback == SpriteCallbackDummy)
         {
             HandleLoadSpecialPokePic(TRUE,
-                                      gMonSpritesGfxPtr->sprites.ptr[B_POSITION_OPPONENT_RIGHT],
+                                      gMonSpritesGfxPtr->spritesGfx[B_POSITION_OPPONENT_RIGHT],
                                       sTradeAnim->monSpecies[TRADE_PARTNER],
                                       sTradeAnim->monPersonalities[TRADE_PARTNER]);
             sTradeAnim->state++;
@@ -4319,7 +4283,7 @@ static bool8 DoTradeAnim_Wireless(void)
         break;
     case STATE_SHOW_NEW_MON:
         gSprites[sTradeAnim->monSpriteIds[TRADE_PARTNER]].x = 120;
-        gSprites[sTradeAnim->monSpriteIds[TRADE_PARTNER]].y = gMonFrontPicCoords[sTradeAnim->monSpecies[TRADE_PARTNER]].y_offset + 60;
+        gSprites[sTradeAnim->monSpriteIds[TRADE_PARTNER]].y = gSpeciesInfo[sTradeAnim->monSpecies[TRADE_PARTNER]].frontPicYOffset + 60;
         gSprites[sTradeAnim->monSpriteIds[TRADE_PARTNER]].x2 = 0;
         gSprites[sTradeAnim->monSpriteIds[TRADE_PARTNER]].y2 = 0;
         StartSpriteAnim(&gSprites[sTradeAnim->monSpriteIds[TRADE_PARTNER]], 0);
@@ -4541,8 +4505,8 @@ static void SpriteCB_BouncingPokeballArrive(struct Sprite *sprite)
 u16 GetInGameTradeSpeciesInfo(void)
 {
     const struct InGameTrade *inGameTrade = &sIngameTrades[gSpecialVar_0x8004];
-    StringCopy(gStringVar1, gSpeciesNames[inGameTrade->requestedSpecies]);
-    StringCopy(gStringVar2, gSpeciesNames[inGameTrade->species]);
+    StringCopy(gStringVar1, GetSpeciesName(inGameTrade->requestedSpecies));
+    StringCopy(gStringVar2, GetSpeciesName(inGameTrade->species));
     return inGameTrade->requestedSpecies;
 }
 
@@ -4552,7 +4516,7 @@ static void BufferInGameTradeMonName(void)
     const struct InGameTrade *inGameTrade = &sIngameTrades[gSpecialVar_0x8004];
     GetMonData(&gPlayerParty[gSpecialVar_0x8005], MON_DATA_NICKNAME, nickname);
     StringCopy_Nickname(gStringVar1, nickname);
-    StringCopy(gStringVar2, gSpeciesNames[inGameTrade->species]);
+    StringCopy(gStringVar2, GetSpeciesName(inGameTrade->species));
 }
 
 static void CreateInGameTradePokemonInternal(u8 whichPlayerMon, u8 whichInGameTrade)
@@ -4872,7 +4836,7 @@ static void CheckPartnersMonForRibbons(void)
 {
     u8 i;
     u8 numRibbons = 0;
-    for (i = 0; i < (MON_DATA_UNUSED_RIBBONS - MON_DATA_CHAMPION_RIBBON); i++)
+    for (i = 0; i < (MON_DATA_WORLD_RIBBON - MON_DATA_CHAMPION_RIBBON + 1); i++)
         numRibbons += GetMonData(&gEnemyParty[gSelectedTradeMonPositions[TRADE_PARTNER] % PARTY_SIZE], MON_DATA_CHAMPION_RIBBON + i);
 
     if (numRibbons != 0)

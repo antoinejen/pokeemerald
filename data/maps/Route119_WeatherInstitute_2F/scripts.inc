@@ -88,11 +88,10 @@ Route119_WeatherInstitute_2F_EventScript_ShellyDefeated::
 
 Route119_WeatherInstitute_2F_EventScript_ReceiveCastform::
 	msgbox Route119_WeatherInstitute_2F_Text_ThanksPleaseTakePokemon, MSGBOX_DEFAULT
-	setvar VAR_TEMP_1, SPECIES_CASTFORM
-	bufferspeciesname STR_VAR_1, SPECIES_CASTFORM
-	givemon SPECIES_CASTFORM, 25, ITEM_MYSTIC_WATER
-	goto_if_eq VAR_RESULT, 0, Route119_WeatherInstitute_2F_EventScript_ReceivePokemonParty
-	goto_if_eq VAR_RESULT, 1, Route119_WeatherInstitute_2F_EventScript_ReceivePokemonPC
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_CASTFORM_NORMAL
+	givemon SPECIES_CASTFORM_NORMAL, 25, ITEM_MYSTIC_WATER
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, Route119_WeatherInstitute_2F_EventScript_ReceiveCastformParty
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, Route119_WeatherInstitute_2F_EventScript_ReceiveCastformPC
 	goto Common_EventScript_NoMoreRoomForPokemon
 	end
 
@@ -130,6 +129,7 @@ Route119_WeatherInstitute_2F_EventScript_ReceivedPokemonFanfare::
 	message Route119_WeatherInstitute_2F_Text_PlayerReceivedPokemon
 	waitmessage
 	waitfanfare
+	bufferspeciesname STR_VAR_1, SPECIES_CASTFORM_NORMAL
 	return
 
 Route119_WeatherInstitute_2F_EventScript_ExplainCastform::

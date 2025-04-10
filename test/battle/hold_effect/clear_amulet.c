@@ -3,7 +3,7 @@
 
 ASSUMPTIONS
 {
-    ASSUME(gItems[ITEM_CLEAR_AMULET].holdEffect == HOLD_EFFECT_CLEAR_AMULET);
+    ASSUME(gItemsInfo[ITEM_CLEAR_AMULET].holdEffect == HOLD_EFFECT_CLEAR_AMULET);
 }
 
 SINGLE_BATTLE_TEST("Clear Amulet prevents Intimidate")
@@ -21,8 +21,8 @@ SINGLE_BATTLE_TEST("Clear Amulet prevents Intimidate")
     } SCENE {
         HP_BAR(player, captureDamage: &turnOneHit);
         ABILITY_POPUP(player, ABILITY_INTIMIDATE);
-        NONE_OF { ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player); }
-        MESSAGE("Foe Wobbuffet's Attack was not lowered!");
+        NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
+        MESSAGE("The effects of the Clear Amulet held by the opposing Wobbuffet prevents its stats from being lowered!");
         HP_BAR(player, captureDamage: &turnTwoHit);
     } THEN {
         EXPECT_EQ(turnOneHit, turnTwoHit);
@@ -42,44 +42,20 @@ SINGLE_BATTLE_TEST("Clear Amulet prevents stat reducing effects")
     PARAMETRIZE { move = MOVE_SAND_ATTACK; }
 
     GIVEN {
-        ASSUME(gBattleMoves[MOVE_GROWL].effect == EFFECT_ATTACK_DOWN);
-        ASSUME(gBattleMoves[MOVE_LEER].effect == EFFECT_DEFENSE_DOWN);
-        ASSUME(gBattleMoves[MOVE_CONFIDE].effect == EFFECT_SPECIAL_ATTACK_DOWN);
-        ASSUME(gBattleMoves[MOVE_FAKE_TEARS].effect == EFFECT_SPECIAL_DEFENSE_DOWN_2);
-        ASSUME(gBattleMoves[MOVE_SCARY_FACE].effect == EFFECT_SPEED_DOWN_2);
-        ASSUME(B_UPDATED_MOVE_DATA >= GEN_6);
-        ASSUME(gBattleMoves[MOVE_SWEET_SCENT].effect == EFFECT_EVASION_DOWN_2);
-        ASSUME(gBattleMoves[MOVE_SAND_ATTACK].effect == EFFECT_ACCURACY_DOWN);
+        ASSUME(GetMoveEffect(MOVE_GROWL) == EFFECT_ATTACK_DOWN);
+        ASSUME(GetMoveEffect(MOVE_LEER) == EFFECT_DEFENSE_DOWN);
+        ASSUME(GetMoveEffect(MOVE_CONFIDE) == EFFECT_SPECIAL_ATTACK_DOWN);
+        ASSUME(GetMoveEffect(MOVE_FAKE_TEARS) == EFFECT_SPECIAL_DEFENSE_DOWN_2);
+        ASSUME(GetMoveEffect(MOVE_SCARY_FACE) == EFFECT_SPEED_DOWN_2);
+        ASSUME(GetMoveEffect(MOVE_SWEET_SCENT) == (B_UPDATED_MOVE_DATA >= GEN_6 ? EFFECT_EVASION_DOWN_2 : EFFECT_EVASION_DOWN));
+        ASSUME(GetMoveEffect(MOVE_SAND_ATTACK) == EFFECT_ACCURACY_DOWN);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET) { Item(ITEM_CLEAR_AMULET); };
     } WHEN {
         TURN { MOVE(player, move); }
     } SCENE {
-        NONE_OF { ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent); }
-        switch (move)
-        {
-        case MOVE_GROWL:
-            MESSAGE("Foe Wobbuffet's Attack was not lowered!");
-            break;
-        case MOVE_LEER:
-            MESSAGE("Foe Wobbuffet's Defense was not lowered!");
-            break;
-        case MOVE_CONFIDE:
-            MESSAGE("Foe Wobbuffet's Sp. Atk was not lowered!");
-            break;
-        case MOVE_FAKE_TEARS:
-            MESSAGE("Foe Wobbuffet's Sp. Def was not lowered!");
-            break;
-        case MOVE_SCARY_FACE:
-            MESSAGE("Foe Wobbuffet's Speed was not lowered!");
-            break;
-        case MOVE_SWEET_SCENT:
-            MESSAGE("Foe Wobbuffet's evasiveness was not lowered!");
-            break;
-        case MOVE_SAND_ATTACK:
-            MESSAGE("Foe Wobbuffet's accuracy was not lowered!");
-            break;
-        }
+        NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
+        MESSAGE("The effects of the Clear Amulet held by the opposing Wobbuffet prevents its stats from being lowered!");
     }
 }
 
@@ -95,17 +71,51 @@ SINGLE_BATTLE_TEST("Clear Amulet prevents secondary effects that reduce stats")
     PARAMETRIZE { move = MOVE_MUD_SLAP; }
 
     GIVEN {
-        ASSUME(gBattleMoves[MOVE_AURORA_BEAM].effect == EFFECT_ATTACK_DOWN_HIT);
-        ASSUME(gBattleMoves[MOVE_ROCK_SMASH].effect == EFFECT_DEFENSE_DOWN_HIT);
-        ASSUME(gBattleMoves[MOVE_SNARL].effect == EFFECT_SPECIAL_ATTACK_DOWN_HIT);
-        ASSUME(gBattleMoves[MOVE_PSYCHIC].effect == EFFECT_SPECIAL_DEFENSE_DOWN_HIT);
-        ASSUME(gBattleMoves[MOVE_BUBBLE_BEAM].effect == EFFECT_SPEED_DOWN_HIT);
-        ASSUME(gBattleMoves[MOVE_MUD_SLAP].effect == EFFECT_ACCURACY_DOWN_HIT);
+        ASSUME(MoveHasAdditionalEffect(MOVE_AURORA_BEAM, MOVE_EFFECT_ATK_MINUS_1) == TRUE);
+        ASSUME(MoveHasAdditionalEffect(MOVE_ROCK_SMASH, MOVE_EFFECT_DEF_MINUS_1) == TRUE);
+        ASSUME(MoveHasAdditionalEffect(MOVE_BUBBLE_BEAM, MOVE_EFFECT_SPD_MINUS_1) == TRUE);
+        ASSUME(MoveHasAdditionalEffect(MOVE_SNARL, MOVE_EFFECT_SP_ATK_MINUS_1) == TRUE);
+        ASSUME(MoveHasAdditionalEffect(MOVE_PSYCHIC, MOVE_EFFECT_SP_DEF_MINUS_1) == TRUE);
+        ASSUME(MoveHasAdditionalEffect(MOVE_MUD_SLAP, MOVE_EFFECT_ACC_MINUS_1) == TRUE);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET) { Item(ITEM_CLEAR_AMULET); };
     } WHEN {
-        TURN { MOVE(player, MOVE_ROCK_SMASH); }
+        TURN { MOVE(player, move); }
     } SCENE {
-        NONE_OF { ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent); }
+        NONE_OF {
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
+            MESSAGE("The effects of the Clear Amulet held by the opposing Wobbuffet prevents its stats from being lowered!");
+        }
+    }
+}
+
+SINGLE_BATTLE_TEST("Clear Amulet protects from Protect's secondary effects")
+{
+    u32 move;
+
+    PARAMETRIZE { move = MOVE_SPIKY_SHIELD; }
+    PARAMETRIZE { move = MOVE_BANEFUL_BUNKER; }
+    PARAMETRIZE { move = MOVE_BURNING_BULWARK; }
+    PARAMETRIZE { move = MOVE_KINGS_SHIELD; }
+    PARAMETRIZE { move = MOVE_SILK_TRAP; }
+    PARAMETRIZE { move = MOVE_OBSTRUCT; }
+
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_CLEAR_AMULET); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(opponent, move); MOVE(player, MOVE_TACKLE); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, move, opponent);
+        NONE_OF {
+            ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, player);
+            if (move == MOVE_KINGS_SHIELD) {
+                MESSAGE("Wobbuffet's Attack fell!");
+            } else if (move == MOVE_SILK_TRAP) {
+                MESSAGE("Wobbuffet's Speed fell!");
+            } else if (move == MOVE_OBSTRUCT) {
+                MESSAGE("Wobbuffet's Defense harshly fell!");
+            }
+        }
     }
 }

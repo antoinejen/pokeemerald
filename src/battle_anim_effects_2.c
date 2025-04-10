@@ -15,6 +15,7 @@
 #include "util.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "constants/moves.h"
 
 static void AnimCirclingFinger(struct Sprite *);
 static void AnimBouncingMusicNote(struct Sprite *);
@@ -541,6 +542,14 @@ const union AffineAnimCmd gGrowAndShrinkAffineAnimCmds[] =
     AFFINEANIMCMD_END,
 };
 
+const union AffineAnimCmd gShrinkAndGrowAffineAnimCmds[] =
+{
+    AFFINEANIMCMD_FRAME(4, 5, 0, 12),
+    AFFINEANIMCMD_FRAME(0, 0, 0, 24),
+    AFFINEANIMCMD_FRAME(-4, -5, 0, 6),
+    AFFINEANIMCMD_END,
+};
+
 const union AnimCmd gBreathPuffAnimCmds1[] =
 {
     ANIMCMD_FRAME(0, 4, .hFlip = TRUE),
@@ -942,6 +951,18 @@ const struct SpriteTemplate gRedHeartRisingSpriteTemplate =
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimRedHeartRising,
+};
+
+// New struct that's just a copy of 'gMagentaHeartSpriteTemplate', without need to make new anim tags 
+const struct SpriteTemplate gRedHeartCharmSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_RED_HEART,
+    .paletteTag = ANIM_TAG_RED_HEART,
+    .oam = &gOamData_AffineOff_ObjNormal_16x16,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimMagentaHeart,
 };
 
 const union AffineAnimCmd gHiddenPowerOrbAffineAnimCmds[] =
@@ -1703,7 +1724,7 @@ void AnimTask_AirCutterProjectile(u8 taskId)
     }
     else
     {
-        if (GET_BATTLER_SIDE2(gBattleAnimTarget) == B_SIDE_PLAYER)
+        if (GetBattlerSide(gBattleAnimTarget) == B_SIDE_PLAYER)
         {
             gTasks[taskId].data[4] = 1;
             gBattleAnimArgs[0] = -gBattleAnimArgs[0];
@@ -1717,7 +1738,7 @@ void AnimTask_AirCutterProjectile(u8 taskId)
 
     attackerX = gTasks[taskId].data[9] = GetBattlerSpriteCoord(gBattleAnimAttacker, BATTLER_COORD_X);
     attackerY = gTasks[taskId].data[10] = GetBattlerSpriteCoord(gBattleAnimAttacker, BATTLER_COORD_Y);
-    if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
+    if (IsDoubleBattle()
         && IsBattlerSpriteVisible(BATTLE_PARTNER(gBattleAnimTarget)))
     {
         SetAverageBattlerPositions(gBattleAnimTarget, FALSE, &targetX, &targetY);
@@ -2283,6 +2304,16 @@ static void AnimTask_GrowAndShrink_Step(u8 taskId)
     struct Task *task = &gTasks[taskId];
     if (!RunAffineAnimFromTaskData(task))
         DestroyAnimVisualTask(taskId);
+}
+
+// Shrinks, pauses, then grows the attacking mon.
+// No args.
+void AnimTask_ShrinkAndGrow(u8 taskId)
+{
+    struct Task *task = &gTasks[taskId];
+    u8 spriteId = GetAnimBattlerSpriteId(ANIM_ATTACKER);
+    PrepareAffineAnimInTaskData(task, spriteId, gShrinkAndGrowAffineAnimCmds);
+    task->func = AnimTask_GrowAndShrink_Step;
 }
 
 // Animates a little puff of the mon's breath.
@@ -3362,6 +3393,12 @@ static void AnimTask_HeartsBackground_Step(u8 taskId)
 void AnimTask_ScaryFace(u8 taskId)
 {
     struct BattleAnimBgData animBg;
+    bool32 onPlayer;
+
+    if (gAnimMoveIndex == MOVE_BITTER_MALICE)
+        onPlayer = GetBattlerSide(gBattleAnimAttacker) == B_SIDE_PLAYER;
+    else
+        onPlayer = GetBattlerSide(gBattleAnimTarget) == B_SIDE_OPPONENT;
 
     SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT2_ALL | BLDCNT_TGT1_BG1 | BLDCNT_EFFECT_BLEND);
     SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(0, 16));
@@ -3377,7 +3414,7 @@ void AnimTask_ScaryFace(u8 taskId)
     GetBattleAnimBg1Data(&animBg);
     if (IsContest())
         AnimLoadCompressedBgTilemapHandleContest(&animBg, &gBattleAnimBgTilemap_ScaryFaceContest, FALSE);
-    else if (GetBattlerSide(gBattleAnimTarget) == B_SIDE_OPPONENT)
+    else if (onPlayer)
         AnimLoadCompressedBgTilemapHandleContest(&animBg, &gBattleAnimBgTilemap_ScaryFacePlayer, FALSE);
     else
         AnimLoadCompressedBgTilemapHandleContest(&animBg, &gBattleAnimBgTilemap_ScaryFaceOpponent, FALSE);
@@ -3833,7 +3870,7 @@ static void AnimPerishSongMusicNote_Step2(struct Sprite *sprite)
 
 static void AnimGuardRing(struct Sprite *sprite)
 {
-    if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && IsBattlerSpriteVisible(BATTLE_PARTNER(gBattleAnimAttacker)))
+    if (IsDoubleBattle() && IsBattlerSpriteVisible(BATTLE_PARTNER(gBattleAnimAttacker)))
     {
         SetAverageBattlerPositions(gBattleAnimAttacker, FALSE, &sprite->x, &sprite->y);
         sprite->y += 40;

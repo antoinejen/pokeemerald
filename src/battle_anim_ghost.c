@@ -233,7 +233,7 @@ static const union AnimCmd sAnim_GrudgeFlame[] =
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd *const sAnims_GrudgeFlame[] =
+const union AnimCmd *const gAnims_GrudgeFlame[] =
 {
     sAnim_GrudgeFlame,
 };
@@ -243,7 +243,7 @@ const struct SpriteTemplate gGrudgeFlameSpriteTemplate =
     .tileTag = ANIM_TAG_PURPLE_FLAME,
     .paletteTag = ANIM_TAG_PURPLE_FLAME,
     .oam = &gOamData_AffineOff_ObjBlend_16x32,
-    .anims = sAnims_GrudgeFlame,
+    .anims = gAnims_GrudgeFlame,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimGrudgeFlame,
@@ -476,8 +476,8 @@ void AnimShadowBall(struct Sprite *sprite)
     sprite->data[3] = gBattleAnimArgs[2];
     sprite->data[4] = sprite->x << 4;
     sprite->data[5] = sprite->y << 4;
-    sprite->data[6] = ((oldPosX - sprite->x) << 4) / (gBattleAnimArgs[0] << 1);
-    sprite->data[7] = ((oldPosY - sprite->y) << 4) / (gBattleAnimArgs[0] << 1);
+    sprite->data[6] = SAFE_DIV(((oldPosX - sprite->x) << 4), (gBattleAnimArgs[0] << 1));
+    sprite->data[7] = SAFE_DIV(((oldPosY - sprite->y) << 4), (gBattleAnimArgs[0] << 1));
     sprite->callback = AnimShadowBall_Step;
 }
 
@@ -1451,7 +1451,6 @@ static void AnimPoltergeistItem(struct Sprite *sprite)
 void AnimTask_PulverizingPancakeWhiteShadow(u8 taskId)
 {
     struct Task *task;
-    s16 battler;
     u8 spriteId;
     s16 baseX, baseY;
     s16 x, y;

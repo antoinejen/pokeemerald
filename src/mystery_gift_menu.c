@@ -597,8 +597,7 @@ static void ShowDownArrow(void)
     DrawDownArrow(WIN_MSG, DOWN_ARROW_X, DOWN_ARROW_Y, 1, TRUE, &sDownArrowCounterAndYCoordIdx[0], &sDownArrowCounterAndYCoordIdx[1]);
 }
 
-// Unused
-static bool32 HideDownArrowAndWaitButton(u8 *textState)
+static bool32 UNUSED HideDownArrowAndWaitButton(u8 *textState)
 {
     switch (*textState)
     {

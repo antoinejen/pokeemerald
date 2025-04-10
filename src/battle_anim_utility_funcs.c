@@ -40,11 +40,6 @@ static void AnimTask_WaitAndRestoreVisibility(u8);
 
 static const u16 sCurseLinesPalette[] = { RGB_WHITE };
 
-// These belong in battle_intro.c, but putting them there causes 2 bytes of alignment padding
-// between the two .rodata segments. Perhaps battle_intro.c actually belongs in this file, too.
-const u8 gBattleAnimBgCntSet[] = {REG_OFFSET_BG0CNT, REG_OFFSET_BG1CNT, REG_OFFSET_BG2CNT, REG_OFFSET_BG3CNT};
-const u8 gBattleAnimBgCntGet[] = {REG_OFFSET_BG0CNT, REG_OFFSET_BG1CNT, REG_OFFSET_BG2CNT, REG_OFFSET_BG3CNT};
-
 void AnimTask_BlendBattleAnimPal(u8 taskId)
 {
     u32 selectedPalettes = UnpackSelectedBattlePalettes(gBattleAnimArgs[0]);
@@ -281,7 +276,7 @@ void AnimTask_DrawFallingWhiteLinesOnAttacker(u8 taskId)
     u16 species;
     int spriteId, newSpriteId;
     u16 var0;
-    u16 bg1Cnt;
+    u32 bg1Cnt;
     struct BattleAnimBgData animBgData;
 
     var0 = 0;
@@ -321,16 +316,9 @@ void AnimTask_DrawFallingWhiteLinesOnAttacker(u8 taskId)
     }
 
     if (IsContest())
-    {
         species = gContestResources->moveAnim->species;
-    }
     else
-    {
-        if (GetBattlerSide(gBattleAnimAttacker) != B_SIDE_PLAYER)
-            species = GetMonData(&gEnemyParty[gBattlerPartyIndexes[gBattleAnimAttacker]], MON_DATA_SPECIES);
-        else
-            species = GetMonData(&gPlayerParty[gBattlerPartyIndexes[gBattleAnimAttacker]], MON_DATA_SPECIES);
-    }
+        species = GetMonData(GetPartyBattlerData(gBattleAnimAttacker), MON_DATA_SPECIES);
 
     spriteId = GetAnimBattlerSpriteId(ANIM_ATTACKER);
     newSpriteId = CreateInvisibleSpriteCopy(gBattleAnimAttacker, spriteId, species);
@@ -350,7 +338,7 @@ static void AnimTask_DrawFallingWhiteLinesOnAttacker_Step(u8 taskId)
 {
     struct BattleAnimBgData animBgData;
     struct Sprite *sprite;
-    u16 bg1Cnt;
+    u32 bg1Cnt;
 
     gTasks[taskId].data[10] += 4;
     gBattle_BG1_Y -= 4;
@@ -463,16 +451,9 @@ static void StatsChangeAnimation_Step1(u8 taskId)
     }
 
     if (IsContest())
-    {
         sAnimStatsChangeData->species = gContestResources->moveAnim->species;
-    }
     else
-    {
-        if (GetBattlerSide(sAnimStatsChangeData->battler1) != B_SIDE_PLAYER)
-            sAnimStatsChangeData->species = GetMonData(&gEnemyParty[gBattlerPartyIndexes[sAnimStatsChangeData->battler1]], MON_DATA_SPECIES);
-        else
-            sAnimStatsChangeData->species = GetMonData(&gPlayerParty[gBattlerPartyIndexes[sAnimStatsChangeData->battler1]], MON_DATA_SPECIES);
-    }
+        sAnimStatsChangeData->species = GetMonData(GetPartyBattlerData(sAnimStatsChangeData->battler1), MON_DATA_SPECIES);
 
     gTasks[taskId].func = StatsChangeAnimation_Step2;
 }
@@ -814,7 +795,7 @@ void StartMonScrollingBgMask(u8 taskId, int UNUSED unused, u16 scrollSpeed, u8 b
 {
     u16 species;
     u8 spriteId, spriteId2;
-    u16 bg1Cnt;
+    u32 bg1Cnt;
     struct BattleAnimBgData animBgData;
     u8 battler2;
 
@@ -845,16 +826,9 @@ void StartMonScrollingBgMask(u8 taskId, int UNUSED unused, u16 scrollSpeed, u8 b
     SetGpuReg(REG_OFFSET_BG1CNT, bg1Cnt);
 
     if (IsContest())
-    {
         species = gContestResources->moveAnim->species;
-    }
     else
-    {
-        if (GetBattlerSide(battler) != B_SIDE_PLAYER)
-            species = GetMonData(&gEnemyParty[gBattlerPartyIndexes[battler]], MON_DATA_SPECIES);
-        else
-            species = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_SPECIES);
-    }
+        species = GetMonData(GetPartyBattlerData(battler), MON_DATA_SPECIES);
 
     spriteId = CreateInvisibleSpriteCopy(battler, gBattlerSpriteIds[battler], species);
     if (includePartner)
@@ -919,7 +893,7 @@ static void UpdateMonScrollingBgMask(u8 taskId)
                                            | WINOUT_WINOBJ_BG_ALL | WINOUT_WINOBJ_OBJ | WINOUT_WINOBJ_CLR);
                 if (!IsContest())
                 {
-                    u16 bg1Cnt = GetGpuReg(REG_OFFSET_BG1CNT);
+                    u32 bg1Cnt = GetGpuReg(REG_OFFSET_BG1CNT);
                     ((vBgCnt *)&bg1Cnt)->charBaseBlock = 0;
                     SetGpuReg(REG_OFFSET_BG1CNT, bg1Cnt);
                 }
@@ -1062,7 +1036,7 @@ void AnimTask_SetAnimAttackerAndTargetForEffectTgt(u8 taskId)
 
 void AnimTask_IsTargetSameSide(u8 taskId)
 {
-    if (GetBattlerSide(gBattleAnimAttacker) == GetBattlerSide(gBattleAnimTarget))
+    if (IsBattlerAlly(gBattleAnimAttacker, gBattleAnimTarget))
         gBattleAnimArgs[ARG_RET_ID] = TRUE;
     else
         gBattleAnimArgs[ARG_RET_ID] = FALSE;

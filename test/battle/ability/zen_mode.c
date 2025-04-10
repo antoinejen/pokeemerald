@@ -4,11 +4,10 @@
 SINGLE_BATTLE_TEST("Zen Mode switches Darmanitan's form when HP is half or less at the end of the turn")
 {
     u16 standardSpecies, zenSpecies;
-    PARAMETRIZE { standardSpecies = SPECIES_DARMANITAN;          zenSpecies = SPECIES_DARMANITAN_ZEN_MODE; }
-    PARAMETRIZE { standardSpecies = SPECIES_DARMANITAN_GALARIAN; zenSpecies = SPECIES_DARMANITAN_ZEN_MODE_GALARIAN; }
+    PARAMETRIZE { standardSpecies = SPECIES_DARMANITAN_STANDARD;          zenSpecies = SPECIES_DARMANITAN_ZEN; }
+    PARAMETRIZE { standardSpecies = SPECIES_DARMANITAN_GALAR_STANDARD; zenSpecies = SPECIES_DARMANITAN_GALAR_ZEN; }
 
     GIVEN {
-        ASSUME(P_GEN_5_POKEMON == TRUE);
         ASSUME(gSpeciesInfo[standardSpecies].baseHP == 105);
         ASSUME(gSpeciesInfo[zenSpecies].baseHP == 105);
         PLAYER(standardSpecies)
@@ -21,7 +20,7 @@ SINGLE_BATTLE_TEST("Zen Mode switches Darmanitan's form when HP is half or less 
             TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_TACKLE); }
     } SCENE {
         MESSAGE("Darmanitan used Celebrate!");
-        MESSAGE("Foe Wobbuffet used Tackle!");
+        MESSAGE("The opposing Wobbuffet used Tackle!");
         HP_BAR(player);
         ABILITY_POPUP(player, ABILITY_ZEN_MODE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FORM_CHANGE, player);
@@ -34,11 +33,10 @@ SINGLE_BATTLE_TEST("Zen Mode switches Darmanitan's form when HP is half or less 
 SINGLE_BATTLE_TEST("Zen Mode switches Darmanitan's form when HP is half or less before the first turn")
 {
     u16 standardSpecies, zenSpecies;
-    PARAMETRIZE { standardSpecies = SPECIES_DARMANITAN;          zenSpecies = SPECIES_DARMANITAN_ZEN_MODE; }
-    PARAMETRIZE { standardSpecies = SPECIES_DARMANITAN_GALARIAN; zenSpecies = SPECIES_DARMANITAN_ZEN_MODE_GALARIAN; }
+    PARAMETRIZE { standardSpecies = SPECIES_DARMANITAN_STANDARD;          zenSpecies = SPECIES_DARMANITAN_ZEN; }
+    PARAMETRIZE { standardSpecies = SPECIES_DARMANITAN_GALAR_STANDARD; zenSpecies = SPECIES_DARMANITAN_GALAR_ZEN; }
 
     GIVEN {
-        ASSUME(P_GEN_5_POKEMON == TRUE);
         ASSUME(gSpeciesInfo[standardSpecies].baseHP == 105);
         ASSUME(gSpeciesInfo[zenSpecies].baseHP == 105);
         PLAYER(standardSpecies)
@@ -53,7 +51,7 @@ SINGLE_BATTLE_TEST("Zen Mode switches Darmanitan's form when HP is half or less 
         ABILITY_POPUP(player, ABILITY_ZEN_MODE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FORM_CHANGE, player);
         MESSAGE("Darmanitan used Celebrate!");
-        MESSAGE("Foe Wobbuffet used Celebrate!");
+        MESSAGE("The opposing Wobbuffet used Celebrate!");
     } THEN {
         EXPECT_LE(player->hp, player->maxHP / 2);
         EXPECT_EQ(player->species, zenSpecies);
@@ -63,11 +61,10 @@ SINGLE_BATTLE_TEST("Zen Mode switches Darmanitan's form when HP is half or less 
 SINGLE_BATTLE_TEST("Zen Mode switches Darmanitan's form when HP is healed above half")
 {
     u16 standardSpecies, zenSpecies;
-    PARAMETRIZE { standardSpecies = SPECIES_DARMANITAN;          zenSpecies = SPECIES_DARMANITAN_ZEN_MODE; }
-    PARAMETRIZE { standardSpecies = SPECIES_DARMANITAN_GALARIAN; zenSpecies = SPECIES_DARMANITAN_ZEN_MODE_GALARIAN; }
+    PARAMETRIZE { standardSpecies = SPECIES_DARMANITAN_STANDARD;          zenSpecies = SPECIES_DARMANITAN_ZEN; }
+    PARAMETRIZE { standardSpecies = SPECIES_DARMANITAN_GALAR_STANDARD;    zenSpecies = SPECIES_DARMANITAN_GALAR_ZEN; }
 
     GIVEN {
-        ASSUME(P_GEN_5_POKEMON == TRUE);
         ASSUME(gSpeciesInfo[standardSpecies].baseHP == 105);
         ASSUME(gSpeciesInfo[zenSpecies].baseHP == 105);
         PLAYER(standardSpecies)
@@ -82,7 +79,7 @@ SINGLE_BATTLE_TEST("Zen Mode switches Darmanitan's form when HP is healed above 
         ABILITY_POPUP(player, ABILITY_ZEN_MODE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FORM_CHANGE, player);
         MESSAGE("Darmanitan used Celebrate!");
-        MESSAGE("Foe Wobbuffet used Heal Pulse!");
+        MESSAGE("The opposing Wobbuffet used Heal Pulse!");
         HP_BAR(player);
         ABILITY_POPUP(player, ABILITY_ZEN_MODE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FORM_CHANGE, player);

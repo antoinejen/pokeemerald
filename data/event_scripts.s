@@ -1,3 +1,4 @@
+#include "config/general.h"
 #include "config/battle.h"
 #include "config/item.h"
 #include "constants/global.h"
@@ -19,6 +20,7 @@
 #include "constants/contest.h"
 #include "constants/daycare.h"
 #include "constants/decorations.h"
+#include "constants/difficulty.h"
 #include "constants/easy_chat.h"
 #include "constants/event_objects.h"
 #include "constants/event_object_movement.h"
@@ -41,6 +43,7 @@
 #include "constants/metatile_labels.h"
 #include "constants/moves.h"
 #include "constants/party_menu.h"
+#include "constants/pokedex.h"
 #include "constants/pokemon.h"
 #include "constants/roulette.h"
 #include "constants/script_menu.h"
@@ -61,6 +64,7 @@
 
 	.section script_data, "aw", %progbits
 
+	.set ALLOCATE_SCRIPT_CMD_TABLE, 1
 	.include "data/script_cmd_table.inc"
 
 gSpecialVars::
@@ -85,7 +89,7 @@ gSpecialVars::
 	.4byte gSpecialVar_MonBoxId
 	.4byte gSpecialVar_MonBoxPos
 	.4byte gSpecialVar_Unused_0x8014
-	.4byte gTrainerBattleOpponent_A
+	.4byte gTrainerBattleParameter + 2 // gTrainerBattleParameter.params.opponentA
 
 	.include "data/specials.inc"
 
@@ -564,8 +568,8 @@ gStdScripts_End::
 	.include "data/maps/Route110_TrickHousePuzzle6/scripts.inc"
 	.include "data/maps/Route110_TrickHousePuzzle7/scripts.inc"
 	.include "data/maps/Route110_TrickHousePuzzle8/scripts.inc"
-	.include "data/maps/Route110_SeasideCyclingRoadNorthEntrance/scripts.inc"
 	.include "data/maps/Route110_SeasideCyclingRoadSouthEntrance/scripts.inc"
+	.include "data/maps/Route110_SeasideCyclingRoadNorthEntrance/scripts.inc"
 	.include "data/maps/Route113_GlassWorkshop/scripts.inc"
 	.include "data/maps/Route123_BerryMastersHouse/scripts.inc"
 	.include "data/maps/Route119_WeatherInstitute_1F/scripts.inc"
@@ -578,11 +582,43 @@ gStdScripts_End::
 	.include "data/scripts/new_game.inc"
 	.include "data/scripts/hall_of_fame.inc"
 
+	.include "data/scripts/config.inc"
 	.include "data/scripts/debug.inc"
 
 EventScript_WhiteOut::
 	call EverGrandeCity_HallOfFame_EventScript_ResetEliteFour
 	goto EventScript_ResetMrBriney
+	end
+
+EventScript_AfterWhiteOutHeal::
+	lockall
+	msgbox gText_FirstShouldRestoreMonsHealth
+	call EventScript_PkmnCenterNurse_TakeAndHealPkmn
+	call_if_unset FLAG_DEFEATED_RUSTBORO_GYM, EventScript_AfterWhiteOutHealMsgPreRoxanne
+	call_if_set FLAG_DEFEATED_RUSTBORO_GYM, EventScript_AfterWhiteOutHealMsg
+	applymovement VAR_LAST_TALKED, Movement_PkmnCenterNurse_Bow
+	waitmovement 0
+	fadedefaultbgm
+	releaseall
+	end
+
+EventScript_AfterWhiteOutHealMsgPreRoxanne::
+	msgbox gText_MonsHealedShouldBuyPotions
+	return
+
+EventScript_AfterWhiteOutHealMsg::
+	msgbox gText_MonsHealed
+	return
+
+EventScript_AfterWhiteOutMomHeal::
+	lockall
+	applymovement LOCALID_MOM, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox gText_HadQuiteAnExperienceTakeRest
+	call Common_EventScript_OutOfCenterPartyHeal
+	msgbox gText_MomExplainHPGetPotions
+	fadedefaultbgm
+	releaseall
 	end
 
 EventScript_ResetMrBriney::
@@ -691,6 +727,11 @@ EventScript_BackupMrBrineyLocation::
 	.include "data/scripts/rival_graphics.inc"
 	.include "data/scripts/set_gym_trainers.inc"
 
+EventScript_CancelMessageBox::
+	special UseBlankMessageToCancelPokemonPic
+	release
+	end
+
 Common_EventScript_ShowBagIsFull::
 	msgbox gText_TooBadBagIsFull, MSGBOX_DEFAULT
 	release
@@ -723,6 +764,7 @@ Common_EventScript_OutOfCenterPartyHeal::
 	playfanfare MUS_HEAL
 	waitfanfare
 	special HealPlayerParty
+	callnative UpdateFollowingPokemon
 	fadescreen FADE_FROM_BLACK
 	return
 
@@ -838,11 +880,11 @@ Common_EventScript_PlayerHandedOverTheItem::
 @ The below and surf.inc could be split into some text/notices.inc
 gText_PokemartSign::
 	.string "“Selected items for your convenience!”\n"
-	.string "Pokémon Mart$"
+	.string "POKéMON MART$"
 
 gText_PokemonCenterSign::
 	.string "“Rejuvenate your tired partners!”\n"
-	.string "Pokémon Center$"
+	.string "POKéMON CENTER$"
 
 gText_MomOrDadMightLikeThisProgram::
 	.string "{STR_VAR_1} might like this program.\n"
@@ -850,7 +892,7 @@ gText_MomOrDadMightLikeThisProgram::
 	.string "Better get going!$"
 
 gText_WhichFloorWouldYouLike::
-	.string "Welcome to Lilycove Department Store.\p"
+	.string "Welcome to LILYCOVE DEPARTMENT STORE.\p"
 	.string "Which floor would you like?$"
 
 gText_SandstormIsVicious::
@@ -858,16 +900,16 @@ gText_SandstormIsVicious::
 	.string "It's impossible to keep going.$"
 
 gText_SelectWithoutRegisteredItem::
-	.string "An item in the Bag can be\n"
-	.string "registered to Select for easy use.$"
+	.string "An item in the BAG can be\n"
+	.string "registered to SELECT for easy use.$"
 
 gText_PokemonTrainerSchoolEmail::
-	.string "There's an e-mail from Pokémon Trainer\n"
-	.string "School.\p"
+	.string "There's an e-mail from POKéMON TRAINER\n"
+	.string "SCHOOL.\p"
 	.string "… … … … … …\p"
-	.string "A Pokémon may learn up to four moves.\p"
-	.string "A Trainer's expertise is tested on the\n"
-	.string "move sets chosen for Pokémon.\p"
+	.string "A POKéMON may learn up to four moves.\p"
+	.string "A TRAINER's expertise is tested on the\n"
+	.string "move sets chosen for POKéMON.\p"
 	.string "… … … … … …$"
 
 gText_PlayerHouseBootPC::
@@ -882,28 +924,70 @@ gText_UnusedNicknameReceivedPokemon::
 
 gText_PlayerWhitedOut::
 	.string "{PLAYER} is out of usable\n"
-	.string "Pokémon!\p{PLAYER} whited out!$"
+	.string "POKéMON!\p{PLAYER} whited out!$"
+
+gText_FirstShouldRestoreMonsHealth::
+	.string "First, you should restore your\n"
+	.string "POKéMON to full health.$"
+
+gText_MonsHealedShouldBuyPotions::
+	.string "Your POKéMON have been healed\n"
+	.string "to perfect health.\p"
+	.string "If your POKéMON's energy, HP,\n"
+	.string "is down, please come see us.\p"
+	.string "If you're planning to go far in the\n"
+	.string "field, you should buy some POTIONS\l"
+	.string "at the POKéMON MART.\p"
+	.string "We hope you excel!$"
+
+gText_MonsHealed::
+	.string "Your POKéMON have been healed\n"
+	.string "to perfect health.\p"
+	.string "We hope you excel!$"
+
+gText_HadQuiteAnExperienceTakeRest::
+	.string "MOM: {PLAYER}!\n"
+	.string "Welcome home.\p"
+	.string "It sounds like you had quite\n"
+	.string "an experience.\p"
+	.string "Maybe you should take a quick\n"
+	.string "rest.$"
+
+gText_MomExplainHPGetPotions::
+	.string "MOM: Oh, good! You and your\n"
+	.string "POKéMON are looking great.\p"
+	.string "I just heard from PROF. BIRCH.\p"
+	.string "He said that POKéMON's energy is\n"
+	.string "measured in HP.\p"
+	.string "If your POKéMON lose their HP,\n"
+	.string "you can restore them at any\l"
+	.string "POKéMON CENTER.\p"
+	.string "If you're going to travel far away,\n"
+	.string "the smart TRAINER stocks up on\l"
+	.string "POTIONS at the POKéMON MART.\p"
+	.string "Make me proud, honey!\p"
+	.string "Take care!$"
 
 gText_RegisteredTrainerinPokeNav::
 	.string "Registered {STR_VAR_1} {STR_VAR_2}\n"
-	.string "in the PokéNav.$"
+	.string "in the POKéNAV.$"
 
 gText_ComeBackWithSecretPower::
-	.string "Do you know the TM Secret Power?\p"
-	.string "Our group, we love the TM Secret\n"
-	.string "Power.\p"
+	.string "Do you know the TM SECRET POWER?\p"
+	.string "Our group, we love the TM SECRET\n"
+	.string "POWER.\p"
 	.string "One of our members will give it to you.\n"
 	.string "Come back and show me if you get it.\p"
 	.string "We'll accept you as a member and sell\n"
 	.string "you good stuff in secrecy.$"
 
 gText_PokerusExplanation::
-	.string "Your Pokémon may be infected with\n"
-	.string "Pokérus.\p"
-	.string "Little is known about the Pokérus\n"
+	.string "Your POKéMON may be infected with\n"
+	.string "POKéRUS.\p"
+	.string "Little is known about the POKéRUS\n"
 	.string "except that they are microscopic life-\l"
-	.string "forms that attach to Pokémon.\p"
-	.string "While infected, Pokémon are said to\n"
+	.string "forms that attach to POKéMON.\p"
+	.string "While infected, POKéMON are said to\n"
 	.string "grow exceptionally well.$"
 
 	.include "data/text/surf.inc"
@@ -917,7 +1001,7 @@ gText_BigHoleInTheWall::
 
 gText_SorryWirelessClubAdjustments::
 	.string "I'm terribly sorry.\n"
-	.string "The Pokémon Wireless Club is\l"
+	.string "The POKéMON WIRELESS CLUB is\l"
 	.string "undergoing adjustments now.$"
 
 gText_UndergoingAdjustments::
@@ -926,12 +1010,12 @@ gText_UndergoingAdjustments::
 
 @ Unused
 gText_SorryTradeCenterInspections::
-	.string "I'm terribly sorry. The Trade Center\n"
+	.string "I'm terribly sorry. The TRADE CENTER\n"
 	.string "is undergoing inspections.$"
 
 @ Unused
 gText_SorryRecordCornerPreparation::
-	.string "I'm terribly sorry. The Record Corner\n"
+	.string "I'm terribly sorry. The RECORD CORNER\n"
 	.string "is under preparation.$"
 
 gText_PlayerHandedOverTheItem::
@@ -940,15 +1024,19 @@ gText_PlayerHandedOverTheItem::
 
 gText_ThankYouForAccessingMysteryGift::
 	.string "Thank you for accessing the\n"
-	.string "Mystery Gift System.$"
+	.string "MYSTERY GIFT System.$"
 
 gText_PlayerFoundOneTMHM::
 	.string "{PLAYER} found one {STR_VAR_1}\n"
 	.string "{STR_VAR_2}!$"
 
+gText_PlayerFoundTMHMs::
+	.string "{PLAYER} found {STR_VAR_3} {STR_VAR_1}\n"
+	.string "{STR_VAR_2}!$"
+
 gText_Sudowoodo_Attacked::
 	.string "The weird tree doesn't like the\n"
-	.string "Wailmer Pail!\p"
+	.string "WAILMER PAIL!\p"
 	.string "The weird tree attacked!$"
 
 gText_LegendaryFlewAway::
@@ -957,9 +1045,6 @@ gText_LegendaryFlewAway::
 	.include "data/text/pc_transfer.inc"
 	.include "data/text/questionnaire.inc"
 	.include "data/text/abnormal_weather.inc"
-
-gText_Gyaoo::
-	.string "Gyaoo!$"
 
 EventScript_SelectWithoutRegisteredItem::
 	msgbox gText_SelectWithoutRegisteredItem, MSGBOX_SIGN
@@ -1007,6 +1092,13 @@ Common_EventScript_LegendaryFlewAway::
 	release
 	end
 
+EventScript_VsSeekerChargingDone::
+	special VsSeekerFreezeObjectsAfterChargeComplete
+	waitstate
+	special VsSeekerResetObjectMovementAfterChargeComplete
+	releaseall
+	end
+
 	.include "data/scripts/pc_transfer.inc"
 	.include "data/scripts/questionnaire.inc"
 	.include "data/scripts/abnormal_weather.inc"
@@ -1019,7 +1111,6 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/text/contest_strings.inc"
 	.include "data/text/contest_link.inc"
 	.include "data/text/contest_painting.inc"
-	.include "data/text/trick_house_mechadolls.inc"
 	.include "data/scripts/tv.inc"
 	.include "data/text/tv.inc"
 	.include "data/scripts/interview.inc"
@@ -1059,8 +1150,7 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/scripts/move_tutors.inc"
 	.include "data/scripts/trainer_hill.inc"
 	.include "data/scripts/test_signpost.inc"
-	.include "data/text/frontier_brain.inc"
+	.include "data/scripts/follower.inc"
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
-
-	.include "data/maps/MeteorFalls_RedsCave/scripts.inc"
+	.include "data/scripts/dexnav.inc"

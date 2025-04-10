@@ -11,6 +11,7 @@
 #define DAY    1
 #define NIGHT  2
 
+#define FUSION_TERMINATOR                       0xFF
 #define FORM_CHANGE_TERMINATOR                  0
 
 // Form change that activates when the specified item is given to or taken from the selected Pokémon.
@@ -23,6 +24,8 @@
 // param2: time of day to check, optional.
 // - DAY if Form change that activates in the daytime.
 // - NIGHT if Form change that activates at nighttime.
+// - 0 if irrelevant, but param3 is necessary.
+// param3: illegal statuses to have, optional.
 #define FORM_CHANGE_ITEM_USE                    2
 
 // TODO: Form change that activates when the Pokémon learns or forgets the move.
@@ -60,7 +63,7 @@
 #define FORM_CHANGE_END_BATTLE_TERRAIN          8
 
 // Form change that activates when the Pokémon is switched out in battle.
-// - No parameters.
+// param1: ability to check, optional
 #define FORM_CHANGE_BATTLE_SWITCH               9
 
 // Form change that activates when the Pokémon's HP % passes a certain threshold.
@@ -95,5 +98,57 @@
 // Form change that activates automatically when the turn ends.
 // param1: ability to check.
 #define FORM_CHANGE_BATTLE_TURN_END             15
+
+// Form change that activates when the mon has the defined item.
+// If it's on the player's side, it also requires for the player to trigger it by pressing START before selecting a move.
+// param1: item to hold.
+#define FORM_CHANGE_BATTLE_ULTRA_BURST          16
+
+// Form change that activates when the mon Dynamaxes (TODO: with Gigantamax factor).
+// - No parameters
+#define FORM_CHANGE_BATTLE_GIGANTAMAX           17
+
+// Form change that activates at a certain time of day in the overworld automatically.
+// param1: time of day to check.
+// - DAY if Form change that activates in the daytime.
+// - NIGHT if Form change that activates at nighttime.
+#define FORM_CHANGE_TIME_OF_DAY                 18
+
+// Form change that depends on a multichoice (e.g. Rotom Catalog).
+// param1: multichoice list (starting at 0).
+#define FORM_CHANGE_ITEM_USE_MULTICHOICE        19
+
+// Form change that activates when inflicted with a specific status
+// param1: status
+#define FORM_CHANGE_STATUS                      20
+
+// Form change that activates after move is used. Currently only used for activating Gulp Missile.
+#define FORM_CHANGE_HIT_BY_MOVE                 21
+
+// Form change that activates when terastallized as as a specific type
+// param1: tera type
+#define FORM_CHANGE_BATTLE_TERASTALLIZATION     22
+
+// Form change that activates at midnight after a certain amount of days has passed.
+// Adding this form change will automatically make the countdown start as soon the Pokémon changes into a species other than the one specified for this form change.
+// param1: amount of days
+#define FORM_CHANGE_DAYS_PASSED                 23
+
+// Form change that activates before using a move.
+// param1: move to check
+// param2: ability to check, optional
+#define FORM_CHANGE_BATTLE_BEFORE_MOVE          24
+
+// Form change that activates before using a specific move category.
+// param1: move category to check
+// param2: ability to check, optional
+#define FORM_CHANGE_BATTLE_BEFORE_MOVE_CATEGORY 25
+
+// Form change that activates when overworld weather changes.
+// param1: weather to check.
+#define FORM_CHANGE_OVERWORLD_WEATHER           26
+
+// Form change that activates when the Pokémon is deposited into the PC or Daycare.
+#define FORM_CHANGE_DEPOSIT                     27
 
 #endif // GUARD_CONSTANTS_FORM_CHANGE_TYPES_H
