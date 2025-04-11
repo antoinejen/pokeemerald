@@ -419,7 +419,7 @@ F_TRAINER_FEMALE |
 #line 239
         .trainerName = _("MARCEL"),
 #line 240
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 241
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -1505,7 +1505,7 @@ F_TRAINER_FEMALE |
 #line 665
         .trainerName = _("FELIX"),
 #line 666
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 667
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -2979,7 +2979,7 @@ F_TRAINER_FEMALE |
 #line 1262
         .trainerName = _("RANDALL"),
 #line 1263
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1264
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -3019,7 +3019,7 @@ F_TRAINER_FEMALE |
 #line 1279
         .trainerName = _("PARKER"),
 #line 1280
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1281
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -3059,7 +3059,7 @@ F_TRAINER_FEMALE |
 #line 1296
         .trainerName = _("GEORGE"),
 #line 1297
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1298
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -3101,7 +3101,7 @@ F_TRAINER_FEMALE |
 #line 1313
         .trainerName = _("BERKE"),
 #line 1314
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1315
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -3140,7 +3140,7 @@ F_TRAINER_FEMALE |
 #line 1329
         .trainerName = _("BRAXTON"),
 #line 1330
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1331
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -3253,7 +3253,7 @@ F_TRAINER_FEMALE |
 #line 1379
         .trainerName = _("VINCENT"),
 #line 1380
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1381
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -3309,7 +3309,7 @@ F_TRAINER_FEMALE |
 #line 1401
         .trainerName = _("LEROY"),
 #line 1402
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1403
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -3354,7 +3354,7 @@ F_TRAINER_FEMALE |
 #line 1419
         .trainerName = _("WILTON"),
 #line 1420
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1421
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -3410,7 +3410,7 @@ F_TRAINER_FEMALE |
 #line 1441
         .trainerName = _("EDGAR"),
 #line 1442
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1443
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -3455,7 +3455,7 @@ F_TRAINER_FEMALE |
 #line 1459
         .trainerName = _("ALBERT"),
 #line 1460
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1461
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -3500,7 +3500,7 @@ F_TRAINER_FEMALE |
 #line 1477
         .trainerName = _("SAMUEL"),
 #line 1478
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1479
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -3556,7 +3556,7 @@ F_TRAINER_FEMALE |
 #line 1499
         .trainerName = _("VITO"),
 #line 1500
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1501
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -3623,7 +3623,7 @@ F_TRAINER_FEMALE |
 #line 1525
         .trainerName = _("OWEN"),
 #line 1526
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1527
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -3679,7 +3679,7 @@ F_TRAINER_FEMALE |
 #line 1547
         .trainerName = _("WILTON"),
 #line 1548
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1549
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -3735,7 +3735,7 @@ F_TRAINER_FEMALE |
 #line 1569
         .trainerName = _("WILTON"),
 #line 1570
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1571
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -3791,7 +3791,7 @@ F_TRAINER_FEMALE |
 #line 1591
         .trainerName = _("WILTON"),
 #line 1592
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1593
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -3847,7 +3847,7 @@ F_TRAINER_FEMALE |
 #line 1613
         .trainerName = _("WILTON"),
 #line 1614
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1615
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -3903,7 +3903,7 @@ F_TRAINER_FEMALE |
 #line 1635
         .trainerName = _("WARREN"),
 #line 1636
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1637
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -3948,7 +3948,7 @@ F_TRAINER_FEMALE |
 #line 1653
         .trainerName = _("MARY"),
 #line 1654
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1655
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -3989,7 +3989,7 @@ F_TRAINER_FEMALE |
 #line 1669
         .trainerName = _("ALEXIA"),
 #line 1670
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1671
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -4031,7 +4031,7 @@ F_TRAINER_FEMALE |
 #line 1686
         .trainerName = _("JODY"),
 #line 1687
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1688
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -4072,7 +4072,7 @@ F_TRAINER_FEMALE |
 #line 1702
         .trainerName = _("WENDY"),
 #line 1703
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1704
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -4151,7 +4151,7 @@ F_TRAINER_FEMALE |
 #line 1736
         .trainerName = _("KEIRA"),
 #line 1737
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1738
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -4198,7 +4198,7 @@ F_TRAINER_FEMALE |
 #line 1754
         .trainerName = _("BROOKE"),
 #line 1755
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1756
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -4256,7 +4256,7 @@ F_TRAINER_FEMALE |
 #line 1776
         .trainerName = _("JENNIFER"),
 #line 1777
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1778
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -4292,7 +4292,7 @@ F_TRAINER_FEMALE |
 #line 1790
         .trainerName = _("HOPE"),
 #line 1791
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1792
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -4328,7 +4328,7 @@ F_TRAINER_FEMALE |
 #line 1804
         .trainerName = _("SHANNON"),
 #line 1805
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1806
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -4364,7 +4364,7 @@ F_TRAINER_FEMALE |
 #line 1818
         .trainerName = _("MICHELLE"),
 #line 1819
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1820
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -4422,7 +4422,7 @@ F_TRAINER_FEMALE |
 #line 1840
         .trainerName = _("CAROLINE"),
 #line 1841
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1842
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -4469,7 +4469,7 @@ F_TRAINER_FEMALE |
 #line 1858
         .trainerName = _("JULIE"),
 #line 1859
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1860
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -4527,7 +4527,7 @@ F_TRAINER_FEMALE |
 #line 1880
         .trainerName = _("BROOKE"),
 #line 1881
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1882
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -4585,7 +4585,7 @@ F_TRAINER_FEMALE |
 #line 1902
         .trainerName = _("BROOKE"),
 #line 1903
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1904
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -4643,7 +4643,7 @@ F_TRAINER_FEMALE |
 #line 1924
         .trainerName = _("BROOKE"),
 #line 1925
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1926
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -4701,7 +4701,7 @@ F_TRAINER_FEMALE |
 #line 1946
         .trainerName = _("BROOKE"),
 #line 1947
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 1948
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -14970,7 +14970,7 @@ F_TRAINER_FEMALE |
 #line 6043
         .trainerName = _("QUINCY"),
 #line 6044
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 6045
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -15029,7 +15029,7 @@ F_TRAINER_FEMALE |
 #line 6069
         .trainerName = _("KATELYNN"),
 #line 6070
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 6071
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -18924,7 +18924,7 @@ F_TRAINER_FEMALE |
 #line 7608
         .trainerName = _("DIANNE"),
 #line 7609
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 7610
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -22936,7 +22936,7 @@ F_TRAINER_FEMALE |
 #line 9185
         .trainerName = _("JAZMYN"),
 #line 9186
-        .trainerClass = TRAINER_CLASS_COOLTRAINER_2,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 9187
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -23138,7 +23138,7 @@ F_TRAINER_FEMALE |
 #line 9267
         .trainerName = _("MARLEY"),
 #line 9268
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 9269
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -24703,7 +24703,7 @@ F_TRAINER_FEMALE |
 #line 9881
         .trainerName = _("MITCHELL"),
 #line 9882
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 9883
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -25197,7 +25197,7 @@ F_TRAINER_FEMALE |
 #line 10071
         .trainerName = _("HALLE"),
 #line 10072
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 10073
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -26403,7 +26403,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 10537
-    [DIFFICULTY_NORMAL][TRAINER_GRUNT_JAGGED_PASS] =
+    [DIFFICULTY_NORMAL][TRAINER_COURTNEY_JAGGED_PASS] =
     {
 #line 10538
         .trainerName = _("GRUNT"),
@@ -26658,7 +26658,7 @@ F_TRAINER_FEMALE |
 #line 10637
         .trainerName = _("ATHENA"),
 #line 10638
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 10639
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -27456,7 +27456,7 @@ F_TRAINER_FEMALE |
 #line 10952
         .trainerName = _("JONATHAN"),
 #line 10953
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 10954
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -29054,7 +29054,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 11573
-    [DIFFICULTY_NORMAL][TRAINER_LUCAS_2] =
+    [DIFFICULTY_NORMAL][TRAINER_ARCHIE_MT_PYRE] =
     {
 #line 11574
         .trainerName = _("LUCAS"),
@@ -29091,7 +29091,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 11588
-    [DIFFICULTY_NORMAL][TRAINER_MIKE_1] =
+    [DIFFICULTY_NORMAL][TRAINER_WALLY_ROUTE_118] =
     {
 #line 11589
         .trainerName = _("MIKE"),
@@ -29798,7 +29798,7 @@ F_TRAINER_FEMALE |
 #line 11863
         .trainerName = _("GERALD"),
 #line 11864
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 11865
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -31240,7 +31240,7 @@ F_TRAINER_FEMALE |
 #line 12458
         .trainerName = _("ALEXA"),
 #line 12459
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 12460
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -31287,7 +31287,7 @@ F_TRAINER_FEMALE |
 #line 12476
         .trainerName = _("RUBEN"),
 #line 12477
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 12478
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -33870,7 +33870,7 @@ F_TRAINER_FEMALE |
 #line 13512
         .trainerName = _("DARCY"),
 #line 13513
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 13514
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -34209,7 +34209,7 @@ F_TRAINER_FEMALE |
 #line 13645
         .trainerName = _("CAROLINA"),
 #line 13646
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 13647
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -35096,7 +35096,7 @@ F_TRAINER_FEMALE |
 #line 13988
         .trainerName = _("LEONEL"),
 #line 13989
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 13990
         .trainerPic = TRAINER_PIC_COOLTRAINER_M,
         .encounterMusic_gender =
@@ -35400,7 +35400,7 @@ F_TRAINER_FEMALE |
 #line 14105
         .trainerName = _("CRISTIN"),
 #line 14106
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 14107
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -40746,7 +40746,7 @@ F_TRAINER_FEMALE |
 #line 16330
         .trainerName = _("CRISTIN"),
 #line 16331
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 16332
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -40793,7 +40793,7 @@ F_TRAINER_FEMALE |
 #line 16348
         .trainerName = _("CRISTIN"),
 #line 16349
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 16350
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -40851,7 +40851,7 @@ F_TRAINER_FEMALE |
 #line 16370
         .trainerName = _("CRISTIN"),
 #line 16371
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 16372
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =
@@ -40909,7 +40909,7 @@ F_TRAINER_FEMALE |
 #line 16392
         .trainerName = _("CRISTIN"),
 #line 16393
-        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .trainerClass = TRAINER_CLASS_ACE_TRAINER,
 #line 16394
         .trainerPic = TRAINER_PIC_COOLTRAINER_F,
         .encounterMusic_gender =

@@ -237,7 +237,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_MARCEL ===
 Name: MARCEL
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -663,7 +663,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_FELIX ===
 Name: FELIX
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -1260,7 +1260,7 @@ IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 === TRAINER_RANDALL ===
 Name: RANDALL
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -1277,7 +1277,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_PARKER ===
 Name: PARKER
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -1294,7 +1294,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_GEORGE ===
 Name: GEORGE
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -1311,7 +1311,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_BERKE ===
 Name: BERKE
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -1327,7 +1327,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_BRAXTON ===
 Name: BRAXTON
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -1377,7 +1377,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_VINCENT ===
 Name: VINCENT
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -1399,7 +1399,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LEROY ===
 Name: LEROY
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -1417,7 +1417,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_WILTON_1 ===
 Name: WILTON
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -1439,7 +1439,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_EDGAR ===
 Name: EDGAR
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -1457,7 +1457,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_ALBERT ===
 Name: ALBERT
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -1475,7 +1475,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_SAMUEL ===
 Name: SAMUEL
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -1497,7 +1497,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_VITO ===
 Name: VITO
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -1523,7 +1523,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_OWEN ===
 Name: OWEN
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -1545,7 +1545,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_WILTON_2 ===
 Name: WILTON
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -1567,7 +1567,7 @@ IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
 
 === TRAINER_WILTON_3 ===
 Name: WILTON
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -1589,7 +1589,7 @@ IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
 
 === TRAINER_WILTON_4 ===
 Name: WILTON
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -1611,7 +1611,7 @@ IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 
 === TRAINER_WILTON_5 ===
 Name: WILTON
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -1633,7 +1633,7 @@ IVs: 17 HP / 17 Atk / 17 Def / 17 SpA / 17 SpD / 17 Spe
 
 === TRAINER_WARREN ===
 Name: WARREN
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -1651,7 +1651,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_MARY ===
 Name: MARY
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -1667,7 +1667,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_ALEXIA ===
 Name: ALEXIA
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -1684,7 +1684,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_JODY ===
 Name: JODY
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -1700,7 +1700,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_WENDY ===
 Name: WENDY
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -1734,7 +1734,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_KEIRA ===
 Name: KEIRA
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -1752,7 +1752,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_BROOKE_1 ===
 Name: BROOKE
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -1774,7 +1774,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_JENNIFER ===
 Name: JENNIFER
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -1788,7 +1788,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 === TRAINER_HOPE ===
 Name: HOPE
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -1802,7 +1802,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_SHANNON ===
 Name: SHANNON
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -1816,7 +1816,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_MICHELLE ===
 Name: MICHELLE
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -1838,7 +1838,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_CAROLINE ===
 Name: CAROLINE
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -1856,7 +1856,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_JULIE ===
 Name: JULIE
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -1878,7 +1878,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_BROOKE_2 ===
 Name: BROOKE
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -1900,7 +1900,7 @@ IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
 
 === TRAINER_BROOKE_3 ===
 Name: BROOKE
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -1922,7 +1922,7 @@ IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
 
 === TRAINER_BROOKE_4 ===
 Name: BROOKE
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -1944,7 +1944,7 @@ IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 
 === TRAINER_BROOKE_5 ===
 Name: BROOKE
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -6041,7 +6041,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_QUINCY ===
 Name: QUINCY
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -6067,7 +6067,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_KATELYNN ===
 Name: KATELYNN
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -7606,7 +7606,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DIANNE ===
 Name: DIANNE
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -9183,7 +9183,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_JAZMYN ===
 Name: JAZMYN
-Class: Cooltrainer 2
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -9265,7 +9265,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_MARLEY ===
 Name: MARLEY
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -9879,7 +9879,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_MITCHELL ===
 Name: MITCHELL
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -10069,7 +10069,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HALLE ===
 Name: HALLE
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -10534,7 +10534,7 @@ Zubat
 Level: 30
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_JAGGED_PASS ===
+=== TRAINER_COURTNEY_JAGGED_PASS ===
 Name: GRUNT
 Class: Team Magma
 Pic: Magma Grunt M
@@ -10635,7 +10635,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ATHENA ===
 Name: ATHENA
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -10950,7 +10950,7 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_JONATHAN ===
 Name: JONATHAN
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -11570,7 +11570,7 @@ Baltoy
 Level: 20
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_LUCAS_2 ===
+=== TRAINER_ARCHIE_MT_PYRE ===
 Name: LUCAS
 Class: Hiker
 Pic: Hiker
@@ -11585,7 +11585,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Splash
 - Water Gun
 
-=== TRAINER_MIKE_1 ===
+=== TRAINER_WALLY_ROUTE_118 ===
 Name: MIKE
 Class: Hiker
 Pic: Hiker
@@ -11861,7 +11861,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GERALD ===
 Name: GERALD
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -12456,7 +12456,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ALEXA ===
 Name: ALEXA
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -12474,7 +12474,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RUBEN ===
 Name: RUBEN
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -13510,7 +13510,7 @@ IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
 
 === TRAINER_DARCY ===
 Name: DARCY
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -13643,7 +13643,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_CAROLINA ===
 Name: CAROLINA
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -13986,7 +13986,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LEONEL ===
 Name: LEONEL
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
@@ -14103,7 +14103,7 @@ IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
 === TRAINER_CRISTIN_1 ===
 Name: CRISTIN
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -16328,7 +16328,7 @@ IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 === TRAINER_CRISTIN_2 ===
 Name: CRISTIN
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -16346,7 +16346,7 @@ IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
 
 === TRAINER_CRISTIN_3 ===
 Name: CRISTIN
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -16368,7 +16368,7 @@ IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
 
 === TRAINER_CRISTIN_4 ===
 Name: CRISTIN
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -16390,7 +16390,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_CRISTIN_5 ===
 Name: CRISTIN
-Class: Cooltrainer
+Class: Ace Trainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
