@@ -91,9 +91,7 @@ RustboroCity_DevonCorp_2F_EventScript_NoticeFossil::
 RustboroCity_DevonCorp_2F_EventScript_ChooseFossil::
 	message RustboroCity_DevonCorp_2F_Text_PickFossil
 	waitmessage
-	special ScriptMenu_CreateFossilMultichoice
-	waitstate
-	special GetFossilSelection
+	multichoice 17, 6, MULTI_FOSSIL, FALSE
 	switch VAR_RESULT
 	case 0, RustboroCity_DevonCorp_2F_EventScript_GiveRootFossil
 	case 1, RustboroCity_DevonCorp_2F_EventScript_GiveClawFossil
