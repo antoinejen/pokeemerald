@@ -46,7 +46,6 @@ static EWRAM_DATA struct DynamicMultichoiceStack *sDynamicMultiChoiceStack = NUL
 static EWRAM_DATA u16 *sDynamicMenuEventScratchPad = NULL;
 
 static u8 sLilycoveSSTidalSelections[SSTIDAL_SELECTION_COUNT];
-static u8 sRustboroDevonCorpFossilSelection[FOSSIL_SELECTION_COUNT];
 
 static void FreeListMenuItems(struct ListMenuItem *items, u32 count);
 static void Task_HandleScrollingMultichoiceInput(u8 taskId);
@@ -59,7 +58,6 @@ static void InitMultichoiceCheckWrap(bool8 ignoreBPress, u8 count, u8 windowId, 
 static void DrawLinkServicesMultichoiceMenu(u8 multichoiceId);
 static void CreatePCMultichoice(void);
 static void CreateLilycoveSSTidalMultichoice(void);
-static void CreateFossilMultichoice(void);
 static bool8 IsPicboxClosed(void);
 static void CreateStartMenuForPokenavTutorial(void);
 static void InitMultichoiceNoWrap(bool8 ignoreBPress, u8 unusedCount, u8 windowId, u8 multichoiceId);
@@ -929,117 +927,6 @@ void GetLilycoveSSTidalSelection(void)
         gSpecialVar_Result = sLilycoveSSTidalSelections[gSpecialVar_Result];
     }
 }
-
-bool8 ScriptMenu_CreateFossilMultichoice(void)
-{
-    if (FuncIsActiveTask(Task_HandleMultichoiceInput) == TRUE)
-    {
-        return FALSE;
-    }
-    else
-    {
-        gSpecialVar_Result = 0xFF;
-        CreateFossilMultichoice();
-        return TRUE;
-    }
-}
-
-static void CreateFossilMultichoice(void)
-{
-    u8 selectionCount = 0;
-    u8 count;
-    u32 pixelWidth;
-    u8 width;
-    u8 windowId;
-    u8 i;
-    u32 j;
-
-    for (i = 0; i < FOSSIL_SELECTION_COUNT; i++)
-    {
-        sRustboroDevonCorpFossilSelection[i] = 0xFF;
-    }
-
-    GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_WIDTH);
-
-    if (CheckBagHasItem(ITEM_CLAW_FOSSIL, 1) == TRUE)
-    {
-        sRustboroDevonCorpFossilSelection[selectionCount] = FOSSIL_SELECTION_CLAW_FOSSIL;
-        selectionCount++;
-    }
-
-    if (CheckBagHasItem(ITEM_ROOT_FOSSIL, 1) == TRUE)
-    {
-        sRustboroDevonCorpFossilSelection[selectionCount] = FOSSIL_SELECTION_ROOT_FOSSIL;
-        selectionCount++;
-    }
-
-    if (CheckBagHasItem(ITEM_HELIX_FOSSIL, 1) == TRUE)
-    {
-        sRustboroDevonCorpFossilSelection[selectionCount] = FOSSIL_SELECTION_HELIX_FOSSIL;
-        selectionCount++;
-    }
-
-    if (CheckBagHasItem(ITEM_DOME_FOSSIL, 1) == TRUE)
-    {
-        sRustboroDevonCorpFossilSelection[selectionCount] = FOSSIL_SELECTION_DOME_FOSSIL;
-        selectionCount++;
-    }
-
-    if (CheckBagHasItem(ITEM_OLD_AMBER, 1) == TRUE)
-    {
-        sRustboroDevonCorpFossilSelection[selectionCount] = FOSSIL_SELECTION_OLD_AMBER;
-        selectionCount++;
-    }
-
-    sRustboroDevonCorpFossilSelection[selectionCount] = FOSSIL_SELECTION_EXIT;
-    selectionCount++;
-
-    count = selectionCount;
-    if (count == FOSSIL_SELECTION_COUNT)
-    {
-        gSpecialVar_0x8004 = SCROLL_MULTI_FOSSIL;
-        ShowScrollableMultichoice();
-    }
-    else
-    {
-        pixelWidth = 0;
-
-        for (j = 0; j < FOSSIL_SELECTION_COUNT; j++)
-        {
-            u8 selection = sRustboroDevonCorpFossilSelection[j];
-            if (selection != 0xFF)
-            {
-                pixelWidth = DisplayTextAndGetWidth(sRustboroDevonCorpFossilList[selection], pixelWidth);
-            }
-        }
-
-        width = ConvertPixelWidthToTileWidth(pixelWidth);
-        windowId = CreateWindowFromRect(MAX_MULTICHOICE_WIDTH - width, (6 - count) * 2, width, count * 2);
-        SetStandardWindowBorderStyle(windowId, 0);
-
-        for (selectionCount = 0, i = 0; i < FOSSIL_SELECTION_COUNT; i++)
-        {
-            if (sRustboroDevonCorpFossilSelection[i] != 0xFF)
-            {
-                AddTextPrinterParameterized(windowId, FONT_NORMAL, sRustboroDevonCorpFossilList[sRustboroDevonCorpFossilSelection[i]], 8, selectionCount * 16 + 1, TEXT_SKIP_DRAW, NULL);
-                selectionCount++;
-            }
-        }
-
-        InitMenuInUpperLeftCornerNormal(windowId, count, count - 1);
-        CopyWindowToVram(windowId, COPYWIN_FULL);
-        InitMultichoiceCheckWrap(FALSE, count, windowId, MULTI_FOSSIL);
-    }
-}
-
-void GetFossilSelection(void)
-{
-    if (gSpecialVar_Result != MULTI_B_PRESSED)
-    {
-        gSpecialVar_Result = sRustboroDevonCorpFossilSelection[gSpecialVar_Result];
-    }
-}
-
 
 #define tState       data[0]
 #define tMonSpecies  data[1]
