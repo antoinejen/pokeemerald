@@ -376,6 +376,17 @@ const u32 gObjectEventPic_HoOhOld[] = INCBIN_U32("graphics/object_events/pics/po
 const u32 gObjectEventPic_GroudonOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/groudon.4bpp");
 const u32 gObjectEventPic_KyogreOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/kyogre.4bpp");
 
+const u32 gObjectEventPic_SnorlaxOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/snorlax.4bpp");
+const u32 gObjectEventPic_ZapdosOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/zapdos.4bpp");
+const u32 gObjectEventPic_MoltresOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/moltres.4bpp");
+const u32 gObjectEventPic_ArticunoOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/articuno.4bpp");
+const u32 gObjectEventPic_MewtwoOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/mewtwo.4bpp");
+const u32 gObjectEventPic_EnteiOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/entei.4bpp");
+const u32 gObjectEventPic_RaikouOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/raikou.4bpp");
+const u32 gObjectEventPic_SuicuneOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/suicune.4bpp");
+const u32 gObjectEventPic_CelebiOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/celebi.4bpp");
+
+
 const u32 gObjectEventPic_VigorothMover[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/vigoroth_mover.4bpp");
 const u32 gObjectEventPic_SudowoodoTree[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/sudowoodo_tree.4bpp");
 const u32 gObjectEventPic_RayquazaCutscene[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/rayquaza_cutscene.4bpp");
