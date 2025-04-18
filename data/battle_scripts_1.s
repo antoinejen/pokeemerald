@@ -6010,7 +6010,6 @@ BattleScript_RoarSuccessSwitch_Ret:
 	swapattackerwithtarget  @ continuation of RedCardActivates
 	restoretarget
 	restoreattacker
-	restoresavedmove
 	setbyte sSWITCH_CASE, B_SWITCH_NORMAL
 	return
 
@@ -7030,9 +7029,9 @@ BattleScript_BattlerFormChangeWithStringEnd3::
 
 BattleScript_IllusionOff::
 	spriteignore0hp TRUE
-	playanimation BS_TARGET, B_ANIM_ILLUSION_OFF
+	playanimation BS_SCRIPTING, B_ANIM_ILLUSION_OFF
 	waitanimation
-	updatenick BS_TARGET
+	updatenick BS_SCRIPTING
 	waitstate
 	spriteignore0hp FALSE
 	printstring STRINGID_ILLUSIONWOREOFF
@@ -9492,7 +9491,6 @@ BattleScript_RedCardActivationNoSwitch::
 	removeitem BS_SCRIPTING
 	restoretarget
 	restoreattacker
-	restoresavedmove
 	return
 
 BattleScript_RedCardActivates::
@@ -9515,6 +9513,7 @@ BattleScript_RedCardIngrainContinue:
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_SCRIPTING
 	restoretarget
+	restoreattacker
 	return
 BattleScript_RedCardSuctionCups:
     printstring STRINGID_PKMNANCHORSITSELFWITH
@@ -9994,9 +9993,12 @@ BattleScript_DynamaxEnds::
 
 BattleScript_DynamaxEnds_Ret::
 	flushtextbox
+	spriteignore0hp TRUE
 	updatedynamax
 	playanimation BS_SCRIPTING, B_ANIM_FORM_CHANGE
 	waitanimation
+	spriteignore0hp FALSE
+	pause B_WAIT_TIME_SHORT
 	return
 
 BattleScript_MoveBlockedByDynamax::
