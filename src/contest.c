@@ -742,20 +742,20 @@ const u8 *const gContestEffectDescriptionPointers[] =
 
 const u8 *const gContestMoveTypeTextPointers[] =
 {
-    [CONTEST_CATEGORY_COOL]   = COMPOUND_STRING("COOL"),
-    [CONTEST_CATEGORY_BEAUTY] = COMPOUND_STRING("BEAUTY"),
-    [CONTEST_CATEGORY_CUTE]   = COMPOUND_STRING("CUTE"),
-    [CONTEST_CATEGORY_SMART]  = COMPOUND_STRING("SMART"),
-    [CONTEST_CATEGORY_TOUGH]  = COMPOUND_STRING("TOUGH"),
+    [CONTEST_CATEGORY_COOL]   = gText_Cool,
+    [CONTEST_CATEGORY_BEAUTY] = gText_Beauty,
+    [CONTEST_CATEGORY_CUTE]   = gText_Cute,
+    [CONTEST_CATEGORY_SMART]  = gText_Smart,
+    [CONTEST_CATEGORY_TOUGH]  = gText_Tough,
 };
 
 static const u8 *const sContestConditions[] =
 {
-    [CONTEST_CATEGORY_COOL]   = COMPOUND_STRING("coolness"),
-    [CONTEST_CATEGORY_BEAUTY] = COMPOUND_STRING("beauty"),
-    [CONTEST_CATEGORY_CUTE]   = COMPOUND_STRING("cuteness"),
-    [CONTEST_CATEGORY_SMART]  = COMPOUND_STRING("smartness"),
-    [CONTEST_CATEGORY_TOUGH]  = COMPOUND_STRING("toughness"),
+    [CONTEST_CATEGORY_COOL]   = gText_ContestLady_Coolness,
+    [CONTEST_CATEGORY_BEAUTY] = gText_ContestLady_Beauty,
+    [CONTEST_CATEGORY_CUTE]   = gText_ContestLady_Cuteness,
+    [CONTEST_CATEGORY_SMART]  = gText_ContestLady_Smartness,
+    [CONTEST_CATEGORY_TOUGH]  = gText_ContestLady_Toughness,
 };
 
 static const u8 *const sInvalidContestMoveNames[] =

@@ -688,32 +688,30 @@ static const u16 sUnusedData[] =
     0x0121, 0x013b, 0x000f, 0x0013, 0x0039, 0x0046, 0x0094, 0x00f9, 0x007f, 0x0123,
 };
 
-static const u8 sText_Trade4[] = _("TRADE");
-
 struct
 {
     const u8 *text;
     TaskFunc func;
 } static const sCursorOptions[MENU_FIELD_MOVES] =
 {
-    [MENU_SUMMARY] = {COMPOUND_STRING("SUMMARY"), CursorCb_Summary},
-    [MENU_SWITCH] = {COMPOUND_STRING("SWITCH"), CursorCb_Switch},
-    [MENU_CANCEL1] = {gText_Cancel2, CursorCb_Cancel1},
-    [MENU_ITEM] = {COMPOUND_STRING("ITEM"), CursorCb_Item},
-    [MENU_GIVE] = {gMenuText_Give, CursorCb_Give},
-    [MENU_TAKE_ITEM] = {COMPOUND_STRING("TAKE"), CursorCb_TakeItem},
-    [MENU_MAIL] = {COMPOUND_STRING("MAIL"), CursorCb_Mail},
-    [MENU_TAKE_MAIL] = {COMPOUND_STRING("TAKE"), CursorCb_TakeMail},
-    [MENU_READ] = {COMPOUND_STRING("READ"), CursorCb_Read},
-    [MENU_CANCEL2] = {gText_Cancel2, CursorCb_Cancel2},
-    [MENU_SHIFT] = {COMPOUND_STRING("SHIFT"), CursorCb_SendMon},
-    [MENU_SEND_OUT] = {COMPOUND_STRING("SEND OUT"), CursorCb_SendMon},
-    [MENU_ENTER] = {COMPOUND_STRING("ENTER"), CursorCb_Enter},
-    [MENU_NO_ENTRY] = {COMPOUND_STRING("NO ENTRY"), CursorCb_NoEntry},
-    [MENU_STORE] = {COMPOUND_STRING("STORE"), CursorCb_Store},
+    [MENU_SUMMARY] = {gText_Summary, CursorCb_Summary},
+    [MENU_SWITCH] = {gText_Switch, CursorCb_Switch},
+    [MENU_CANCEL1] = {gText_Cancel, CursorCb_Cancel1},
+    [MENU_ITEM] = {gText_Item, CursorCb_Item},
+    [MENU_GIVE] = {gText_Give, CursorCb_Give},
+    [MENU_TAKE_ITEM] = {gText_Take, CursorCb_TakeItem},
+    [MENU_MAIL] = {gText_Mail, CursorCb_Mail},
+    [MENU_TAKE_MAIL] = {gText_Take, CursorCb_TakeMail},
+    [MENU_READ] = {gText_Read, CursorCb_Read},
+    [MENU_CANCEL2] = {gText_Cancel, CursorCb_Cancel2},
+    [MENU_SHIFT] = {gText_Shift, CursorCb_SendMon},
+    [MENU_SEND_OUT] = {gText_SendOut, CursorCb_SendMon},
+    [MENU_ENTER] = {gText_Enter, CursorCb_Enter},
+    [MENU_NO_ENTRY] = {gText_NoEntry, CursorCb_NoEntry},
+    [MENU_STORE] = {gText_Store, CursorCb_Store},
     [MENU_REGISTER] = {gText_Register, CursorCb_Register},
-    [MENU_TRADE1] = {sText_Trade4, CursorCb_Trade1},
-    [MENU_TRADE2] = {sText_Trade4, CursorCb_Trade2},
+    [MENU_TRADE1] = {gText_Trade, CursorCb_Trade1},
+    [MENU_TRADE2] = {gText_Trade, CursorCb_Trade2},
     [MENU_TOSS] = {gMenuText_Toss, CursorCb_Toss},
     [MENU_CATALOG_BULB] = {COMPOUND_STRING("Light bulb"), CursorCb_CatalogBulb},
     [MENU_CATALOG_OVEN] = {COMPOUND_STRING("Microwave oven"), CursorCb_CatalogOven},
