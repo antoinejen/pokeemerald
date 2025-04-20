@@ -43,7 +43,7 @@ Route114_EncounterSnorlax::
 	msgbox Route114_Text_WantToUseBlueFlute, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, Route114_EventScript_DontUseBlueFlute
 	call Route114_EventScript_AwakenSnorlax
-	setwildbattle SPECIES_SNORLAX, 28, ITEM_LEFTOVERS
+	setwildbattle SPECIES_SNORLAX, 30, ITEM_LEFTOVERS
 	waitse
 	playmoncry SPECIES_SNORLAX, CRY_MODE_ENCOUNTER
 	delay 40
