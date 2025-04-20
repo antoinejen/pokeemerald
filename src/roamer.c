@@ -117,7 +117,21 @@ static void CreateInitialRoamerMon(u8 index, u16 species, u8 level)
     ROAMER(index)->tough = GetMonData(&gEnemyParty[0], MON_DATA_TOUGH);
     ROAMER(index)->active = TRUE;
     sRoamerLocation[index][MAP_GRP] = ROAMER_MAP_GROUP;
-    sRoamerLocation[index][MAP_NUM] = sRoamerLocations[Random() % NUM_LOCATION_SETS][0];
+    switch (species)
+        {
+        case SPECIES_ENTEI:
+            sRoamerLocation[index][MAP_NUM] = sRoamerLocations[3][0];
+            break;
+        case SPECIES_SUICUNE:
+            sRoamerLocation[index][MAP_NUM] = sRoamerLocations[4][0];
+            break;
+        case SPECIES_RAIKOU:
+            sRoamerLocation[index][MAP_NUM] = sRoamerLocations[6][0];
+            break;
+        default:
+            sRoamerLocation[index][MAP_NUM] = sRoamerLocations[Random() % NUM_LOCATION_SETS][0];
+        }
+    
 }
 
 static u8 GetFirstInactiveRoamerIndex(void)
@@ -147,13 +161,14 @@ bool8 TryAddRoamer(u16 species, u8 level)
     return FALSE;
 }
 
-// gSpecialVar_0x8004 here corresponds to the options in the multichoice MULTI_TV_LATI (0 for 'Red', 1 for 'Blue')
+// gSpecialVar_0x8004 here corresponds to the options in the multichoice MULTI_TV_LATI (0 for 'Red', 1 for 'Blue') ==> Got rid of it, now both Latias and Latios are loaded + legendary beasts of Johto
 void InitRoamer(void)
 {
-    if (gSpecialVar_0x8004 == 0) // Red
-        TryAddRoamer(SPECIES_LATIAS, 40);
-    else
-        TryAddRoamer(SPECIES_LATIOS, 40);
+        TryAddRoamer(SPECIES_LATIAS, 50);
+        TryAddRoamer(SPECIES_LATIOS, 50);
+        TryAddRoamer(SPECIES_ENTEI, 50);
+        TryAddRoamer(SPECIES_SUICUNE, 50);
+        TryAddRoamer(SPECIES_RAIKOU, 50);
 }
 
 void UpdateLocationHistoryForRoamer(void)

@@ -38,10 +38,10 @@ EventScript_PlayersHouseMovie::
 @ It's called again when Mom actually asks for the color, overwriting
 @ whatever it does here.
 EventScript_PlayersHouseLatiNewsFlash::
-	msgbox PlayersHouse_1F_Text_LatiEmergencyNewsFlash, MSGBOX_DEFAULT
+	msgbox PlayersHouse_1F_Text_RoamerEmergencyNewsFlash, MSGBOX_DEFAULT
 	special InitRoamer
-	clearflag FLAG_SYS_TV_LATIAS_LATIOS
-	setflag FLAG_LATIOS_OR_LATIAS_ROAMING
+	clearflag FLAG_SYS_TV_ROAMERS
+	setflag FLAG_ROAMERS_ROAMING
 	special TurnOffTVScreen
 	releaseall
 	end

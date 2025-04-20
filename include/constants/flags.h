@@ -278,7 +278,7 @@
 #define FLAG_RECEIVED_BELUE_BERRY            0xFC
 #define FLAG_ENABLE_RIVAL_MATCH_CALL         0xFD
 #define FLAG_RECEIVED_CHARCOAL               0xFE
-#define FLAG_LATIOS_OR_LATIAS_ROAMING        0xFF
+#define FLAG_ROAMERS_ROAMING        		 0xFF
 #define FLAG_RECEIVED_REPEAT_BALL            0x100
 #define FLAG_RECEIVED_OLD_ROD                0x101
 #define FLAG_RECEIVED_COIN_CASE              0x102
@@ -289,7 +289,7 @@
 #define FLAG_ENTERED_ELITE_FOUR              0x107
 #define FLAG_RECEIVED_TM_HIDDEN_POWER        0x108
 #define FLAG_RECEIVED_TM_TORMENT             0x109
-#define FLAG_RECEIVED_LAVARIDGE_EGG          0x10A
+#define FLAG_RECEIVED_LAVARIDGE_EGG          0x10A // It's now a Togepi, not a Wynaut
 #define FLAG_RECEIVED_REVIVED_FOSSIL_MON     0x10B
 #define FLAG_SECRET_BASE_REGISTRY_ENABLED    0x10C
 #define FLAG_RECEIVED_TM_THIEF               0x10D
@@ -521,7 +521,7 @@
 #define FLAG_DEFEATED_ZAPDOS                 0x1E0 // Fixed Zapdos @ New Mauville
 #define FLAG_DEFEATED_ARTICUNO               0x1E1 // Fixed Articuno @ Shoal Cave - Ice Room
 #define FLAG_DEFEATED_MOLTRES                0x1E2 // Fixed Moltres @ Dunno yet
-#define FLAG_UNUSED_0x1E3                    0x1E3 // Unused Flag
+#define FLAG_DEFEATED_MEWTWO                 0x1E3 // Fixed Mewtwo @ Granite Cave B2F, post-game
 
 // Mystery Gift Flags (Unknown)
 #define FLAG_MYSTERY_GIFT_DONE               0x1E4
@@ -737,7 +737,7 @@
 #define FLAG_UNUSED_0x2B2  0x2B2 // Unused Flag
 #define FLAG_UNUSED_0x2B3  0x2B3 // Unused Flag
 #define FLAG_UNUSED_0x2B4  0x2B4 // Unused Flag
-#define FLAG_UNUSED_0x2B5  0x2B5 // Unused Flag
+#define FLAG_HIDE_MEWTWO   0x2B5 // Mewtwo
 #define FLAG_HIDE_BLUE 	   0x2B6 // Blue
 #define FLAG_HIDE_MOLTRES  0x2B7 // Moltres
 #define FLAG_HIDE_ARTICUNO 0x2B8 // Articuno
@@ -1175,8 +1175,8 @@
 #define FLAG_ITEM_NEW_MAUVILLE_FULL_HEAL                            0x462
 #define FLAG_ITEM_NEW_MAUVILLE_PARALYZE_HEAL                        0x463
 #define FLAG_ITEM_AQUA_HIDEOUT_B1F_MASTER_BALL                      0x464
-#define FLAG_ITEM_SEAFLOOR_CAVERN_ROOM_7_HELIX_FOSSIL               0x465 // Helix Fossil Seafloor Cavern
-#define FLAG_ITEM_ROUTE_127_DOME_FOSSIL                  			0x466 // Dome Fossil Route 127
+#define FLAG_ITEM_SEAFLOOR_CAVERN_ROOM_7_HELIX_FOSSIL               0x465 // Unused Flag
+#define FLAG_ITEM_MT_PYRE_OLD_AMBER                  			    0x466 // Old Amber Mt. Pyre Summit, hidden in top-left grave
 #define FLAG_ITEM_OLD_MAGMA_HIDEOUT_B2F_NEST_BALL                   0x467 // Unused Flag, leftover from the Ruby Magma hideout
 #define FLAG_UNUSED_0x468                                           0x468 // Unused Flag
 #define FLAG_ITEM_MT_PYRE_2F_ULTRA_BALL                             0x469
@@ -1454,7 +1454,7 @@
 #define FLAG_LANDMARK_HUNTERS_HOUSE                 (SYSTEM_FLAGS + 0x5B)
 #define FLAG_LANDMARK_SEALED_CHAMBER                (SYSTEM_FLAGS + 0x5C)
 
-#define FLAG_SYS_TV_LATIAS_LATIOS                   (SYSTEM_FLAGS + 0x5D)
+#define FLAG_SYS_TV_ROAMERS                         (SYSTEM_FLAGS + 0x5D) // Includes Lati@s, but also the legendary beasts of Johto
 
 #define FLAG_LANDMARK_SKY_PILLAR                    (SYSTEM_FLAGS + 0x5E)
 
